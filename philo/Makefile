@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/10/17 17:11:18 by umeneses         ###   ########.fr        #
+#    Updated: 2024/10/17 18:25:46 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,9 +74,11 @@ define	project_title
 		@echo "                                                                    "
 		@echo "#########################    WELCOME TO    #########################"
 		@echo "                                                                    "
+		@echo "              	  _ |_ .| _  _ _  _ |_  _  _ _					   "	
+		@echo "              	 |_)| |||(_)_\(_)|_)| |(/_| _\					   "
+		@echo "              	 |               |            					   "
 		@echo "                                                                    "
-		@echo "                                                                    "
-		@echo "####################################################################"
+		@echo "###########  in a spagetti dinner with chop-stickers  ##############"
 		@echo "                                                                    "
 		@printf "$(RESET)"
 endef
@@ -181,7 +183,7 @@ re:				fclean all
 				./$(NAME)
 
 go:				all
-				./$(NAME)
+				@./$(NAME)
 
 gdb:			all
 				gdb --tui -ex 'b main' -ex 'set detach-on-fork off' -ex 'info inferiors' -ex 'run > /dev/null 2>&1' ./$(NAME)
