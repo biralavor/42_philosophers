@@ -1,2 +1,2 @@
-build/*
-philo
+./philo/build
+./philo/philo
