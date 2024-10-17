@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/10/17 16:02:15 by umeneses         ###   ########.fr        #
+#    Updated: 2024/10/17 16:33:18 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,8 +41,8 @@ SRC_FILES				= 01.main.c
 
 SRC_FILES_ALL			= $(addprefix $(SRC_D), $(SRC_FILES))
 
-OBJ_FILES				= $(addprefix $(BUILD_D), $(SRC_FILES:%.c=%.o))
-OBJ_ALL					= $(OBJ_FILES)
+OBJS_FILES				= $(addprefix $(BUILD_D), $(SRC_FILES_ALL:%.c=%.o))
+OBJS_ALL				= $(OBJS_FILES)
 
 # **************************** #
 #			BONUS			   #
@@ -139,21 +139,22 @@ CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -g3
 CPPFLAGS	= $(addprefix -I, $(HEADERS)) -MMD -MP
 #LDFLAGS		= $(addprefix -L, $(dir $(LIBS)))
-LDLIBS		= -lft -ldl -lpthread
+LDLIBS		= -ldl
+PTHREAD		= -pthread
 COMP_OBJS	= $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
-COMP_EXE	= $(CC) $(CFLAGS) $(OBJS_ALL) $(LDLIBS) -o $(NAME)
+COMP_EXE	= $(CC) $(CFLAGS) $(OBJS_ALL) $(LDLIBS) $(PTHREAD) -o $(NAME)
 
 # **************************************************************************** #
 #								TARGETS										   #
 # **************************************************************************** #
 
-all:			$(NAME)
+all: 			$(NAME)
 
 $(BUILD_D)%.o:	%.c
-				@$(MKDIR) $(dis $@)
-				@$COMP_OBJS)
+				@$(MKDIR) $(dir $@)
+				@$(COMP_OBJS)
 				@printf "$(CYAN)"
-				@echo "$(NAME)	compiling -> $(GREEN) $(notdir $<)""
+				@echo "$(NAME)	compiling -> $(GREEN)$(notdir $<)"
 				@printf "$(RESET)"
 
 $(NAME):		$(OBJS_ALL)
