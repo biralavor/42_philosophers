@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/10/17 16:33:18 by umeneses         ###   ########.fr        #
+#    Updated: 2024/10/17 17:11:18 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,26 +96,18 @@ endef
 define				instructions
 					@echo "Welcome to my Philosophers version!"
 					@echo "Hit ./$(NAME) and add:"
-					@echo "number_of_philosophers"
-					@echo "time_to_die"
-					@echo "time_to_eat"
-					@echo "time_to_sleep"
-					@echo "number_of_times_each_philosopher_must_eat - OPTIONAL"
-					@echo "Similar like this example: ./$(NAME) 5 800 200 200"
-					@echo "Or like this one with times_must_eat: ./$(NAME) 5 800 200 200 7"
+					@echo "$(CYAN)number_of_philosophers $(RED)time_to_die $(PURPLE)time_to_eat $(BLUE)time_to_sleep $(GREEN)number_of_times_each_philosopher_must_eat"
+					@echo "$(YELLOW)Similar like this example:	$(RESET) ./$(NAME) $(CYAN)5 $(RED)800 $(PURPLE)200 $(BLUE)200"
+					@echo "$(YELLOW)Or with $(GREEN)times_must_eat added:	$(RESET) ./$(NAME) $(CYAN)5 $(RED)800 $(PURPLE)200 $(BLUE)200 $(GREEN)7 "
 
 endef
 
 define				instructions_bonus
 					@echo "Welcome to my Philosophers version!"
 					@echo "Hit ./$(NAME_BONUS) and add:"
-					@echo "number_of_philosophers"
-					@echo "time_to_die"
-					@echo "time_to_eat"
-					@echo "time_to_sleep"
-					@echo "number_of_times_each_philosopher_must_eat - OPTIONAL"
-					@echo "Similar like this example: ./$(NAME_BONUS) 5 800 200 200"
-					@echo "Or like this one with times_must_eat: ./$(NAME_BONUS) 5 800 200 200 7"
+					@echo "$(CYAN)number_of_philosophers $(RED)time_to_die $(PURPLE)time_to_eat $(BLUE)time_to_sleep $(GREEN)number_of_times_each_philosopher_must_eat"
+					@echo "$(YELLOW)Similar like this example:	$(RESET) ./$(NAME_BONUS) $(CYAN)5 $(RED)800 $(PURPLE)200 $(BLUE)200"
+					@echo "$(YELLOW)Or with $(GREEN)times_must_eat added:	$(RESET) ./$(NAME_BONUS) $(CYAN)5 $(RED)800 $(PURPLE)200 $(BLUE)200 $(GREEN)7 "				
 endef
 
 ifdef					WITH_BONUS
@@ -154,7 +146,7 @@ $(BUILD_D)%.o:	%.c
 				@$(MKDIR) $(dir $@)
 				@$(COMP_OBJS)
 				@printf "$(CYAN)"
-				@echo "$(NAME)	compiling -> $(GREEN)$(notdir $<)"
+				@echo "$(NAME)	::	compiling file -> $(GREEN) $(notdir $<)"
 				@printf "$(RESET)"
 
 $(NAME):		$(OBJS_ALL)
