@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/17 16:27:14 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/17 18:02:26 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,7 @@
 
 # include <pthread.h>
 # include <sys/wait.h>
+
+pthread_mutex_t	mutex;
 
 #endif
