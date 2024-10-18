@@ -6,11 +6,9 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 19:57:56 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/17 20:18:27 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/18 08:50:57 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// #include "philo.h"
 
 int	ft_atoi_long_int(const char *string)
 {
