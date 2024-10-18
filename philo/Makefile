@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/10/17 18:25:46 by umeneses         ###   ########.fr        #
+#    Updated: 2024/10/17 22:20:04 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ TDD_UTILS_D				= ./_tdd_utils/
 NAME					= philo
 
 SRC_FILES				= 01.main.c
-#SRC_FILES				+= 02.xxxxx.c
+SRC_FILES				+= ft_atoi.c
 
 SRC_FILES_ALL			= $(addprefix $(SRC_D), $(SRC_FILES))
 
@@ -97,8 +97,8 @@ endef
 
 define				instructions
 					@echo "Welcome to my Philosophers version!"
-					@echo "Hit ./$(NAME) and add:"
-					@echo "$(CYAN)number_of_philosophers $(RED)time_to_die $(PURPLE)time_to_eat $(BLUE)time_to_sleep $(GREEN)number_of_times_each_philosopher_must_eat"
+					@echo "Hit $(RESET)./$(NAME) $(YELLOW)and add:"
+					@echo "$(CYAN)number_of_philosophers $(RED)time_to_die $(PURPLE)time_to_eat $(BLUE)time_to_sleep $(GREEN)nbr_each_philo_must_eat"
 					@echo "$(YELLOW)Similar like this example:	$(RESET) ./$(NAME) $(CYAN)5 $(RED)800 $(PURPLE)200 $(BLUE)200"
 					@echo "$(YELLOW)Or with $(GREEN)times_must_eat added:	$(RESET) ./$(NAME) $(CYAN)5 $(RED)800 $(PURPLE)200 $(BLUE)200 $(GREEN)7 "
 
@@ -106,8 +106,8 @@ endef
 
 define				instructions_bonus
 					@echo "Welcome to my Philosophers version!"
-					@echo "Hit ./$(NAME_BONUS) and add:"
-					@echo "$(CYAN)number_of_philosophers $(RED)time_to_die $(PURPLE)time_to_eat $(BLUE)time_to_sleep $(GREEN)number_of_times_each_philosopher_must_eat"
+					@echo "Hit $(RESET)./$(NAME_BONUS) $(YELLOW)and add:"
+					@echo "$(CYAN)number_of_philosophers $(RED)time_to_die $(PURPLE)time_to_eat $(BLUE)time_to_sleep $(GREEN)nbr_each_philo_must_eat"
 					@echo "$(YELLOW)Similar like this example:	$(RESET) ./$(NAME_BONUS) $(CYAN)5 $(RED)800 $(PURPLE)200 $(BLUE)200"
 					@echo "$(YELLOW)Or with $(GREEN)times_must_eat added:	$(RESET) ./$(NAME_BONUS) $(CYAN)5 $(RED)800 $(PURPLE)200 $(BLUE)200 $(GREEN)7 "				
 endef
@@ -183,7 +183,9 @@ re:				fclean all
 				./$(NAME)
 
 go:				all
-				@./$(NAME)
+				./$(NAME) $(filter-out $@,$(MAKECMDGOALS))
+%:
+				@:
 
 gdb:			all
 				gdb --tui -ex 'b main' -ex 'set detach-on-fork off' -ex 'info inferiors' -ex 'run > /dev/null 2>&1' ./$(NAME)
