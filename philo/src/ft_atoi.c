@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/17 20:16:18 by umeneses         ###   ########.fr       */
+/*   Created: 2024/10/17 19:57:56 by umeneses          #+#    #+#             */
+/*   Updated: 2024/10/17 20:18:27 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+// #include "philo.h"
 
-# include <pthread.h>
-# include <sys/wait.h>
+int	ft_atoi_long_int(const char *string)
+{
+	long int	nbr;
+	int			sign;
+	char		*str;
 
-pthread_mutex_t	mutex;
-
-int	ft_atoi_long_int(const char *string);
-
-#endif
+	sign = 1;
+	str = (char *)string;
+	while((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	while(*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign *= -1;
+		str++;
+	}
+	nbr = 0;
+	while (*str >= '0' && *str <= '9')
+	{
+		nbr = nbr * 10 + (*str - '0');
+		str++;
+	}
+	return (nbr * sign);
+}
