@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:03:55 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/18 12:11:11 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:57:47 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*routine (void *arg)
 	int	mails = 0;
 	int *result = malloc(sizeof(int)); // it will be freed after pthread_join()
 	int idx = 0;
-	printf("Thread %ld has started with PID: %lu\n", pthread_self(), (unsigned long)pthread_self());
+	printf("Thread %d is running\n", *(int *)arg);
 	while (idx < 2)
 	{	
 		pthread_mutex_lock(&mutex);
@@ -54,6 +54,7 @@ int main (int ac, char **av)
 			perror("pthread_create error");
 			return (1);
 		}
+		printf("Thread %d has started\n", idx);
 	}
 	idx = -1;
 	while (++idx < pth_init)
@@ -63,6 +64,7 @@ int main (int ac, char **av)
 			perror("pthread_join error");
 			return (3);
 		}
+		printf("Thread %d has finished\n", idx);
 	}
 	printf(">>> total mails from res = %d !\n", *res);
 	pthread_mutex_destroy(&mutex);
