@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:03:55 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/22 17:53:57 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/22 18:49:37 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,10 @@ int main (int ac, char **av)
 			return (3);
 		}
 		printf("Thread %d has finished\n", idx);
+		printf(">>> total mails from res = %d !\n", *res);
+		free(res);
 	}
-	printf(">>> total mails from res = %d !\n", *res);
 	pthread_mutex_destroy(table->mtx_philo);
-	free(res);
+	table_holder(NULL, true);
 	return (0);
 }
