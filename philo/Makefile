@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/10/18 10:01:33 by umeneses         ###   ########.fr        #
+#    Updated: 2024/10/22 16:24:34 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,8 @@ TDD_UTILS_D				= ./_tdd_utils/
 NAME					= philo
 
 SRC_FILES				= 01.main.c
+SRC_FILES				+= 02.parsing.c
+SRC_FILES				+= 03.pthread_init.c
 SRC_FILES				+= ft_atoi.c
 
 SRC_FILES_ALL			= $(addprefix $(SRC_D), $(SRC_FILES))

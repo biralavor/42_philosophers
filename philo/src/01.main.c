@@ -6,12 +6,11 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:03:55 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/22 15:57:47 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/22 17:53:57 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
 
 void	*routine (void *arg)
 {
@@ -21,10 +20,10 @@ void	*routine (void *arg)
 	printf("Thread %d is running\n", *(int *)arg);
 	while (idx < 2)
 	{	
-		pthread_mutex_lock(&mutex);
+		pthread_mutex_lock(table_holder(NULL, false)->mtx_philo);
 		mails++;
 		mails = mails * (*(int *)arg);
-		pthread_mutex_unlock(&mutex);
+		pthread_mutex_unlock(table_holder(NULL, false)->mtx_philo);
 		idx++;	
 	}
 	*result = mails;
@@ -34,18 +33,20 @@ void	*routine (void *arg)
 
 int main (int ac, char **av)
 {
-	int pth_init = 0;
-	int idx = -1;
-	int *res = 0;
-	if (ac < 2)
-	{
-		printf("This version needs at least a number of philosophers\n");
-		return (1);
-	}
-	pth_init = ft_atoi_long_int(av[1]);
-	pthread_t	pth[pth_init];
-	pthread_mutex_init(&mutex, NULL);
-	while (++idx < pth_init)
+	t_table	*table;
+	int		idx;
+	int		*res;
+
+	idx = -1;
+	res = 0;
+	table = NULL;
+	if (!arguments_validation(ac, av))
+		exit(EXIT_FAILURE);
+	table_parsing(table, av);
+	table = table_holder(NULL, false);
+	pthread_t pth[table->setup->total_philos];
+	table_mutex_init(table);
+	while (++idx < table->setup->total_philos)
 	{	
 		int	*arg_to_routine = malloc(sizeof(int)); // it will be freed inside routine called by pthread_create()
 		*arg_to_routine = idx;
@@ -57,7 +58,7 @@ int main (int ac, char **av)
 		printf("Thread %d has started\n", idx);
 	}
 	idx = -1;
-	while (++idx < pth_init)
+	while (++idx < table->setup->total_philos)
 	{	
 		if (pthread_join(pth[idx], (void **) &res) != 0)
 		{
@@ -67,7 +68,7 @@ int main (int ac, char **av)
 		printf("Thread %d has finished\n", idx);
 	}
 	printf(">>> total mails from res = %d !\n", *res);
-	pthread_mutex_destroy(&mutex);
+	pthread_mutex_destroy(table->mtx_philo);
 	free(res);
 	return (0);
 }
