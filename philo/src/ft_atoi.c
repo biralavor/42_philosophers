@@ -6,11 +6,11 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 19:57:56 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/18 08:50:57 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/22 17:00:51 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi_long_int(const char *string)
+long int	ft_atoi_long_int(const char *string)
 {
 	long int	nbr;
 	int			sign;
