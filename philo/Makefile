@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/10/22 16:24:34 by umeneses         ###   ########.fr        #
+#    Updated: 2024/10/23 16:19:20 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -124,8 +124,12 @@ ifdef					WITH_BONUS
 	instructions		= $(instructions_bonus)
 endif
 
-define					bonus
-						$(MAKE) WITH_BONUS=TRUE --no-print-directory
+define		bonus
+			$(MAKE) WITH_BONUS=TRUE --no-print-directory
+endef
+
+define		args_to_test
+			7
 endef
 
 # **************************************************************************** #
@@ -187,14 +191,13 @@ re:				fclean all
 				./$(NAME)
 
 go:				all
-				./$(NAME) $(filter-out $@,$(MAKECMDGOALS))
-%:
-				@:
+				./$(NAME) $(call args_to_test)
 
 gdb:			all
-				gdb --tui -ex 'b main' -ex 'set detach-on-fork off' -ex 'info inferiors' -ex 'run > /dev/null 2>&1' ./$(NAME)
+				gdb --tui -ex 'b main' -ex 'set detach-on-fork off' -ex 'info inferiors' -ex 'set args $(call args_to_test)' -ex 'run' ./$(NAME)
+#				gdb --tui -ex 'b main' -ex 'set detach-on-fork off' -ex 'info inferiors' -ex 'set args $(call args_to_test)' -ex 'run > /dev/null 2>&1' ./$(NAME)
 
-val:			re
-				valgrind --leak-check=full --track-origins=yes --trace-children-skip='*/bin/*,*/sbin/*,/usr/bin/*' --trace-children=yes --track-fds=yes --show-reachable=yes ./$(NAME)
+val:			all
+				valgrind --leak-check=full --track-origins=yes --trace-children=yes --track-fds=yes --show-reachable=yes ./$(NAME) $(call args_to_test)
 
-.PHONY:			all clean fclean re bonus val gdb
+.PHONY:			all clean fclean re bonus val gdb go

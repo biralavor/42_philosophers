@@ -1,0 +1,65 @@
+name: Philo >> valgrind
+
+on:
+  push:
+    branches:
+    - main
+    - '**feature**'
+    - '**feat**'
+    - '**bugfix**'
+    - '**fix**'
+    - '**release**'
+  pull_request:
+    branches:
+    - main
+    - '**feature**'
+    - '**feat**'
+    - '**bugfix**'
+    - '**fix**'
+    - '**release**'
+
+jobs:
+  valgrind_for_all_segments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    defaults:
+      run:
+        working-directory: ./philo/
+    steps:
+      - name: Starting Github Actions
+        uses: actions/checkout@v4.1.4
+
+      - name: Install Aptitude
+        run: sudo apt-get install aptitude
+
+      - name: Install Valgrind
+        run: sudo aptitude install -y valgrind
+
+      - name: Submodule Init
+        run: git submodule init && git submodule update
+
+      - name: Building Program with Philosophers Makefile
+        run: make
+
+      - name: Run Valgrind
+        env:
+          total_philos: 7  # Set the total_philos variable here
+        run: |
+          echo "Running Valgrind test with arguments: $total_philos"
+
+          # Run philo with Valgrind and capture the output
+          valgrind --tool=memcheck --track-origins=yes --leak-check=full ./philo $total_philos > valgrind-out.txt 2>&1
+
+          # Check for memory leaks
+          if grep -q "ERROR SUMMARY: [^0]" valgrind-out.txt; then
+            echo "😭 😭 😭 😭 😭 😭 😭 😭 😭"
+            echo -e "\033[1;31m$LEAKS_FOUND memory leaks detected with arguments: $total_philos\033[0m"
+            cat valgrind-out.txt  # Display the Valgrind output
+            exit 1  # Fail the job if any memory leaks were found
+          else
+            echo "No memory leaks detected!"
+            echo "🎊 🎊 🎊"
+            echo "😎 😎 😎"
+            echo "🎉 🎉 🎉"   
+            echo -e "\033[1;32mAll Valgrind tests passed successfully! CONGRATS!\033[0m"
+          fi
