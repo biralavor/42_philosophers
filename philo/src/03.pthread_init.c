@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/22 21:40:23 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:12:34 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 void	table_mutex_init(t_table *table)
 {
-	// pthread_t	*philos;
-	
-	// philos = NULL;
-	// pthread_t pth[table->setup->total_philos];
 	
 	pthread_mutex_init(table->mtx_philo, NULL);
 }
