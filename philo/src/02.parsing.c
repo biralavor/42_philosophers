@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:16:16 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/23 17:09:39 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:03:55 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_table	*table_alloc(t_table *table, char **av)
 	table = malloc(sizeof(t_table));
 	table->set = malloc(sizeof(t_set));
 	table->philo = malloc(sizeof(t_philo) * ft_atoi_long_int(av[1]));
-	table->philo->th_id = malloc(sizeof(pthread_t)  * ft_atoi_long_int(av[1]));
+	table->philo->th_id = malloc(sizeof(pthread_t));
 	table->mtx_philo = malloc(sizeof(pthread_mutex_t));
 	return (table);
 }
