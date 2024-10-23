@@ -19,9 +19,15 @@ on:
     - '**release**'
 
 jobs:
-  valgrind_for_all_segments:
+  valgrind_test_cases:
     runs-on: ubuntu-latest
     timeout-minutes: 7
+    strategy:
+      matrix:
+        test_case:
+          - { index: 1, total_philos: 7, time_to_die: 25, time_to_eat: 100, time_to_sleep: 250, total_meals: 5 }
+          - { index: 2, total_philos: 14, time_to_die: 50, time_to_eat: 150, time_to_sleep: 300, total_meals: 10 }
+          - { index: 3, total_philos: 100, time_to_die: 75, time_to_eat: 200, time_to_sleep: 350, total_meals: 15 }
     defaults:
       run:
         working-directory: ./philo/
@@ -41,19 +47,24 @@ jobs:
       - name: Building Program with Philosophers Makefile
         run: make
 
-      - name: Run Valgrind
+      - name: Run Valgrind Test Cases
         env:
-          total_philos: 7  # Set the total_philos variable here
+          index: ${{ matrix.test_case.index }}
+          total_philos: ${{ matrix.test_case.total_philos }}
+          time_to_die: ${{ matrix.test_case.time_to_die }}
+          time_to_eat: ${{ matrix.test_case.time_to_eat }}
+          time_to_sleep: ${{ matrix.test_case.time_to_sleep }}
+          total_meals: ${{ matrix.test_case.total_meals }}
         run: |
-          echo "Running Valgrind test with arguments: $total_philos"
+          echo "Running test_case #${index} with arguments: $total_philos $time_to_die $time_to_eat $time_to_sleep $total_meals"
 
           # Run philo with Valgrind and capture the output
-          valgrind --tool=memcheck --track-origins=yes --leak-check=full ./philo $total_philos > valgrind-out.txt 2>&1
+          valgrind --tool=memcheck --track-origins=yes --leak-check=full ./philo $total_philos $time_to_die $time_to_eat $time_to_sleep $total_meals > valgrind-out.txt 2>&1
 
           # Check for memory leaks
           if grep -q "ERROR SUMMARY: [^0]" valgrind-out.txt; then
             echo "😭 😭 😭 😭 😭 😭 😭 😭 😭"
-            echo -e "\033[1;31m$LEAKS_FOUND memory leaks detected with arguments: $total_philos\033[0m"
+            echo -e "\033[1;31mMemory leaks detected with arguments: $total_philos $time_to_die $time_to_eat $time_to_sleep $total_meals\033[0m"
             cat valgrind-out.txt  # Display the Valgrind output
             exit 1  # Fail the job if any memory leaks were found
           else
@@ -61,5 +72,5 @@ jobs:
             echo "🎊 🎊 🎊"
             echo "😎 😎 😎"
             echo "🎉 🎉 🎉"   
-            echo -e "\033[1;32mAll Valgrind tests passed successfully! CONGRATS!\033[0m"
+            echo -e "\033[1;32mAll Valgrind tests passed successfully with arguments: $total_philos $time_to_die $time_to_eat $time_to_sleep $total_meals! CONGRATS!\033[0m"
           fi
