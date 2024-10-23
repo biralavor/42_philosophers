@@ -73,3 +73,4 @@ jobs:
             echo "😎 😎 😎"
             echo "🎉 🎉 🎉"   
             echo -e "\033[1;32mAll Valgrind tests passed successfully with arguments: $total_philos $time_to_die $time_to_eat $time_to_sleep $total_meals! CONGRATS!\033[0m"
+          fi
