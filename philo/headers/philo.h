@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/22 21:41:33 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:05:24 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_table
 }					t_table;
 
 bool	arguments_validation(int ac, char **av);
-t_table	*table_alloc(t_table *table);
+t_table	*table_alloc(t_table *table, char **av);
 void	table_parsing(t_table *table, char **av);
 long int		ft_atoi_long_int(const char *string);
 t_table	*table_holder(t_table *table, bool destroy);
