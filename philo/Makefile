@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/10/25 19:05:46 by umeneses         ###   ########.fr        #
+#    Updated: 2024/10/25 20:28:46 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ NAME					= philo
 SRC_FILES				= 01.main.c
 SRC_FILES				+= 02.parsing.c
 SRC_FILES				+= 03.pthread_init.c
+SRC_FILES				+= ft_is_space.c
 SRC_FILES				+= ft_atoi.c
 
 SRC_FILES_ALL			= $(addprefix $(SRC_D), $(SRC_FILES))
