@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/24 21:40:10 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/24 21:52:16 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
+
+typedef struct s_table	t_table;
 
 typedef struct s_set
 {
@@ -45,9 +47,10 @@ typedef struct s_philo
 	pthread_t	*th_id;
 	t_chops		*l_chops;
 	t_chops		*r_chops;
+	t_table		*table;
 }				t_philo;
 
-typedef struct s_table
+struct s_table
 {
 	long			start_time;
 	bool			this_is_the_end;
@@ -55,7 +58,7 @@ typedef struct s_table
 	t_philo			*philo;
 	pthread_mutex_t	*ph_mtx;
 	t_chops			*chopstick;
-}					t_table;
+};
 
 bool	arguments_validation(int ac, char **av);
 t_table	*table_alloc(t_table *table, char **av);
