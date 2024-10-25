@@ -6,15 +6,15 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 19:57:56 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/22 17:00:51 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/24 21:40:02 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long int	ft_atoi_long_int(const char *string)
+long	ft_atoi_long_int(const char *string)
 {
-	long int	nbr;
-	int			sign;
-	char		*str;
+	long	nbr;
+	int		sign;
+	char	*str;
 
 	sign = 1;
 	str = (char *)string;
