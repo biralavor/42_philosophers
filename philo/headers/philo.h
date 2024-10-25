@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/25 14:13:11 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/25 15:26:27 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,7 @@ void	table_parsing(t_table *table, char **av);
 long	ft_atoi_long_int(const char *string);
 t_table	*table_holder(t_table *table, bool destroy);
 void	table_mutex_init(t_table *table);
+
+void	*routine(void *arg);
 
 #endif

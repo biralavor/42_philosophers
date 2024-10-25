@@ -6,13 +6,13 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:03:55 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/24 21:39:00 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/25 15:26:40 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*routine (void *arg)
+void	*routine(void *arg)
 {
 	int	mails = 0;
 	int *result = malloc(sizeof(int)); // it will be freed after pthread_join()
@@ -31,7 +31,7 @@ void	*routine (void *arg)
 	return ((void *) result);
 }
 
-int main (int ac, char **av)
+int main(int ac, char **av)
 {
 	t_table	*table;
 	int		idx;
