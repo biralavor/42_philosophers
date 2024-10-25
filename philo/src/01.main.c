@@ -6,13 +6,13 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:03:55 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/23 17:12:26 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/25 15:26:40 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*routine (void *arg)
+void	*routine(void *arg)
 {
 	int	mails = 0;
 	int *result = malloc(sizeof(int)); // it will be freed after pthread_join()
@@ -20,10 +20,10 @@ void	*routine (void *arg)
 	printf("Thread %d is running\n", *(int *)arg);
 	while (idx < 2)
 	{
-		pthread_mutex_lock(table_holder(NULL, false)->mtx_philo);
+		pthread_mutex_lock(table_holder(NULL, false)->ph_mtx);
 		mails++;
 		mails = mails * (*(int *)arg);
-		pthread_mutex_unlock(table_holder(NULL, false)->mtx_philo);
+		pthread_mutex_unlock(table_holder(NULL, false)->ph_mtx);
 		idx++;
 	}
 	*result = mails;
@@ -31,7 +31,7 @@ void	*routine (void *arg)
 	return ((void *) result);
 }
 
-int main (int ac, char **av)
+int main(int ac, char **av)
 {
 	t_table	*table;
 	int		idx;
@@ -68,7 +68,7 @@ int main (int ac, char **av)
 		printf(">>> total mails from res = %d !\n", *res);
 		free(res);
 	}
-	pthread_mutex_destroy(table->mtx_philo);
+	pthread_mutex_destroy(table->ph_mtx);
 	table_holder(NULL, true);
-	return (0);
+	exit(EXIT_SUCCESS);
 }

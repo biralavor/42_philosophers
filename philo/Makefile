@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/10/23 16:19:20 by umeneses         ###   ########.fr        #
+#    Updated: 2024/10/25 15:34:06 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,20 +116,36 @@ define				instructions_bonus
 					@echo "$(YELLOW)Or with $(GREEN)times_must_eat added:	$(RESET) ./$(NAME_BONUS) $(CYAN)5 $(RED)800 $(PURPLE)200 $(BLUE)200 $(GREEN)7 "				
 endef
 
-ifdef					WITH_BONUS
-	NAME				= $(NAME_BONUS)
-	OBJS_FILES			= $(OBJS_FILES_BONUS)
-	OBJS_ALL			= $(OBJS_ALL_BONUS)
-	project_title		= $(project_title_bonus)
-	instructions		= $(instructions_bonus)
+ifdef				WITH_BONUS
+	NAME			= $(NAME_BONUS)
+	OBJS_FILES		= $(OBJS_FILES_BONUS)
+	OBJS_ALL		= $(OBJS_ALL_BONUS)
+	project_title	= $(project_title_bonus)
+	instructions	= $(instructions_bonus)
 endif
 
-define		bonus
-			$(MAKE) WITH_BONUS=TRUE --no-print-directory
+define				bonus
+					$(MAKE) WITH_BONUS=TRUE --no-print-directory
 endef
 
-define		args_to_test
-			7
+define				args_to_test
+	7
+endef
+
+ifdef				WITH_SANITIZE_THREAD
+	CFLAGS			+= -fsanitize=thread -g
+endif
+
+ifdef				WITH_SANITIZE_ADDRESS
+	CFLAGS			+= -fsanitize=address -g
+endif
+
+define				sanitize_thread
+					$(MAKE) WITH_SANITIZE_THREAD=TRUE --no-print-directory
+endef
+
+define				sanitize_address
+					$(MAKE) WITH_SANITIZE_ADDRESS=TRUE --no-print-directory
 endef
 
 # **************************************************************************** #
@@ -138,7 +154,7 @@ endef
 
 AUTHOR		= umeneses
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -g3
+CFLAGS		+= -Wall -Wextra -Werror -g3
 CPPFLAGS	= $(addprefix -I, $(HEADERS)) -MMD -MP
 #LDFLAGS		= $(addprefix -L, $(dir $(LIBS)))
 LDLIBS		= -ldl
@@ -197,7 +213,17 @@ gdb:			all
 				gdb --tui -ex 'b main' -ex 'set detach-on-fork off' -ex 'info inferiors' -ex 'set args $(call args_to_test)' -ex 'run' ./$(NAME)
 #				gdb --tui -ex 'b main' -ex 'set detach-on-fork off' -ex 'info inferiors' -ex 'set args $(call args_to_test)' -ex 'run > /dev/null 2>&1' ./$(NAME)
 
-val:			all
+val:			fclean all
 				valgrind --leak-check=full --track-origins=yes --trace-children=yes --track-fds=yes --show-reachable=yes ./$(NAME) $(call args_to_test)
+#				valgrind --tool=helgrind --leak-check=full --track-origins=yes --trace-children=yes --track-fds=yes --show-reachable=yes ./$(NAME) $(call args_to_test)
+#				valgrind --tool=drd --leak-check=full --track-origins=yes --trace-children=yes --track-fds=yes --show-reachable=yes ./$(NAME) $(call args_to_test)
 
-.PHONY:			all clean fclean re bonus val gdb go
+sani:			fclean
+				$(call sanitize_thread)
+				
+
+leaks:			fclean
+				$(call sanitize_address)
+				
+
+.PHONY:			all clean fclean re bonus go gdb val sani leaks
