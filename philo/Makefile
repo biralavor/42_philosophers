@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/10/25 20:28:46 by umeneses         ###   ########.fr        #
+#    Updated: 2024/10/25 20:38:44 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,10 +39,13 @@ TDD_UTILS_D				= ./_tdd_utils/
 NAME					= philo
 
 SRC_FILES				= 01.main.c
-SRC_FILES				+= 02.parsing.c
-SRC_FILES				+= 03.pthread_init.c
-SRC_FILES				+= ft_is_space.c
+SRC_FILES				+= 02.arg_validation.c
+SRC_FILES				+= 03.parsing.c
+SRC_FILES				+= 04.pthread_init.c
+SRC_FILES				+= error_manager.c
 SRC_FILES				+= ft_atoi.c
+SRC_FILES				+= ft_is_space.c
+SRC_FILES				+= ft_strlen.c
 
 SRC_FILES_ALL			= $(addprefix $(SRC_D), $(SRC_FILES))
 
@@ -205,16 +208,15 @@ fclean:			clean
 				@printf "$(RESET)"
 
 re:				fclean all
-				./$(NAME)
 
-go:				all
+go:				re
 				./$(NAME) $(call args_to_test)
 
-gdb:			all
+gdb:			re
 				gdb --tui -ex 'b main' -ex 'set detach-on-fork off' -ex 'info inferiors' -ex 'set args $(call args_to_test)' -ex 'run' ./$(NAME)
 #				gdb --tui -ex 'b main' -ex 'set detach-on-fork off' -ex 'info inferiors' -ex 'set args $(call args_to_test)' -ex 'run > /dev/null 2>&1' ./$(NAME)
 
-val:			fclean all
+val:			re
 				valgrind --leak-check=full --track-origins=yes --trace-children=yes --track-fds=yes --show-reachable=yes ./$(NAME) $(call args_to_test)
 #				valgrind --tool=helgrind --leak-check=full --track-origins=yes --trace-children=yes --track-fds=yes --show-reachable=yes ./$(NAME) $(call args_to_test)
 #				valgrind --tool=drd --leak-check=full --track-origins=yes --trace-children=yes --track-fds=yes --show-reachable=yes ./$(NAME) $(call args_to_test)

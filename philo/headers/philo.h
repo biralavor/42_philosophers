@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/25 19:18:59 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/25 20:37:36 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ struct s_table
 bool	arguments_validation_manager(int ac, char **av);
 bool	arguments_amount(int ac);
 bool	av_is_a_number(char **av);
-bool	is_space(const char c);
+bool	ft_is_space(const char c);
 bool	is_valid_length_number(char **av);
 bool	is_number_under_intmax(int ac, char **av);
 
