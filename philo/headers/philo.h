@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/25 15:26:27 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/25 19:18:59 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include <limits.h>
 
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"
@@ -70,7 +71,17 @@ struct s_table
 	t_chops			*chopstick;
 };
 
-bool	arguments_validation(int ac, char **av);
+
+/* validation functions */
+
+bool	arguments_validation_manager(int ac, char **av);
+bool	arguments_amount(int ac);
+bool	av_is_a_number(char **av);
+bool	is_space(const char c);
+bool	is_valid_length_number(char **av);
+bool	is_number_under_intmax(int ac, char **av);
+
+
 void	error_manager(const char *error_msg);
 int		ft_strlen(const char *str);
 t_table	*table_alloc(t_table *table, char **av);
