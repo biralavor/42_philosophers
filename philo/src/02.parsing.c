@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:16:16 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/24 21:39:13 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/25 15:36:31 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ bool	arguments_validation(int ac, char **av)
 	(void)av;
 	if (ac < 2)
 	{
-		printf("This version needs at least a number of philosophers\n");
+		printf(RED"Error.\n");
+		printf(RED"This version needs at least a number of philosophers.\n");
 		return (false);
 	}
 	return (true);
