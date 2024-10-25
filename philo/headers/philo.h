@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/24 21:52:16 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:13:11 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
+
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define YELLOW "\033[0;33m"
+# define BLUE "\033[0;34m"
+# define PURPLE "\033[0;35m"
+# define CYAN "\033[0;36m"
+# define ORANGE "\033[0;91m"
+# define MAGENT "\033[0;95m"
+# define RESET "\033[0m"
 
 typedef struct s_table	t_table;
 
@@ -61,6 +71,8 @@ struct s_table
 };
 
 bool	arguments_validation(int ac, char **av);
+void	error_manager(const char *error_msg);
+int		ft_strlen(const char *str);
 t_table	*table_alloc(t_table *table, char **av);
 void	table_parsing(t_table *table, char **av);
 long	ft_atoi_long_int(const char *string);

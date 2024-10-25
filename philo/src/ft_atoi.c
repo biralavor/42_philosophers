@@ -6,9 +6,11 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 19:57:56 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/24 21:40:02 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:13:51 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "philo.h"
 
 long	ft_atoi_long_int(const char *string)
 {
@@ -33,4 +35,20 @@ long	ft_atoi_long_int(const char *string)
 		str++;
 	}
 	return (nbr * sign);
+}
+
+int	ft_strlen(const char *str)
+{
+	int	len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
+}
+
+void	error_manager(const char *error_msg)
+{
+	write(STDERR_FILENO, RED, ft_strlen(RED));
+	write(STDERR_FILENO, error_msg, ft_strlen(error_msg));
 }
