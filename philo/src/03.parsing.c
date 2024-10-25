@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:16:16 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/25 15:36:31 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/25 20:24:42 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,4 @@ void	table_parsing(t_table *table, char **av)
 	table = table_alloc(table, av);
 	table->set->total_philos = ft_atoi_long_int(av[1]);
 	table = table_holder(table, false);
-}
-
-bool	arguments_validation(int ac, char **av)
-{
-	(void)av;
-	if (ac < 2)
-	{
-		printf(RED"Error.\n");
-		printf(RED"This version needs at least a number of philosophers.\n");
-		return (false);
-	}
-	return (true);
 }

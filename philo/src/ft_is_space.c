@@ -1,36 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_is_space.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 19:57:56 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/25 20:34:03 by umeneses         ###   ########.fr       */
+/*   Created: 2024/10/25 20:26:42 by umeneses          #+#    #+#             */
+/*   Updated: 2024/10/25 20:26:57 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long	ft_atoi_long_int(const char *string)
-{
-	long	nbr;
-	int		sign;
-	char	*str;
+#include "philo.h"
 
-	sign = 1;
-	str = (char *)string;
-	while((*str >= 9 && *str <= 13) || *str == 32)
-		str++;
-	while(*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			sign *= -1;
-		str++;
-	}
-	nbr = 0;
-	while (*str >= '0' && *str <= '9')
-	{
-		nbr = nbr * 10 + (*str - '0');
-		str++;
-	}
-	return (nbr * sign);
+bool	ft_is_space(const char c)
+{
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (true);
+	return (false);
 }
