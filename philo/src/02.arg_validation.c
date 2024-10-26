@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 20:24:28 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/25 20:28:09 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/25 21:08:45 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	arguments_amount(int ac)
 	return (true);
 }
 
-bool	av_is_a_number(char **av)
+bool	av_is_a_positive_number(char **av)
 {
 	int	idx;
 	int	c;
@@ -37,7 +37,7 @@ bool	av_is_a_number(char **av)
 		{
 			while (ft_is_space(av[idx][c]))
 				c++;
-			if (av[idx][c] == '+' || av[idx][c] == '-')
+			if (av[idx][c] == '+')
 				c++;
 			if (av[idx][c] >= '0' || av[idx][c] <= '9')
 				return (true);
@@ -94,7 +94,7 @@ bool	is_number_under_intmax(int ac, char **av)
 bool	arguments_validation_manager(int ac, char **av)
 {
 	if (arguments_amount(ac)
-		&& av_is_a_number(av)
+		&& av_is_a_positive_number(av)
 		&& is_valid_length_number(av)
 		&& is_number_under_intmax(ac, av))
 		return (true);
