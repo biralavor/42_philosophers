@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:03:55 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/25 18:26:08 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/27 21:41:19 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	table_parsing(table, av);
 	table = table_holder(NULL, false);
-	table_mutex_init(table);
+	// table_mutex_init(table);
 	while (++idx < table->set->total_philos)
 	{	
 		int	*arg_to_routine = malloc(sizeof(int)); // it will be freed inside routine called by pthread_create()
