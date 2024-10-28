@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   03.pthread_init.c                                  :+:      :+:    :+:   */
+/*   04.pthread_init.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/24 21:46:59 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/27 21:33:23 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_table	*table_holder(t_table *table, bool destroy)
 
 	if (table)
 		table_holder = table;
-	else if (destroy)
+	else if (table_holder && destroy)
 	{
 		pthread_mutex_destroy(table_holder->ph_mtx);
 		free(table_holder->set);
