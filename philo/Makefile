@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/10/28 15:41:40 by umeneses         ###   ########.fr        #
+#    Updated: 2024/10/28 15:50:49 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRC_FILES				+= 02.arg_validation.c
 SRC_FILES				+= 03.parsing.c
 SRC_FILES				+= 04.table_holder.c
 SRC_FILES				+= 05.mutex_handlers.c
+SRC_FILES				+= 06.pthread_handlers.c
 SRC_FILES				+= 04.pthread_init.c
 SRC_FILES				+= error_manager.c
 SRC_FILES				+= ft_atoi.c
