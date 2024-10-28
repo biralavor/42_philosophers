@@ -6,34 +6,21 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/27 21:33:23 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/28 15:43:44 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	table_mutex_init(t_table *table)
+void	table_init(t_table *table)
 {
 	// pthread_t	*th_id;
+	(void)table;
 	
-	pthread_mutex_init(table->ph_mtx, NULL);
+	
 }
 
-t_table	*table_holder(t_table *table, bool destroy)
-{
-	static t_table	*table_holder = NULL;
+/* thread handler functions*/
+// void	safe_thread_handler(pthread_t *th_id, void *(*func_ptr)(void *), 
+// 			void *data, t_mtx_opcode opcode);
 
-	if (table)
-		table_holder = table;
-	else if (table_holder && destroy)
-	{
-		pthread_mutex_destroy(table_holder->ph_mtx);
-		free(table_holder->set);
-		free(table_holder->philo->th_id);
-		free(table_holder->philo);
-		free(table_holder->ph_mtx);
-		free(table_holder);
-		table_holder = NULL;
-	}
-	return (table_holder);
-}

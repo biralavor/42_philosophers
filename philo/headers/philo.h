@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/28 15:39:21 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/28 15:46:40 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	error_manager(const char *error_msg);
 t_table	*table_holder(t_table *table, bool destroy);
 
 void	table_parsing(t_table *table, char **av);
-void	table_mutex_init(t_table *table);
+void	table_init(t_table *table);
 
 /* mutex handler functions */
 void	safe_mutex_handler(t_table *table, t_mtx_opcode opcode);
