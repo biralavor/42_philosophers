@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:40:26 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/28 15:40:51 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/28 18:58:41 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_table	*table_holder(t_table *table, bool destroy)
 		free(table_holder->philo->th_id);
 		free(table_holder->philo);
 		free(table_holder->ph_mtx);
+		free(table_holder->chopstick);
 		free(table_holder);
 		table_holder = NULL;
 	}
