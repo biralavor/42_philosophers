@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/25 21:08:39 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/27 21:59:50 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ struct s_table
 
 
 /* validation functions */
-
 bool	arguments_validation_manager(int ac, char **av);
 bool	arguments_amount(int ac);
 bool	av_is_a_positive_number(char **av);
@@ -81,14 +80,18 @@ bool	ft_is_space(const char c);
 bool	is_valid_length_number(char **av);
 bool	is_number_under_intmax(int ac, char **av);
 
-
-void	error_manager(const char *error_msg);
-int		ft_strlen(const char *str);
+/* memory allocation functions */
 t_table	*table_alloc(t_table *table, char **av);
-void	table_parsing(t_table *table, char **av);
-long	ft_atoi_long_int(const char *string);
+void	*ft_safe_malloc(size_t size);
+void	error_manager(const char *error_msg);
 t_table	*table_holder(t_table *table, bool destroy);
+
+void	table_parsing(t_table *table, char **av);
 void	table_mutex_init(t_table *table);
+
+/* LIBFT utility functions */
+int		ft_strlen(const char *str);
+long	ft_atoi_long_int(const char *string);
 
 void	*routine(void *arg);
 
