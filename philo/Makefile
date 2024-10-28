@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/10/27 21:26:16 by umeneses         ###   ########.fr        #
+#    Updated: 2024/10/27 22:00:52 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRC_FILES				+= 04.pthread_init.c
 SRC_FILES				+= error_manager.c
 SRC_FILES				+= ft_atoi.c
 SRC_FILES				+= ft_is_space.c
+SRC_FILES				+= ft_safe_malloc.c
 SRC_FILES				+= ft_strlen.c
 
 SRC_FILES_ALL			= $(addprefix $(SRC_D), $(SRC_FILES))
