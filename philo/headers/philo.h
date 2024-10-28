@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/28 15:46:40 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/28 16:55:01 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,9 @@ void	table_init(t_table *table);
 void	safe_mutex_handler(t_table *table, t_mtx_opcode opcode);
 void	error_mutex_handler(int status, int opcode);
 
-
+/* thread handler functions*/
+void	safe_thread_handler(pthread_t *th_id, void *(*func_ptr)(void *), \
+			void *data, t_mtx_opcode opcode);
 
 /* LIBFT utility functions */
 int		ft_strlen(const char *str);
