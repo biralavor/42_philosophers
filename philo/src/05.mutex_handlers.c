@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:16:44 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/28 15:45:06 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/28 18:00:46 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ void	error_mutex_handler(int status, int opcode)
 		error_manager("The mutex is already locked.\n");
 }
 
-void	safe_mutex_handler(t_table *table, t_mtx_opcode opcode)
+void	safe_mutex_handler(pthread_mutex_t *mutex, t_mtx_opcode opcode)
 {
 	if (INIT == opcode)
-		error_mutex_handler(pthread_mutex_init(table->ph_mtx, NULL), opcode);
+		error_mutex_handler(pthread_mutex_init(mutex, NULL), opcode);
 	else if (LOCK == opcode)
-		error_mutex_handler(pthread_mutex_lock(table->ph_mtx), opcode);
+		error_mutex_handler(pthread_mutex_lock(mutex), opcode);
 	else if (UNLOCK == opcode)
-		error_mutex_handler(pthread_mutex_unlock(table->ph_mtx), opcode);
+		error_mutex_handler(pthread_mutex_unlock(mutex), opcode);
 	else if (DESTROY == opcode)
-		error_mutex_handler(pthread_mutex_destroy(table->ph_mtx), opcode);
+		error_mutex_handler(pthread_mutex_destroy(mutex), opcode);
 	else
 	{
 		write(STDERR_FILENO, RED, ft_strlen(RED));
