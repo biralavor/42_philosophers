@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/10/27 22:00:52 by umeneses         ###   ########.fr        #
+#    Updated: 2024/10/28 15:41:40 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,8 @@ NAME					= philo
 SRC_FILES				= 01.main.c
 SRC_FILES				+= 02.arg_validation.c
 SRC_FILES				+= 03.parsing.c
+SRC_FILES				+= 04.table_holder.c
+SRC_FILES				+= 05.mutex_handlers.c
 SRC_FILES				+= 04.pthread_init.c
 SRC_FILES				+= error_manager.c
 SRC_FILES				+= ft_atoi.c
@@ -134,7 +136,7 @@ define				bonus
 endef
 
 define				args_to_test
-	7 59 60 60
+	7 60 60 60
 endef
 
 ifdef				WITH_SANITIZE_THREAD

@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:16:16 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/27 22:00:20 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/28 15:46:01 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ void	table_parsing(t_table *table, char **av)
 	else
 		table->set->total_meals = -1;
 	table = table_holder(table, false);
-	table_mutex_init(table);
+	safe_mutex_handler(table, INIT);
 	if (table->set->time_to_die < 6e4
 		|| table->set->time_to_eat < 6e4
 		|| table->set->time_to_sleep < 6e4)
-	{
-		error_manager("Error.\nTime must be at least 60ms.\n");
-	}
+		error_manager("Time must be at least 60ms.\n");
 }

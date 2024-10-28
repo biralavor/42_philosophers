@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/27 21:59:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/28 15:46:40 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <limits.h>
+# include <errno.h>
 
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"
@@ -31,6 +32,17 @@
 # define ORANGE "\033[0;91m"
 # define MAGENT "\033[0;95m"
 # define RESET "\033[0m"
+
+typedef enum	e_mtx_opcode
+{
+	INIT,
+	CREATE,
+	JOIN,
+	LOCK,
+	UNLOCK,
+	DETACH,
+	DESTROY,
+}	t_mtx_opcode;
 
 typedef struct s_table	t_table;
 
@@ -87,7 +99,13 @@ void	error_manager(const char *error_msg);
 t_table	*table_holder(t_table *table, bool destroy);
 
 void	table_parsing(t_table *table, char **av);
-void	table_mutex_init(t_table *table);
+void	table_init(t_table *table);
+
+/* mutex handler functions */
+void	safe_mutex_handler(t_table *table, t_mtx_opcode opcode);
+void	error_mutex_handler(int status, int opcode);
+
+
 
 /* LIBFT utility functions */
 int		ft_strlen(const char *str);
