@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/29 10:54:52 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/29 16:12:17 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	table_init(t_table *table)
 
 		arg_to_routine = malloc(sizeof(int)); // it will be freed inside routine called by pthread_create()
 		*arg_to_routine = idx;
-		safe_thread_handler(&table->philo->th_id[idx], &routine, arg_to_routine, CREATE);
+		safe_thread_handler(&table->philo->th_id[idx], &dinner_routine, arg_to_routine, CREATE);
 		// if (pthread_create(&table->philo->th_id[idx], NULL, &routine, arg_to_routine) != 0)
 		// {
 		// 	perror("pthread_create error");

@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/29 15:34:00 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/29 16:08:24 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	dinner_manager(t_table *table)
 	{
 		while(++idx < table->set->total_philos)
 		{
-			safe_thread_handler(table->philo[idx].th_id, routine, &table->philo[idx], CREATE);
+			safe_thread_handler(table->philo[idx].th_id, dinner_routine, &table->philo[idx], CREATE);
 		}
 	}
 	// TODO a way to avoid race condition

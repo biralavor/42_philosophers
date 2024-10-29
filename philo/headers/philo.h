@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/29 15:32:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/29 16:08:39 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,12 @@ void	set_long(pthread_mutex_t *mutex, long *destination, long value);
 long	get_long(pthread_mutex_t *mutex, long *value);
 bool	this_is_the_end_of_dinner(t_table *table);
 
+void	semaphore_like_for_threads(t_table *table);
+
 /* LIBFT utility functions */
 int		ft_strlen(const char *str);
 long	ft_atoi_long_int(const char *string);
 
-void	*routine(void *arg);
+void	*dinner_routine(void *arg);
 
 #endif
