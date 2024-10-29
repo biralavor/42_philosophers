@@ -6,11 +6,44 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/28 19:01:53 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/29 09:41:38 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	get_chopsticks(t_philo *philo, t_chops *chopstick, int philo_pos)
+{
+	if (philo->id % 2 == 0)
+	{
+		philo->first_chops = &chopstick[philo_pos];
+		philo->second_chops = &chopstick[(philo_pos + 1)
+			% philo->table->set->total_philos];
+	}
+	else
+	{
+		philo->first_chops = &chopstick[(philo_pos + 1)
+			% philo->table->set->total_philos];
+		philo->second_chops = &chopstick[philo_pos];
+	}
+}
+
+void	philo_init_runner(t_table *table)
+{
+	int	idx;
+	t_philo	*philo;
+
+	idx = -1;
+	while (++idx < table->set->total_philos)
+	{
+		philo = table->philo + idx;
+		philo->id = idx + 1;
+		philo->got_meals = 0;
+		philo->full = false;
+		philo->table = table;
+		get_chopsticks(philo, &table->chopstick[idx], idx);
+	}
+}
 
 void	table_init(t_table *table)
 {

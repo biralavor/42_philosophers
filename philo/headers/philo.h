@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/28 18:57:20 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/29 09:43:41 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ typedef struct s_philo
 	long		time_of_last_meal;
 	bool		full;
 	pthread_t	*th_id;
-	t_chops		*l_chops;
-	t_chops		*r_chops;
+	t_chops		*first_chops;
+	t_chops		*second_chops;
 	t_table		*table;
 }				t_philo;
 
@@ -98,9 +98,6 @@ void	*ft_safe_malloc(size_t size);
 void	error_manager(const char *error_msg);
 t_table	*table_holder(t_table *table, bool destroy);
 
-void	table_parsing(t_table *table, char **av);
-void	table_init(t_table *table);
-
 /* mutex handler functions */
 void	safe_mutex_handler(pthread_mutex_t *mutex, t_mtx_opcode opcode);
 void	error_mutex_handler(int status, int opcode);
@@ -108,6 +105,13 @@ void	error_mutex_handler(int status, int opcode);
 /* thread handler functions*/
 void	safe_thread_handler(pthread_t *th_id, void *(*func_ptr)(void *), \
 			void *data, t_mtx_opcode opcode);
+
+/* table initialization */
+void	table_parsing(t_table *table, char **av);
+void	table_init(t_table *table);
+void	philo_init_runner(t_table *table);
+void	get_chopsticks(t_philo *philo, t_chops *chopstick, int philo_pos);
+
 
 /* LIBFT utility functions */
 int		ft_strlen(const char *str);
