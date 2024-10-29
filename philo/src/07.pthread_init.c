@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   04.pthread_init.c                                  :+:      :+:    :+:   */
+/*   07.pthread_init.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/29 09:41:38 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/29 10:54:52 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	table_init(t_table *table)
 	idx = -1;
 	res = 0;
 	table->this_is_the_end = false;
+	safe_mutex_handler(table->table_mtx, INIT);
 	while (++idx < table->set->total_philos)
 	{	
 		safe_mutex_handler(&table->chopstick[idx].chops_mtx, INIT);
