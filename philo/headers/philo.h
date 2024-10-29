@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/29 10:49:58 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/29 15:32:50 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ typedef struct s_philo
 	long		got_meals;
 	long		time_of_last_meal;
 	bool		full;
-	bool		all_threads_ready_togo;
 	pthread_t	*th_id;
 	t_chops		*first_chops;
 	t_chops		*second_chops;
@@ -78,13 +77,13 @@ struct s_table
 {
 	long			start_time;
 	bool			this_is_the_end;
+	bool			all_threads_ready_togo;
 	t_set			*set;
 	t_philo			*philo;
 	pthread_mutex_t	*ph_mtx;
 	pthread_mutex_t	*table_mtx;
 	t_chops			*chopstick;
 };
-
 
 /* validation functions */
 bool	arguments_validation_manager(int ac, char **av);
@@ -114,6 +113,12 @@ void	table_init(t_table *table);
 void	philo_init_runner(t_table *table);
 void	get_chopsticks(t_philo *philo, t_chops *chopstick, int philo_pos);
 
+/* getters and setters functions */
+void	set_bool(pthread_mutex_t *mutex, bool *destination, bool value);
+bool	get_bool(pthread_mutex_t *mutex, bool *value);
+void	set_long(pthread_mutex_t *mutex, long *destination, long value);
+long	get_long(pthread_mutex_t *mutex, long *value);
+bool	this_is_the_end_of_dinner(t_table *table);
 
 /* LIBFT utility functions */
 int		ft_strlen(const char *str);
