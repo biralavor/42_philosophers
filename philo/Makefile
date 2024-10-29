@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/10/29 10:11:48 by umeneses         ###   ########.fr        #
+#    Updated: 2024/10/29 15:34:18 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRC_FILES				+= 05.mutex_handlers.c
 SRC_FILES				+= 06.pthread_handlers.c
 SRC_FILES				+= 07.pthread_init.c
 SRC_FILES				+= 08.dinner_manager.c
+SRC_FILES				+= 09.getters_setters.c
 SRC_FILES				+= error_manager.c
 SRC_FILES				+= ft_atoi.c
 SRC_FILES				+= ft_is_space.c
