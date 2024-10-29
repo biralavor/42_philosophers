@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/29 09:43:41 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/29 10:49:58 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_philo
 	long		got_meals;
 	long		time_of_last_meal;
 	bool		full;
+	bool		all_threads_ready_togo;
 	pthread_t	*th_id;
 	t_chops		*first_chops;
 	t_chops		*second_chops;
@@ -80,6 +81,7 @@ struct s_table
 	t_set			*set;
 	t_philo			*philo;
 	pthread_mutex_t	*ph_mtx;
+	pthread_mutex_t	*table_mtx;
 	t_chops			*chopstick;
 };
 
