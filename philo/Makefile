@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/10/29 16:12:42 by umeneses         ###   ########.fr        #
+#    Updated: 2024/10/29 19:22:01 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRC_FILES				+= 09.getters_setters.c
 SRC_FILES				+= 10.synchronizers.c
 SRC_FILES				+= error_manager.c
 SRC_FILES				+= ft_atoi.c
+SRC_FILES				+= ft_gettime.c
 SRC_FILES				+= ft_is_space.c
 SRC_FILES				+= ft_safe_malloc.c
 SRC_FILES				+= ft_strlen.c
