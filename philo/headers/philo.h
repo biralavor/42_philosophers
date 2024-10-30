@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 16:07:45 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/30 16:20:18 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,16 @@ typedef struct	s_chopstick
 
 typedef struct	s_philo
 {
-	int			id;
-	long		got_meals;
-	long		time_of_last_meal;
-	bool		full;
-	pthread_t	*th_id;
-	t_chops		*first_chops;
-	t_chops		*second_chops;
-	t_table		*table;
-}				t_philo;
+	int				id;
+	long			got_meals;
+	long			time_of_last_meal;
+	bool			full;
+	pthread_mutex_t	*philo_mtx;
+	pthread_t		*th_id;
+	t_chops			*first_chops;
+	t_chops			*second_chops;
+	t_table			*table;
+}					t_philo;
 
 struct s_table
 {
@@ -98,7 +99,6 @@ struct s_table
 	bool			all_threads_ready_togo;
 	t_set			*set;
 	t_philo			*philo;
-	// pthread_mutex_t	*ph_mtx;
 	pthread_mutex_t	*table_mtx;
 	pthread_mutex_t	*printer_mtx;
 	t_chops			*chopstick;
@@ -146,7 +146,8 @@ void	*dinner_routine(void *arg);
 void	printer_with_mutex(t_philo_status status, t_philo *philo, bool debug);
 void	printer_with_mutex_debug(t_philo_status status, t_philo *philo, bool debbug);
 
-void	let_philo_eat(t_philo *philo);
+/* dinner routines functions */
+void	let_philo_eat_routine(t_philo *philo);
 
 /* LIBFT utility functions */
 int		ft_strlen(const char *str);
