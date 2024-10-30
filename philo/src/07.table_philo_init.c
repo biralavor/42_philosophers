@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 19:03:18 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/30 19:07:50 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	table_init(t_table *table)
 		// }
 		// printf("Thread %d has started\n", idx);
 	}
+	philo_init_runner(table);
 	idx = -1;
 	while (++idx < table->set->total_philos)
 	{
