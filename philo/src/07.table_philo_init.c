@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/29 16:12:17 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/30 11:31:44 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	table_init(t_table *table)
 	res = 0;
 	table->this_is_the_end = false;
 	safe_mutex_handler(table->table_mtx, INIT);
+	safe_mutex_handler(table->printer_mtx, INIT);
 	while (++idx < table->set->total_philos)
 	{	
 		safe_mutex_handler(&table->chopstick[idx].chops_mtx, INIT);
