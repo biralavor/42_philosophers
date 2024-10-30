@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/10/30 11:05:51 by umeneses         ###   ########.fr        #
+#    Updated: 2024/10/30 13:35:56 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,10 +44,11 @@ SRC_FILES				+= 03.parsing.c
 SRC_FILES				+= 04.table_holder.c
 SRC_FILES				+= 05.mutex_handlers.c
 SRC_FILES				+= 06.pthread_handlers.c
-SRC_FILES				+= 07.pthread_init.c
+SRC_FILES				+= 07.table_philo_init.c
 SRC_FILES				+= 08.dinner_manager.c
 SRC_FILES				+= 09.getters_setters.c
 SRC_FILES				+= 10.synchronizers.c
+SRC_FILES				+= 11.printer_with_mutex.c
 SRC_FILES				+= error_manager.c
 SRC_FILES				+= ft_atoi.c
 SRC_FILES				+= ft_gettime.c

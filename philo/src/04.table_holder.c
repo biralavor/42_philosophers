@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:40:26 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/29 10:56:54 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/30 13:50:11 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ t_table	*table_holder(t_table *table, bool destroy)
 	{
 		pthread_mutex_destroy(table_holder->ph_mtx);
 		pthread_mutex_destroy(table_holder->table_mtx);
+		pthread_mutex_destroy(table_holder->printer_mtx);
 		free(table_holder->set);
 		free(table_holder->philo->th_id);
 		free(table_holder->philo);
 		free(table_holder->ph_mtx);
+		free(table_holder->printer_mtx);
 		free(table_holder->table_mtx);
 		free(table_holder->chopstick);
 		free(table_holder);
