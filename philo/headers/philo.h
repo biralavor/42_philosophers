@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 19:02:36 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/30 19:23:32 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ void	error_mutex_handler(int status, int opcode);
 /* thread handler functions*/
 void	safe_thread_handler(pthread_t *th_id, void *(*func_ptr)(void *), \
 			void *data, t_mtx_opcode opcode);
+void	error_pthread_handler(int status, int opcode);
 
 /* table initialization */
 void	table_parsing(t_table *table, char **av);
