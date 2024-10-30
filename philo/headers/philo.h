@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/29 16:08:39 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/29 19:19:11 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,16 @@ typedef enum	e_mtx_opcode
 	DESTROY,
 }	t_mtx_opcode;
 
+typedef enum	e_time_code
+{
+	SECOND,
+	MILISSECOND,
+	MICROSECOND,
+}	t_time_code;
+
 typedef struct s_table	t_table;
 
-typedef struct s_set
+typedef struct	s_set
 {
 	long	total_philos;
 	long	time_to_die;
@@ -55,13 +62,13 @@ typedef struct s_set
 	long	total_meals;
 }			t_set;
 
-typedef struct s_chopstick
+typedef struct	s_chopstick
 {
 	int				chops_id;
 	pthread_mutex_t	chops_mtx;
 }					t_chops;
 
-typedef struct s_philo
+typedef struct	s_philo
 {
 	int			id;
 	long		got_meals;
@@ -125,6 +132,7 @@ void	semaphore_like_for_threads(t_table *table);
 /* LIBFT utility functions */
 int		ft_strlen(const char *str);
 long	ft_atoi_long_int(const char *string);
+long	ft_gettime(t_time_code timecode);
 
 void	*dinner_routine(void *arg);
 
