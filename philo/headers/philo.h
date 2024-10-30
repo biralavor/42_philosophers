@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 16:40:57 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/30 19:02:36 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,10 @@ struct s_table
 	bool			this_is_the_end;
 	bool			all_threads_ready_togo;
 	t_set			*set;
-	t_philo			*philo;
+	t_philo			*philos;
 	pthread_mutex_t	*table_mtx;
 	pthread_mutex_t	*printer_mtx;
-	t_chops			*chopstick;
+	t_chops			*chopsticks;
 };
 
 /* validation functions */
@@ -142,7 +142,8 @@ bool	this_is_the_end_of_dinner(t_table *table);
 /* dinner manager functions */
 void	semaphore_like_for_threads(t_table *table);
 void	dinner_manager(t_table *table);
-void	*dinner_routine(void *arg);
+void	*dinner_runner(void *data);
+// void	*dinner_routine(void *arg);
 void	printer_with_mutex(t_philo_status status, t_philo *philo, bool debug);
 void	printer_with_mutex_debug(t_philo_status status, t_philo *philo, bool debbug);
 
