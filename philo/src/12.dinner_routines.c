@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:19:23 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 16:37:26 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/30 16:40:25 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ void	let_philo_eat_routine(t_philo *philo)
 	safe_mutex_handler(&philo->second_chops->chops_mtx, UNLOCK);
 }
 
-void	let_think_routine(t_philo *philo)
+void	let_philo_think_routine(t_philo *philo)
 {
 	printer_with_mutex(THINKING, philo, false);
 	// safe_mutex_handler(philo->philo_mtx, LOCK);
 	// safe_mutex_handler(philo->philo_mtx, UNLOCK);
 }
+
