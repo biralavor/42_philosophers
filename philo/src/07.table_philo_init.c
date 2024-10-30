@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 19:07:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/30 19:11:42 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	get_chopsticks(t_philo *philo, t_chops *chopsticks, int philo_pos)
 
 void	philo_init_runner(t_table *table)
 {
-	int	idx;
+	int		idx;
 	t_philo	*philo;
 
 	idx = -1;
@@ -42,7 +42,7 @@ void	philo_init_runner(t_table *table)
 		philo->full = false;
 		philo->table = table;
 		safe_mutex_handler(philo->philo_mtx, INIT);
-		get_chopsticks(philo, &table->chopsticks[idx], idx);
+		get_chopsticks(philo, table->chopsticks, idx);
 	}
 }
 
