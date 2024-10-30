@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 10:38:35 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/30 13:40:38 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,16 @@ typedef enum	e_time_code
 	MICROSECOND,
 }	t_time_code;
 
+typedef enum	e_philo_status
+{
+	GOT_1ST_CHOPSTICK,
+	GOT_2ND_CHOPSTICK,
+	EATING,
+	SLEEPING,
+	THINKING,
+	DEAD,
+}	t_philo_status;
+
 typedef struct s_table	t_table;
 
 typedef struct	s_set
@@ -89,6 +99,7 @@ struct s_table
 	t_philo			*philo;
 	pthread_mutex_t	*ph_mtx;
 	pthread_mutex_t	*table_mtx;
+	pthread_mutex_t	*printer_mtx;
 	t_chops			*chopstick;
 };
 
@@ -131,11 +142,14 @@ bool	this_is_the_end_of_dinner(t_table *table);
 void	semaphore_like_for_threads(t_table *table);
 void	dinner_manager(t_table *table);
 void	*dinner_routine(void *arg);
+void	printer_with_mutex(t_philo_status status, t_philo *philo, bool debug);
+void	printer_with_mutex_debug(t_philo_status status, t_philo *philo, bool debbug);
 
 /* LIBFT utility functions */
 int		ft_strlen(const char *str);
 long	ft_atoi_long_int(const char *string);
 long	ft_gettime(t_time_code timecode);
 void	precise_usleep(long microsec, t_table *table);
+
 
 #endif
