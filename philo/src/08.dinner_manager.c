@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/29 16:08:24 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/29 19:21:03 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	dinner_manager(t_table *table)
 			safe_thread_handler(table->philo[idx].th_id, dinner_routine, &table->philo[idx], CREATE);
 		}
 	}
+
+	table->start_time = ft_gettime(MILISSECOND);
 	// TODO a way to avoid race condition
 	set_bool(table->table_mtx, &table->all_threads_ready_togo, true);
 }
