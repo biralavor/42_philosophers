@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:03:55 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/29 16:13:20 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/30 09:58:06 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int main(int ac, char **av)
 	table_parsing(table, av);
 	table = table_holder(NULL, false);
 	table_init(table);
-	// pthread_mutex_destroy(table->ph_mtx);
+	// dinner_manager(table);
 	table_holder(NULL, true);
 	exit(EXIT_SUCCESS);
 }
