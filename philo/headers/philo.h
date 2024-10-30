@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 13:40:38 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/30 16:07:45 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define CYAN "\033[0;36m"
 # define ORANGE "\033[0;91m"
 # define MAGENT "\033[0;95m"
+# define BWHITE "\033[1;37m"
 # define RESET "\033[0m"
 
 typedef enum	e_mtx_opcode
@@ -97,7 +98,7 @@ struct s_table
 	bool			all_threads_ready_togo;
 	t_set			*set;
 	t_philo			*philo;
-	pthread_mutex_t	*ph_mtx;
+	// pthread_mutex_t	*ph_mtx;
 	pthread_mutex_t	*table_mtx;
 	pthread_mutex_t	*printer_mtx;
 	t_chops			*chopstick;
@@ -144,6 +145,8 @@ void	dinner_manager(t_table *table);
 void	*dinner_routine(void *arg);
 void	printer_with_mutex(t_philo_status status, t_philo *philo, bool debug);
 void	printer_with_mutex_debug(t_philo_status status, t_philo *philo, bool debbug);
+
+void	let_philo_eat(t_philo *philo);
 
 /* LIBFT utility functions */
 int		ft_strlen(const char *str);

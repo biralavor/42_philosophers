@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:16:16 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 13:50:21 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/30 16:08:25 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_table	*table_alloc(t_table *table, char **av)
 	table->chopstick = ft_safe_malloc(sizeof(t_philo) * ft_atoi_long_int(av[1]));
 	table->philo->th_id = ft_safe_malloc(sizeof(pthread_t)
 		* ft_atoi_long_int(av[1]));
-	table->ph_mtx = ft_safe_malloc(sizeof(pthread_mutex_t));
 	table->table_mtx = ft_safe_malloc(sizeof(pthread_mutex_t));
 	table->printer_mtx = ft_safe_malloc(sizeof(pthread_mutex_t));
 	return (table);
@@ -41,7 +40,6 @@ void	table_parsing(t_table *table, char **av)
 	else
 		table->set->total_meals = -1;
 	table = table_holder(table, false);
-	safe_mutex_handler(table->ph_mtx, INIT);
 	if (table->set->time_to_die < 6e4
 		|| table->set->time_to_eat < 6e4
 		|| table->set->time_to_sleep < 6e4)
