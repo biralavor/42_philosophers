@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:19:23 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 16:40:25 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/30 16:41:36 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,8 @@ void	let_philo_think_routine(t_philo *philo)
 	// safe_mutex_handler(philo->philo_mtx, UNLOCK);
 }
 
+void	let_philo_sleep_routine(t_philo *philo)
+{
+	printer_with_mutex(SLEEPING, philo, false);
+	precise_usleep(philo->table->set->time_to_sleep, philo->table);
+}

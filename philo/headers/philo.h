@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 16:40:10 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/30 16:40:57 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,7 @@ void	printer_with_mutex_debug(t_philo_status status, t_philo *philo, bool debbug
 /* dinner routines functions */
 void	let_philo_eat_routine(t_philo *philo);
 void	let_philo_think_routine(t_philo *philo);
+void	let_philo_sleep_routine(t_philo *philo);
 
 /* LIBFT utility functions */
 int		ft_strlen(const char *str);
