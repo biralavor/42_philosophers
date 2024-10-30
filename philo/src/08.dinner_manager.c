@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 10:39:48 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/30 16:20:31 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	dinner_manager(t_table *table)
 	}
 }
 
-
 void	dinner_startup_runner(t_table *table)
 {
 	//avoid race condition
@@ -58,8 +57,8 @@ void	dinner_startup_runner(t_table *table)
 	{
 		if (table->philo->full) // TODO: thread safe
 			break ;
-		// lets_eat(table); // TODO
-		// lets_sleep(table); // TODO
-		// lets_think(table); // TODO
+		let_philo_eat_routine(table->philo);
+		// lets_sleep_routine(table); // TODO
+		// lets_think_routine(table); // TODO
 	}
 }

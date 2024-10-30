@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   07.pthread_init.c                                  :+:      :+:    :+:   */
+/*   07.table_philo_init.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 11:31:44 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/30 16:24:44 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	philo_init_runner(t_table *table)
 		philo->got_meals = 0;
 		philo->full = false;
 		philo->table = table;
+		safe_mutex_handler(philo->philo_mtx, INIT);
 		get_chopsticks(philo, &table->chopstick[idx], idx);
 	}
 }
