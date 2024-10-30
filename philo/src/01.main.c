@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:03:55 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 09:58:06 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/30 16:09:03 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ void	*dinner_routine(void *arg)
 	printf("Thread %d is running\n", *(int *)arg);
 	while (idx < 2)
 	{
-		pthread_mutex_lock(table_holder(NULL, false)->ph_mtx);
 		mails++;
 		mails = mails * (*(int *)arg);
-		pthread_mutex_unlock(table_holder(NULL, false)->ph_mtx);
 		idx++;
 	}
 	*result = mails;
