@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 23:23:10 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/31 16:47:44 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	dinner_manager(t_table *table)
 	int	idx;
 
 	idx = -1;
-	if (table->set.total_meals == -1)
-	{
-		// TODO
-	}
-	else if (table->set.total_meals > 0)
+	// if (table->set.total_meals == -1)
+	// {
+	// 	// TODO
+	// }
+	if (table->set.total_meals == 0)
 		return ; // back to main and clean
 	else if (table->set.total_philos == 1)
 	{
