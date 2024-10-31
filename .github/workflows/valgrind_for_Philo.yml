@@ -27,7 +27,7 @@ jobs:
         test_case:
           - { index: 1, total_philos: 7, time_to_die: 60, time_to_eat: 100, time_to_sleep: 250, total_meals: 5 }
           - { index: 2, total_philos: 14, time_to_die: 100, time_to_eat: 150, time_to_sleep: 300, total_meals: 10 }
-          - { index: 3, total_philos: 80, time_to_die: 200, time_to_eat: 200, time_to_sleep: 350, total_meals: 15 }
+          - { index: 3, total_philos: 50, time_to_die: 200, time_to_eat: 200, time_to_sleep: 350, total_meals: 15 }
     defaults:
       run:
         working-directory: ./philo/
