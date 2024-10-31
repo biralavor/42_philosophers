@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:03:55 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 16:43:29 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/30 22:55:34 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,14 @@ void	*dinner_routine(void *arg)
 
 int main(int ac, char **av)
 {
-	t_table	*table;
+	t_table	table;
 
-	table = NULL;
 	if (!arguments_validation_manager(ac, av))
 		exit(EXIT_FAILURE);
-	table_parsing(table, av);
-	table = table_holder(NULL, false);
-	table_init(table);
-	dinner_manager(table);
+	table_parsing(&table, av);
+	// table = *table_holder(NULL, false);
+	table_init(&table);
+	dinner_manager(&table);
 	table_holder(NULL, true);
 	exit(EXIT_SUCCESS);
 }

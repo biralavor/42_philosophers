@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 20:28:36 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/30 23:23:10 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,32 @@ void	dinner_manager(t_table *table)
 	int	idx;
 
 	idx = -1;
-	if (table->set->total_meals == -1)
+	if (table->set.total_meals == -1)
 	{
 		// TODO
 	}
-	else if (table->set->total_meals > 0)
+	else if (table->set.total_meals > 0)
 		return ; // back to main and clean
-	else if (table->set->total_meals == 1)
+	else if (table->set.total_philos == 1)
 	{
-		// TODO ad hoc specific function for one meal
+		// TODO ad hoc specific function for one meal (or philo)
 	}
 	else
 	{
-		// CREAT all threads
-		while(++idx < table->set->total_philos)
+		// CREATE all threads
+		while(++idx < table->set.total_philos)
 		{
-			safe_thread_handler(table->philos[idx].th_id, dinner_runner, &table->philos[idx], CREATE);
+			safe_thread_handler(&table->philos[idx].th_id, dinner_runner, &table->philos[idx], CREATE);
 		}
 	}
 	table->start_time = ft_gettime(MILISSECOND);
-	set_bool(table->table_mtx, &table->all_threads_ready_togo, true);
+	set_bool(&table->table_mtx, &table->all_threads_ready_togo, true);
 	idx = -1;
-	while (++idx < table->set->total_philos)
+	while (++idx < table->set.total_philos)
 	{
-		safe_thread_handler(table->philos[idx].th_id, NULL, NULL, JOIN);
+		safe_thread_handler(&table->philos[idx].th_id, NULL, NULL, JOIN);
 	}
+	set_bool(&table->table_mtx, &table->this_is_the_end, true);
 }
 
 void	*dinner_runner(void *data)
