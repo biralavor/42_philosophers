@@ -6,25 +6,11 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:16:16 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 23:28:53 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/31 18:41:08 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-t_table	*table_alloc(t_table *table)
-{
-	// table = ft_safe_malloc(sizeof(t_table));
-	// table->set = ft_safe_malloc(sizeof(t_set));
-	table->philos = ft_safe_malloc(sizeof(t_philo) * table->set.total_philos);
-	table->chopsticks = ft_safe_malloc(sizeof(t_chops) * table->set.total_philos);
-
-	// table->philos->th_id = ft_safe_malloc(sizeof(pthread_t));
-	// table->philos->philo_mtx = ft_safe_malloc(sizeof(pthread_mutex_t));
-	// table->table_mtx = ft_safe_malloc(sizeof(pthread_mutex_t));
-	// table->printer_mtx = ft_safe_malloc(sizeof(pthread_mutex_t));
-	return (table);
-}
 
 /**
  * @todo: free table if error_manager is called

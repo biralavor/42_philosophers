@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 23:28:45 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/31 18:41:11 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ void	philo_init_runner(t_table *table)
 		safe_mutex_handler(&philo->philo_mtx, INIT);
 		get_chopsticks(philo, table->chopsticks, idx);
 	}
+}
+
+t_table	*table_alloc(t_table *table)
+{
+	table->philos = ft_safe_malloc(sizeof(t_philo) * table->set.total_philos);
+	table->chopsticks = ft_safe_malloc(sizeof(t_chops) * table->set.total_philos);
+	return (table);
 }
 
 void	table_init(t_table *table)
