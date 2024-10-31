@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 22:56:36 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/31 18:44:09 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ bool	is_number_under_intmax(int ac, char **av);
 /* memory allocation functions */
 t_table	*table_alloc(t_table *table);
 void	*ft_safe_malloc(size_t size);
-void	error_manager(const char *error_msg);
 t_table	*table_holder(t_table *table, bool destroy);
 
 /* mutex handler functions */
@@ -153,6 +152,10 @@ void	printer_with_mutex_debug(t_philo_status status, t_philo *philo, bool debbug
 void	let_philo_eat_routine(t_philo *philo);
 void	let_philo_think_routine(t_philo *philo);
 void	let_philo_sleep_routine(t_philo *philo);
+
+/* clear and error manager functions */
+void	error_manager(const char *error_msg);
+void	table_free(t_table *table);
 
 /* LIBFT utility functions */
 int		ft_strlen(const char *str);
