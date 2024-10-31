@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:16:51 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/29 15:34:57 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/30 22:48:50 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ bool	this_is_the_end_of_dinner(t_table *table)
 {
 	bool	result;
 
-	result = get_bool(table->table_mtx, &table->this_is_the_end);
+	result = get_bool(&table->table_mtx, &table->this_is_the_end);
 	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 16:39:45 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/31 16:47:44 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,48 +17,48 @@ void	dinner_manager(t_table *table)
 	int	idx;
 
 	idx = -1;
-	if (table->set->total_meals == -1)
-	{
-		// TODO
-	}
-	else if (table->set->total_meals > 0)
+	// if (table->set.total_meals == -1)
+	// {
+	// 	// TODO
+	// }
+	if (table->set.total_meals == 0)
 		return ; // back to main and clean
-	else if (table->set->total_meals == 1)
+	else if (table->set.total_philos == 1)
 	{
-		// TODO ad hoc specific function for one meal
+		// TODO ad hoc specific function for one meal (or philo)
 	}
 	else
 	{
-		// CREAT all threads
-		while(++idx < table->set->total_philos)
+		// CREATE all threads
+		while(++idx < table->set.total_philos)
 		{
-			safe_thread_handler(table->philo[idx].th_id, dinner_routine, &table->philo[idx], CREATE);
+			safe_thread_handler(&table->philos[idx].th_id, dinner_runner, &table->philos[idx], CREATE);
 		}
 	}
-	// starting the simulation
 	table->start_time = ft_gettime(MILISSECOND);
-	// All threads are ready
-	set_bool(table->table_mtx, &table->all_threads_ready_togo, true);
+	set_bool(&table->table_mtx, &table->all_threads_ready_togo, true);
 	idx = -1;
-	// JOIN all threads
-	while (++idx < table->set->total_philos)
+	while (++idx < table->set.total_philos)
 	{
-		safe_thread_handler(table->philo[idx].th_id, NULL, NULL, JOIN);
+		safe_thread_handler(&table->philos[idx].th_id, NULL, NULL, JOIN);
 	}
+	set_bool(&table->table_mtx, &table->this_is_the_end, true);
 }
 
-void	dinner_startup_runner(t_table *table)
+void	*dinner_runner(void *data)
 {
-	//avoid race condition
-	semaphore_like_for_threads(table);
+	t_philo	*philo;
 
-	// set meals time
-	while (!this_is_the_end_of_dinner(table))
+	philo = (t_philo *)data;
+	//semaphore for syncronization
+	semaphore_like_for_threads(philo->table);
+	while (!this_is_the_end_of_dinner(philo->table))
 	{
-		if (table->philo->full) // TODO: thread safe
+		if (philo->full) // TODO: thread safe
 			break ;
-		let_philo_eat_routine(table->philo);
-		let_philo_think_routine(table->philo);
-		let_philo_sleep_routine(table->philo);
+		let_philo_eat_routine(philo);
+		let_philo_sleep_routine(philo);
+		let_philo_think_routine(philo);
 	}
+	return (NULL);
 }

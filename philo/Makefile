@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/10/30 16:25:01 by umeneses         ###   ########.fr        #
+#    Updated: 2024/10/31 18:42:24 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ SRC_FILES				+= 09.getters_setters.c
 SRC_FILES				+= 10.synchronizers.c
 SRC_FILES				+= 11.printer_with_mutex.c
 SRC_FILES				+= 12.dinner_routines.c
-SRC_FILES				+= error_manager.c
+SRC_FILES				+= clear_and_error_manager.c
 SRC_FILES				+= ft_atoi.c
 SRC_FILES				+= ft_gettime.c
 SRC_FILES				+= ft_is_space.c
@@ -144,7 +144,7 @@ define				bonus
 endef
 
 define				args_to_test
-	7 60 60 60
+	7 60 60 60 10
 endef
 
 ifdef				WITH_SANITIZE_THREAD
