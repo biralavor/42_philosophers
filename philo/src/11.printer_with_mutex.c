@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:12:00 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 22:49:15 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/31 21:20:31 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ void	printer_with_mutex(t_philo_status status, t_philo *philo, bool debug)
 	else if (!this_is_the_end_of_dinner(philo->table))
 	{	
 		if (GOT_1ST_CHOPSTICK == status || GOT_2ND_CHOPSTICK == status)
-			printf(YELLOW"%-6ld"RESET" philo %d has taken a chopstick\n",
-				elapsed, philo->id);
+			printf(YELLOW"%10ld"RESET" philo %d"YELLOW" has taken"
+				" a chopstick\n", elapsed, philo->id);
 		else if (EATING == status)
-			printf(GREEN"%-6ld"RESET" philo %d is eating\n",
+			printf(GREEN"%10ld"RESET" philo %d"GREEN" is eating\n",
 				elapsed, philo->id);
 		else if (SLEEPING == status)
-			printf(BLUE"%-6ld"RESET" philo %d is sleeping\n",
+			printf(BLUE"%10ld"RESET" philo %d"BLUE" is sleeping\n",
 				elapsed, philo->id);
 		else if (THINKING == status)
-			printf(YELLOW"%-6ld"RESET" philo %d is thinking\n",
+			printf(PURPLE"%10ld"RESET" philo %d"PURPLE" is thinking\n",
 				elapsed, philo->id);
 		else if (DEAD == status)
-			printf(RED"%-6ld"RESET" philo %d is dead\n",
+			printf(RED"%10ld"RESET" philo %d"RED" died\n",
 				elapsed, philo->id);
 	}
 	safe_mutex_handler(&philo->table->printer_mtx, UNLOCK);
