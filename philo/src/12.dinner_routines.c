@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:19:23 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 22:49:25 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/10/31 21:55:05 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,11 @@ void	let_philo_eat_routine(t_philo *philo)
 
 void	let_philo_think_routine(t_philo *philo)
 {
+	long	think_time;
+	
+	think_time = philo->table->set.time_to_eat * 2 - philo->table->set.time_to_sleep;
 	printer_with_mutex(THINKING, philo, false);
+	precise_usleep(think_time, philo->table);
 	// safe_mutex_handler(philo->philo_mtx, LOCK);
 	// safe_mutex_handler(philo->philo_mtx, UNLOCK);
 }
