@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/31 18:44:09 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/01 18:24:16 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 # define MAGENT "\033[0;95m"
 # define BWHITE "\033[1;37m"
 # define RESET "\033[0m"
+
+# define DEBUG_MODE 0
 
 typedef enum	e_mtx_opcode
 {
@@ -146,7 +148,7 @@ void	dinner_manager(t_table *table);
 void	*dinner_runner(void *data);
 // void	*dinner_routine(void *arg);
 void	printer_with_mutex(t_philo_status status, t_philo *philo, bool debug);
-void	printer_with_mutex_debug(t_philo_status status, t_philo *philo, bool debbug);
+void	printer_with_mutex_debug(t_philo_status status, t_philo *philo, long elapsed);
 
 /* dinner routines functions */
 void	let_philo_eat_routine(t_philo *philo);
