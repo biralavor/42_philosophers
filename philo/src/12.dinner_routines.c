@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:19:23 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/01 22:13:28 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/01 22:13:56 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,20 @@ void	*monitor_runner(void *data)
 	return (NULL);
 }
 
+bool	set_philo_as_dead_routine(t_philo *philo)
+{
+	long	time_to_die;
+	long	elapsed;
 
+	if (get_bool(&philo->philo_mtx, &philo->full))
+		return (false);
+	elapsed = ft_gettime(MILISSECOND) - get_long(&philo->philo_mtx,
+		&philo->time_of_last_meal);
+	time_to_die = philo->table->set.time_to_die;
+	if (elapsed > time_to_die)
+		return (true);
+	return (false);
+}
 
 void	let_philo_eat_routine(t_philo *philo)
 {
