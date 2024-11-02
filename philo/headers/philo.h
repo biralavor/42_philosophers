@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/01 18:24:16 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/01 22:09:42 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define BWHITE "\033[1;37m"
 # define RESET "\033[0m"
 
-# define DEBUG_MODE 0
+# define DEBUG_MODE 1
 
 typedef enum	e_mtx_opcode
 {
@@ -98,13 +98,15 @@ typedef struct	s_philo
 struct s_table
 {
 	long			start_time;
+	long			threads_running_counter;
 	bool			this_is_the_end;
 	bool			all_threads_ready_togo;
 	t_set			set;
 	t_philo			*philos;
+	t_chops			*chopsticks;
 	pthread_mutex_t	table_mtx;
 	pthread_mutex_t	printer_mtx;
-	t_chops			*chopsticks;
+	pthread_t		monitor_thread;
 };
 
 /* validation functions */
@@ -144,9 +146,12 @@ bool	this_is_the_end_of_dinner(t_table *table);
 
 /* dinner manager functions */
 void	semaphore_like_for_threads(t_table *table);
+bool	all_threads_are_running(pthread_mutex_t *mutex, long *thread,
+			long philo_nbr);
+void	increase_long(pthread_mutex_t *mutex, long *value);
 void	dinner_manager(t_table *table);
 void	*dinner_runner(void *data);
-// void	*dinner_routine(void *arg);
+void	*monitor_runner(void *data);
 void	printer_with_mutex(t_philo_status status, t_philo *philo, bool debug);
 void	printer_with_mutex_debug(t_philo_status status, t_philo *philo, long elapsed);
 
@@ -154,6 +159,7 @@ void	printer_with_mutex_debug(t_philo_status status, t_philo *philo, long elapse
 void	let_philo_eat_routine(t_philo *philo);
 void	let_philo_think_routine(t_philo *philo);
 void	let_philo_sleep_routine(t_philo *philo);
+bool	set_philo_as_dead_routine(t_philo *philo);
 
 /* clear and error manager functions */
 void	error_manager(const char *error_msg);
