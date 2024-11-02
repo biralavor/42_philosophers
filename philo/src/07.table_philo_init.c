@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/31 18:41:11 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/01 19:09:35 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	table_init(t_table *table)
 	table->all_threads_ready_togo = false;
 	table->this_is_the_end = false;
 	table->start_time = 0;
+	table->threads_running_counter = 0;
 	table_alloc(table);
 	safe_mutex_handler(&table->table_mtx, INIT);
 	safe_mutex_handler(&table->printer_mtx, INIT);
