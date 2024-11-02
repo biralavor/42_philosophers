@@ -6,11 +6,38 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:19:23 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/01 18:25:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/01 22:13:28 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	*monitor_runner(void *data)
+{
+	int		idx;
+	t_table	*table;
+
+	idx = 0;
+	table = (t_table *)data;
+	while (!all_threads_are_running(&table->table_mtx,
+		&table->threads_running_counter, table->set.total_philos))
+		;
+	while (!this_is_the_end_of_dinner(table))
+	{
+		idx = -1;
+		while (++idx && !this_is_the_end_of_dinner(table))
+		{
+			if (set_philo_as_dead_routine(table->philos + idx))
+			{
+				set_bool(&table->table_mtx, &table->this_is_the_end, true);
+				printer_with_mutex(DEAD, table->philos + idx, DEBUG_MODE);
+			}
+		}
+	}
+	return (NULL);
+}
+
+
 
 void	let_philo_eat_routine(t_philo *philo)
 {
