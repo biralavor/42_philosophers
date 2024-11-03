@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:12:00 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/03 10:10:42 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/03 11:17:11 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	printer_with_mutex(t_philo_status status, t_philo *philo, bool debug)
 			printf(PURPLE"%10ld"RESET" philo %d"PURPLE" is thinking\n",
 				elapsed, philo->id);
 		else if (DEAD == status)
-			printf(RED"%10ld"RESET" philo %d"RED" died\n",
+			printf(RED"%10ld philo %d died\n"RESET,
 				elapsed, philo->id);
 	}
 	safe_mutex_handler(&philo->table->printer_mtx, UNLOCK);
@@ -64,6 +64,6 @@ void	printer_with_mutex_debug(t_philo_status status, t_philo *philo, long elapse
 		printf(PURPLE"%10ld"RESET" philo %d"PURPLE" is thinking 🤔\n",
 			elapsed, philo->id);
 	else if (DEAD == status)
-		printf(RED"%10ld"RESET" philo %d"RED" died ☠ ☠ ☠\n",
+		printf(RED"%10ld philo %d died ❌❌❌ 💀 💀 💀\n"RESET,
 			elapsed, philo->id);
 }
