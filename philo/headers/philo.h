@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/01 22:09:42 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/03 09:50:54 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef enum	e_mtx_opcode
 typedef enum	e_time_code
 {
 	SECOND,
-	MILISSECOND,
+	MILLISECOND,
 	MICROSECOND,
 }	t_time_code;
 
@@ -160,6 +160,7 @@ void	let_philo_eat_routine(t_philo *philo);
 void	let_philo_think_routine(t_philo *philo);
 void	let_philo_sleep_routine(t_philo *philo);
 bool	set_philo_as_dead_routine(t_philo *philo);
+void	*lonely_philo_routine(void *data);
 
 /* clear and error manager functions */
 void	error_manager(const char *error_msg);
