@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/03 09:56:52 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/03 09:58:22 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	*dinner_runner(void *data)
 	increase_long(&philo->table->table_mtx, &philo->table->threads_running_counter);
 	while (!this_is_the_end_of_dinner(philo->table))
 	{
-		if (philo->full) // TODO: thread safe
+		if (get_bool(&philo->table->table_mtx, &philo->table->philos->full)) // TODO:check thread safe
 			break ;
 		let_philo_eat_routine(philo);
 		let_philo_sleep_routine(philo);
