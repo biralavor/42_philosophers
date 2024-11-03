@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:19:23 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/03 09:50:54 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/03 11:11:36 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*monitor_runner(void *data)
 	while (!this_is_the_end_of_dinner(table))
 	{
 		idx = -1;
-		while (++idx && !this_is_the_end_of_dinner(table))
+		while (++idx < table->set.total_philos)
 		{
 			if (set_philo_as_dead_routine(table->philos + idx))
 			{
