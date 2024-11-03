@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/11/02 17:10:20 by umeneses         ###   ########.fr        #
+#    Updated: 2024/11/03 10:58:44 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -144,7 +144,7 @@ define				bonus
 endef
 
 define				args_to_test
-	4 200 200 200 5
+	4 100 100 100 10
 endef
 
 ifdef				WITH_SANITIZE_THREAD
