@@ -6,20 +6,11 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:34:23 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/31 18:48:26 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/03 10:14:52 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-long	get_elapsed_time_microsec(struct timeval start, struct timeval end)
-{
-	long result;
-
-	result = end.tv_sec - start.tv_sec * 1000000L;
-	result += end.tv_usec - start.tv_usec;
-	return (result);
-}
 
 void	precise_usleep(long microsec, t_table *table)
 {
