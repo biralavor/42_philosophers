@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:42:40 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/01 22:08:55 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/03 11:09:28 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void	semaphore_like_for_threads(t_table *table)
 		;
 }
 
-bool	all_threads_are_running(pthread_mutex_t *mutex, long *thread,
-			long philo_nbr)
+bool	all_threads_are_running(pthread_mutex_t *mutex, long *threads,
+			long total_philos)
 {
 	bool	result;
 	
 	result = false;
 	safe_mutex_handler(mutex, LOCK);
-	if (*thread == philo_nbr)
+	if (*threads == total_philos)
 		result = true;
 	safe_mutex_handler(mutex, UNLOCK);
 	return (result);
