@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:42:40 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/03 11:09:28 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/03 17:46:14 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,18 @@ void	increase_long(pthread_mutex_t *mutex, long *value)
 	safe_mutex_handler(mutex, LOCK);
 	(*value)++;
 	safe_mutex_handler(mutex, UNLOCK);
+}
+
+void	philos_in_async_mode(t_philo *philo)
+{
+	if (philo->table->set.total_philos % 2 == 0)
+	{
+		if (philo->id % 2 == 0)
+			precise_usleep(3e4, philo->table);
+	}
+	else
+	{
+		if (philo->id % 2 == 1)
+			let_philo_think_routine(philo);
+	}
 }
