@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/11/03 10:58:44 by umeneses         ###   ########.fr        #
+#    Updated: 2024/11/03 14:18:24 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -144,7 +144,7 @@ define				bonus
 endef
 
 define				args_to_test
-	4 100 100 100 10
+	4 200 200 200 5
 endef
 
 ifdef				WITH_SANITIZE_THREAD
@@ -229,8 +229,16 @@ gdb:			re
 
 val:			re
 				valgrind --leak-check=full --track-origins=yes --trace-children=yes --track-fds=yes --show-reachable=yes ./$(NAME) $(call args_to_test)
-#				valgrind --tool=helgrind --leak-check=full --track-origins=yes --trace-children=yes --track-fds=yes --show-reachable=yes ./$(NAME) $(call args_to_test)
-#				valgrind --tool=drd --leak-check=full --track-origins=yes --trace-children=yes --track-fds=yes --show-reachable=yes ./$(NAME) $(call args_to_test)
+
+hel:			re
+				valgrind --tool=helgrind ./$(NAME) $(call args_to_test)
+#				valgrind --tool=helgrind --read-var-info=yes ./$(NAME) $(call args_to_test)
+# documentation: https://valgrind.org/docs/manual/hg-manual.html
+
+drd:			re
+				valgrind --tool=drd --read-var-info=yes ./$(NAME) $(call args_to_test)
+#				valgrind --tool=drd ./$(NAME) $(call args_to_test)
+# documentation: https://valgrind.org/docs/manual/drd-manual.html
 
 sani:			fclean
 				$(call sanitize_thread)
