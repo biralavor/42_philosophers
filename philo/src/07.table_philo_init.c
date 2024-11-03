@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/01 19:09:35 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/03 10:47:14 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	philo_init_runner(t_table *table)
 		philo = table->philos + idx;
 		philo->id = idx + 1;
 		philo->got_meals = 0;
-		philo->th_id = 0;
 		philo->full = false;
 		philo->table = table;
 		safe_mutex_handler(&philo->philo_mtx, INIT);
