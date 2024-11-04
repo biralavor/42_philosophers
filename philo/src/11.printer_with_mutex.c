@@ -6,13 +6,13 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:12:00 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 18:33:39 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:53:57 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	printer_with_mutex(t_philo_status status, t_philo *philo, int debug)
+void	printer_manager(t_philo_status status, t_philo *philo, int debug)
 {
 	long	elapsed;
 
@@ -25,8 +25,14 @@ void	printer_with_mutex(t_philo_status status, t_philo *philo, int debug)
 	else if (debug == 2)
 		printer_with_mutex_debug(status, philo, elapsed);
 	else
-	{
-		if (GOT_1ST_CHOPSTICK == status || GOT_2ND_CHOPSTICK == status)
+		printer_with_mutex_classic(status, philo, elapsed);
+	safe_mutex_handler(&philo->table->printer_mtx, UNLOCK);
+}
+
+void	printer_with_mutex_classic(t_philo_status status,
+	t_philo *philo, long elapsed)
+{
+	if (GOT_1ST_CHOPSTICK == status || GOT_2ND_CHOPSTICK == status)
 			printf(YELLOW"%-10ld"RESET" %d"YELLOW" has taken"
 				" a fork\n", elapsed, philo->id);
 		else if (EATING == status)
@@ -41,8 +47,6 @@ void	printer_with_mutex(t_philo_status status, t_philo *philo, int debug)
 		else if (DEAD == status)
 			printf(RED"%-10ld %d died\n"RESET,
 				elapsed, philo->id);
-	}
-	safe_mutex_handler(&philo->table->printer_mtx, UNLOCK);
 }
 
 void	printer_with_mutex_chopsticks(t_philo_status status,

@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 18:15:32 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:54:34 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,11 +151,15 @@ void	increase_long(pthread_mutex_t *mutex, long *value);
 void	dinner_manager(t_table *table);
 void	*dinner_runner(void *data);
 void	*monitor_runner(void *data);
-void	printer_with_mutex(t_philo_status status,
+
+/* printer functions */
+void	printer_manager(t_philo_status status,
 			t_philo *philo, int debug);
-void	printer_with_mutex_debug(t_philo_status status,
+void	printer_with_mutex_classic(t_philo_status status,
 			t_philo *philo, long elapsed);
 void	printer_with_mutex_chopsticks(t_philo_status status,
+			t_philo *philo, long elapsed);
+void	printer_with_mutex_debug(t_philo_status status,
 			t_philo *philo, long elapsed);
 void	philos_in_async_mode(t_philo *philo);
 
