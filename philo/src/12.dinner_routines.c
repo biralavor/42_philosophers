@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:19:23 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/03 17:42:08 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 12:45:31 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	*monitor_runner(void *data)
 		while (++idx < table->set.total_philos
 			&& !this_is_the_end_of_dinner(table))
 		{
-			if (set_philo_as_dead_routine(table->philos + idx))
+			if (is_philo_dead_manager(table->philos + idx))
 			{
 				set_bool(&table->table_mtx, &table->this_is_the_end, true);
 				printer_with_mutex(DEAD, table->philos + idx, DEBUG_MODE);
@@ -38,7 +38,7 @@ void	*monitor_runner(void *data)
 	return (NULL);
 }
 
-bool	set_philo_as_dead_routine(t_philo *philo)
+bool	is_philo_dead_manager(t_philo *philo)
 {
 	long	time_to_die;
 	long	elapsed;

@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/03 17:46:08 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 12:45:31 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,7 @@ void	philos_in_async_mode(t_philo *philo);
 void	let_philo_eat_routine(t_philo *philo);
 void	let_philo_think_routine(t_philo *philo);
 void	let_philo_sleep_routine(t_philo *philo);
-bool	set_philo_as_dead_routine(t_philo *philo);
+bool	is_philo_dead_manager(t_philo *philo);
 void	*lonely_philo_routine(void *data);
 
 /* clear and error manager functions */
