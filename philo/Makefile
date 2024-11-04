@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/11/03 14:18:24 by umeneses         ###   ########.fr        #
+#    Updated: 2024/11/04 12:49:59 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -144,7 +144,7 @@ define				bonus
 endef
 
 define				args_to_test
-	4 200 200 200 5
+	4 310 200 100
 endef
 
 ifdef				WITH_SANITIZE_THREAD
@@ -240,12 +240,14 @@ drd:			re
 #				valgrind --tool=drd ./$(NAME) $(call args_to_test)
 # documentation: https://valgrind.org/docs/manual/drd-manual.html
 
-sani:			fclean
+sani_t:			fclean
 				$(call sanitize_thread)
+				./$(NAME) $(call args_to_test)
 				
 
-leaks:			fclean
+sani_a:			fclean
 				$(call sanitize_address)
+				./$(NAME) $(call args_to_test)
 				
 
 .PHONY:			all clean fclean re bonus go gdb val sani leaks
