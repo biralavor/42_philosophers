@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 18:09:25 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:35:23 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	dinner_manager(t_table *table)
 			lonely_philo_routine, &table->philos[0], CREATE);
 	else
 	{
-		while(++idx < table->set.total_philos)
+		while (++idx < table->set.total_philos)
 		{
 			safe_thread_handler(&table->philos[idx].th_id,
 				dinner_runner, &table->philos[idx], CREATE);

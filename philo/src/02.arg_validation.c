@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 20:24:28 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 18:25:59 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:34:40 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ bool	is_valid_length_number(char **av)
 	len = 0;
 	idx = 1;
 	while (av)
-	{	
+	{
 		c = -1;
 		while (av[idx][++c])
 			len++;

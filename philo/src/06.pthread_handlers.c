@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:16:28 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 18:16:27 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:31:28 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	error_pthread_handler(int status, int opcode)
 			" specifies the calling thread.\n");
 }
 
-void	safe_thread_handler(pthread_t *th_id, void *(*func_ptr)(void *), 
+void	safe_thread_handler(pthread_t *th_id, void *(*func_ptr)(void *),
 			void *data, t_mtx_opcode opcode)
 {
 	if (CREATE == opcode)
