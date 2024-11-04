@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/11/04 12:49:59 by umeneses         ###   ########.fr        #
+#    Updated: 2024/11/04 18:58:40 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRC_FILES				+= 09.getters_setters.c
 SRC_FILES				+= 10.synchronizers.c
 SRC_FILES				+= 11.printer_with_mutex.c
 SRC_FILES				+= 12.dinner_routines.c
+SRC_FILES				+= 13.monitor.c
 SRC_FILES				+= clear_and_error_manager.c
 SRC_FILES				+= ft_atoi.c
 SRC_FILES				+= ft_gettime.c
