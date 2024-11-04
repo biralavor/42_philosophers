@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 20:24:28 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/25 21:08:45 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 10:28:21 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,5 @@ bool	arguments_validation_manager(int ac, char **av)
 		&& is_valid_length_number(av)
 		&& is_number_under_intmax(ac, av))
 		return (true);
-	return (true);
+	return (false);
 }
