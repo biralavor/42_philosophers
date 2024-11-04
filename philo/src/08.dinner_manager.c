@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 15:09:04 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:09:25 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,14 @@ void	dinner_manager(t_table *table)
 	if (table->set.total_meals == 0)
 		return ;
 	else if (table->set.total_philos == 1)
-		safe_thread_handler(&table->philos[0].th_id, lonely_philo_routine, &table->philos[0], CREATE);
+		safe_thread_handler(&table->philos[0].th_id,
+			lonely_philo_routine, &table->philos[0], CREATE);
 	else
 	{
-		// CREATE all threads
 		while(++idx < table->set.total_philos)
 		{
-			safe_thread_handler(&table->philos[idx].th_id, dinner_runner, &table->philos[idx], CREATE);
+			safe_thread_handler(&table->philos[idx].th_id,
+				dinner_runner, &table->philos[idx], CREATE);
 		}
 	}
 	safe_thread_handler(&table->monitor_thread, monitor_runner, table, CREATE);
@@ -50,14 +51,15 @@ void	*dinner_runner(void *data)
 	t_philo	*philo;
 
 	philo = (t_philo *)data;
-	//semaphore for syncronization
 	semaphore_like_for_threads(philo->table);
-	set_long(&philo->philo_mtx, &philo->time_of_last_meal, ft_gettime(MILLISECOND));
-	increase_long(&philo->table->table_mtx, &philo->table->threads_running_counter);
+	set_long(&philo->philo_mtx, &philo->time_of_last_meal,
+		ft_gettime(MILLISECOND));
+	increase_long(&philo->table->table_mtx,
+		&philo->table->threads_running_counter);
 	philos_in_async_mode(philo);
 	while (!this_is_the_end_of_dinner(philo->table))
 	{
-		if (get_bool(&philo->table->table_mtx, &philo->table->philos->full)) // TODO:check thread safe
+		if (get_bool(&philo->table->table_mtx, &philo->table->philos->full))
 			break ;
 		let_philo_eat_routine(philo);
 		let_philo_sleep_routine(philo);

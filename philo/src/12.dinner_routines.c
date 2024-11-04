@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:19:23 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 15:02:28 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:10:30 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void	let_philo_eat_routine(t_philo *philo)
 	printer_with_mutex(GOT_1ST_CHOPSTICK, philo, DEBUG_MODE);
 	safe_mutex_handler(&philo->second_chops->chops_mtx, LOCK);
 	printer_with_mutex(GOT_2ND_CHOPSTICK, philo, DEBUG_MODE);
-	
-	set_long(&philo->philo_mtx, &philo->time_of_last_meal, ft_gettime(MILLISECOND));
+	set_long(&philo->philo_mtx, &philo->time_of_last_meal,
+		ft_gettime(MILLISECOND));
 	philo->got_meals++;
 	printer_with_mutex(EATING, philo, DEBUG_MODE);
 	precise_usleep(philo->table->set.time_to_eat, philo->table);
@@ -74,7 +74,7 @@ void	let_philo_eat_routine(t_philo *philo)
 void	let_philo_think_routine(t_philo *philo, bool before_spinlock)
 {
 	long	think_time;
-	
+
 	think_time = 0;
 	if (!before_spinlock)
 		printer_with_mutex(THINKING, philo, DEBUG_MODE);

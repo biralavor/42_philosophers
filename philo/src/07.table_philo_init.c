@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/03 10:47:14 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:55:57 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ void	philo_init_runner(t_table *table)
 
 t_table	*table_alloc(t_table *table)
 {
-	table->philos = ft_safe_malloc(sizeof(t_philo) * table->set.total_philos);
-	table->chopsticks = ft_safe_malloc(sizeof(t_chops) * table->set.total_philos);
+	table->philos = ft_safe_malloc(sizeof(t_philo)
+		* table->set.total_philos);
+	table->chopsticks = ft_safe_malloc(sizeof(t_chops)
+		* table->set.total_philos);
 	return (table);
 }
 
