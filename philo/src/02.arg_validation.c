@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 20:24:28 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 10:28:21 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 10:28:54 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 bool	arguments_amount(int ac)
 {
-	if (ac < 5 || ac > 6)
-	{
-		printf(RED"Error.\n");
-		printf(RED"Wrong arguments amount.\n");
-		printf(YELLOW"Please, read the instructions.\n"RESET);
-		return (false);
-	}
-	return (true);
+	if (ac == 5 || ac == 6)
+		return (true);	
+	printf(RED"Error.\n");
+	printf(RED"Wrong arguments amount.\n");
+	printf(YELLOW"Please, read the instructions.\n"RESET);
+	return (false);
 }
 
 bool	av_is_a_positive_number(char **av)
