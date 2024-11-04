@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/03 17:46:51 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:09:04 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	*dinner_runner(void *data)
 			break ;
 		let_philo_eat_routine(philo);
 		let_philo_sleep_routine(philo);
-		let_philo_think_routine(philo);
+		let_philo_think_routine(philo, false);
 	}
 	return (NULL);
 }
