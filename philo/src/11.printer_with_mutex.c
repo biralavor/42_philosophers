@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:12:00 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 18:10:07 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:19:26 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	printer_with_mutex(t_philo_status status, t_philo *philo, int debug)
 	else if (debug == 2)
 		printer_with_mutex_debug(status, philo, elapsed);
 	else
-	{	
+	{
 		if (GOT_1ST_CHOPSTICK == status || GOT_2ND_CHOPSTICK == status)
 			printf(YELLOW"%-10ld"RESET" %d"YELLOW" has taken"
 				" a fork\n", elapsed, philo->id);
@@ -44,7 +44,6 @@ void	printer_with_mutex(t_philo_status status, t_philo *philo, int debug)
 	}
 	safe_mutex_handler(&philo->table->printer_mtx, UNLOCK);
 }
-
 
 void	printer_with_mutex_chopsticks(t_philo_status status,
 	t_philo *philo, long elapsed)
@@ -69,7 +68,7 @@ void	printer_with_mutex_chopsticks(t_philo_status status,
 void	printer_with_mutex_debug(t_philo_status status,
 	t_philo *philo, long elapsed)
 {
-	
+
 	if (GOT_1ST_CHOPSTICK == status)
 		printf(YELLOW"%10ld"RESET" philo %d"YELLOW" has taken"
 			" the 1st chopstick 1️⃣ 🥢\tchopstick id: %d\n",

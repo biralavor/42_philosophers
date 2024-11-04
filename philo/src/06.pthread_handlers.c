@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:16:28 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 18:08:38 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:16:27 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,18 @@ void	error_pthread_handler(int status, int opcode)
 		error_manager("The value specified by thread is not joinable.\n");
 	else if (ESRCH == status)
 		error_manager("No thread could be found corresponding to that"
-			" specified by the given thread ID.\n");	
+			" specified by the given thread ID.\n");
 	else if (EDEADLK == status)
 		error_manager("A deadlock was detected or thye value of thread"
 			" specifies the calling thread.\n");
 }
 
 void	safe_thread_handler(pthread_t *th_id, void *(*func_ptr)(void *), 
-	void *data, t_mtx_opcode opcode)
+			void *data, t_mtx_opcode opcode)
 {
 	if (CREATE == opcode)
 		error_pthread_handler(pthread_create(th_id, NULL,
-			func_ptr, data), opcode);
+				func_ptr, data), opcode);
 	else if (JOIN == opcode)
 		error_pthread_handler(pthread_join(*th_id, data), opcode);
 	else if (DETACH == opcode)

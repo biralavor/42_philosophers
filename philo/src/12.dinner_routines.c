@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:19:23 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 18:10:30 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:29:58 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*monitor_runner(void *data)
 	idx = 0;
 	table = (t_table *)data;
 	while (!all_threads_are_running(&table->table_mtx,
-		&table->threads_running_counter, table->set.total_philos))
+			&table->threads_running_counter, table->set.total_philos))
 		;
 	while (!this_is_the_end_of_dinner(table))
 	{
@@ -46,7 +46,7 @@ bool	is_philo_dead_manager(t_philo *philo)
 	if (get_bool(&philo->philo_mtx, &philo->full))
 		return (false);
 	elapsed = ft_gettime(MILLISECOND) - get_long(&philo->philo_mtx,
-		&philo->time_of_last_meal);
+			&philo->time_of_last_meal);
 	time_to_die = philo->table->set.time_to_die / 1e3;
 	if (elapsed > time_to_die)
 		return (true);
@@ -81,7 +81,7 @@ void	let_philo_think_routine(t_philo *philo, bool before_spinlock)
 	if (philo->table->set.total_philos % 2 == 0)
 		return ;
 	else
-	{	
+	{
 		think_time = philo->table->set.time_to_eat
 			* 2 - philo->table->set.time_to_sleep;
 		if (think_time < 0)
@@ -102,10 +102,12 @@ void	*lonely_philo_routine(void *data)
 
 	philo = (t_philo *)data;
 	semaphore_like_for_threads(philo->table);
-	set_long(&philo->philo_mtx, &philo->time_of_last_meal, ft_gettime(MILLISECOND));
-	increase_long(&philo->table->table_mtx, &philo->table->threads_running_counter);
+	set_long(&philo->philo_mtx,
+		&philo->time_of_last_meal, ft_gettime(MILLISECOND));
+	increase_long(&philo->table->table_mtx,
+		&philo->table->threads_running_counter);
 	printer_with_mutex(GOT_1ST_CHOPSTICK, philo, DEBUG_MODE);
-	while(!this_is_the_end_of_dinner(philo->table))
+	while (!this_is_the_end_of_dinner(philo->table))
 		usleep(200);
 	return (NULL);
 }

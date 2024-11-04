@@ -6,13 +6,13 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:03:55 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/03 14:25:32 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:16:57 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int main(int ac, char **av)
+int main (int ac, char **av)
 {
 	t_table	table;
 

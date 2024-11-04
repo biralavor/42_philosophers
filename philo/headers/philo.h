@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 15:00:21 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:15:32 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 
 # define DEBUG_MODE 0
 
-typedef enum	e_mtx_opcode
+typedef enum e_mtx_opcode
 {
 	INIT,
 	CREATE,
@@ -47,14 +47,14 @@ typedef enum	e_mtx_opcode
 	DESTROY,
 }	t_mtx_opcode;
 
-typedef enum	e_time_code
+typedef enum e_time_code
 {
 	SECOND,
 	MILLISECOND,
 	MICROSECOND,
 }	t_time_code;
 
-typedef enum	e_philo_status
+typedef enum e_philo_status
 {
 	GOT_1ST_CHOPSTICK,
 	GOT_2ND_CHOPSTICK,
@@ -64,8 +64,7 @@ typedef enum	e_philo_status
 	DEAD,
 }	t_philo_status;
 
-
-typedef struct	s_set
+typedef struct s_set
 {
 	long	total_philos;
 	long	time_to_die;
@@ -74,7 +73,7 @@ typedef struct	s_set
 	long	total_meals;
 }			t_set;
 
-typedef struct	s_chopstick
+typedef struct s_chopstick
 {
 	int				chops_id;
 	pthread_mutex_t	chops_mtx;
@@ -82,7 +81,7 @@ typedef struct	s_chopstick
 
 typedef struct s_table	t_table;
 
-typedef struct	s_philo
+typedef struct s_philo
 {
 	int				id;
 	long			got_meals;
@@ -152,9 +151,12 @@ void	increase_long(pthread_mutex_t *mutex, long *value);
 void	dinner_manager(t_table *table);
 void	*dinner_runner(void *data);
 void	*monitor_runner(void *data);
-void	printer_with_mutex(t_philo_status status, t_philo *philo, int debug);
-void	printer_with_mutex_debug(t_philo_status status, t_philo *philo, long elapsed);
-void	printer_with_mutex_chopsticks(t_philo_status status, t_philo *philo, long elapsed);
+void	printer_with_mutex(t_philo_status status,
+			t_philo *philo, int debug);
+void	printer_with_mutex_debug(t_philo_status status,
+			t_philo *philo, long elapsed);
+void	printer_with_mutex_chopsticks(t_philo_status status,
+			t_philo *philo, long elapsed);
 void	philos_in_async_mode(t_philo *philo);
 
 /* dinner routines functions */
@@ -173,6 +175,5 @@ int		ft_strlen(const char *str);
 long	ft_atoi_long_int(const char *string);
 long	ft_gettime(t_time_code timecode);
 void	precise_usleep(long microsec, t_table *table);
-
 
 #endif

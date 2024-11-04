@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 20:33:35 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 18:10:52 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:26:59 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	table_free(t_table *table)
 	t_philo	*philo;
 
 	idx = -1;
-	while(++idx < table->set.total_philos)
+	while (++idx < table->set.total_philos)
 	{
 		philo = table->philos + idx;
 		safe_mutex_handler(&philo->philo_mtx, DESTROY);
