@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:42:40 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/03 17:46:14 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 14:59:17 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ void	philos_in_async_mode(t_philo *philo)
 	else
 	{
 		if (philo->id % 2 == 1)
-			let_philo_think_routine(philo);
+			let_philo_think_routine(philo, true);
 	}
 }
