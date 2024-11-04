@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 18:35:23 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 19:02:08 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ void	dinner_manager(t_table *table)
 
 	idx = -1;
 	// if (table->set.total_meals == -1)
-	// {
 	// 	// TODO
-	// }
 	if (table->set.total_meals == 0)
 		return ;
 	else if (table->set.total_philos == 1)
@@ -39,9 +37,7 @@ void	dinner_manager(t_table *table)
 	set_bool(&table->table_mtx, &table->all_threads_ready_togo, true);
 	idx = -1;
 	while (++idx < table->set.total_philos)
-	{
 		safe_thread_handler(&table->philos[idx].th_id, NULL, NULL, JOIN);
-	}
 	set_bool(&table->table_mtx, &table->this_is_the_end, true);
 	safe_thread_handler(&table->monitor_thread, NULL, NULL, JOIN);
 }

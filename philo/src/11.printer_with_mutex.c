@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:12:00 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 18:53:57 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 19:00:53 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,20 @@ void	printer_with_mutex_classic(t_philo_status status,
 	t_philo *philo, long elapsed)
 {
 	if (GOT_1ST_CHOPSTICK == status || GOT_2ND_CHOPSTICK == status)
-			printf(YELLOW"%-10ld"RESET" %d"YELLOW" has taken"
-				" a fork\n", elapsed, philo->id);
-		else if (EATING == status)
-			printf(GREEN"%-10ld"RESET" %d"GREEN" is eating\n",
-				elapsed, philo->id);
-		else if (SLEEPING == status)
-			printf(BLUE"%-10ld"RESET" %d"BLUE" is sleeping\n",
-				elapsed, philo->id);
-		else if (THINKING == status)
-			printf(PURPLE"%-10ld"RESET" %d"PURPLE" is thinking\n",
-				elapsed, philo->id);
-		else if (DEAD == status)
-			printf(RED"%-10ld %d died\n"RESET,
-				elapsed, philo->id);
+		printf(YELLOW"%-10ld"RESET" %d"YELLOW" has taken"
+			" a fork\n", elapsed, philo->id);
+	else if (EATING == status)
+		printf(GREEN"%-10ld"RESET" %d"GREEN" is eating\n",
+			elapsed, philo->id);
+	else if (SLEEPING == status)
+		printf(BLUE"%-10ld"RESET" %d"BLUE" is sleeping\n",
+			elapsed, philo->id);
+	else if (THINKING == status)
+		printf(PURPLE"%-10ld"RESET" %d"PURPLE" is thinking\n",
+			elapsed, philo->id);
+	else if (DEAD == status)
+		printf(RED"%-10ld %d died\n"RESET,
+			elapsed, philo->id);
 }
 
 void	printer_with_mutex_chopsticks(t_philo_status status,
