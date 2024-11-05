@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/11/05 15:58:17 by umeneses         ###   ########.fr        #
+#    Updated: 2024/11/05 16:06:48 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ NAME					= philo
 SRC_FILES				= 01.main.c
 SRC_FILES				+= 02.arg_validation.c
 SRC_FILES				+= 03.parsing.c
+SRC_FILES				+= 04.clear_and_error_manager.c
 SRC_FILES				+= 05.mutex_handlers.c
 SRC_FILES				+= 06.pthread_handlers.c
 SRC_FILES				+= 07.table_philo_init.c
@@ -50,8 +51,7 @@ SRC_FILES				+= 10.synchronizers.c
 SRC_FILES				+= 11.printer_with_mutex.c
 SRC_FILES				+= 12.dinner_routines.c
 SRC_FILES				+= 13.monitor.c
-SRC_FILES				+= clear_and_error_manager.c
-SRC_FILES				+= ft_atoi.c
+SRC_FILES				+= ft_atoi_long_int.c
 SRC_FILES				+= ft_gettime.c
 SRC_FILES				+= ft_is_space.c
 SRC_FILES				+= ft_precise_usleep.c
