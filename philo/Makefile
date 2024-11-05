@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/11/04 18:58:40 by umeneses         ###   ########.fr        #
+#    Updated: 2024/11/05 15:58:17 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,6 @@ NAME					= philo
 SRC_FILES				= 01.main.c
 SRC_FILES				+= 02.arg_validation.c
 SRC_FILES				+= 03.parsing.c
-SRC_FILES				+= 04.table_holder.c
 SRC_FILES				+= 05.mutex_handlers.c
 SRC_FILES				+= 06.pthread_handlers.c
 SRC_FILES				+= 07.table_philo_init.c
@@ -120,7 +119,8 @@ define				instructions
 					@echo "Hit $(RESET)./$(NAME) $(YELLOW)and add:"
 					@echo "$(CYAN)number_of_philosophers $(RED)time_to_die $(PURPLE)time_to_eat $(BLUE)time_to_sleep $(GREEN)nbr_each_philo_must_eat"
 					@echo "$(YELLOW)Similar like this example:	$(RESET) ./$(NAME) $(CYAN)5 $(RED)800 $(PURPLE)200 $(BLUE)200"
-					@echo "$(YELLOW)Or with $(GREEN)times_must_eat added:	$(RESET) ./$(NAME) $(CYAN)5 $(RED)800 $(PURPLE)200 $(BLUE)200 $(GREEN)7 "
+					@echo "$(YELLOW)Or just add $(GREEN)times_must_eat$(YELLOW):	$(RESET) ./$(NAME) $(CYAN)5 $(RED)800 $(PURPLE)200 $(BLUE)200 $(GREEN)7 "
+					@echo "\n$(RESET)Ready to go!\n"
 
 endef
 
