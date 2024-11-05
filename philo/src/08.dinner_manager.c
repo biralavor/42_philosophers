@@ -6,19 +6,20 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 19:02:08 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/05 07:13:06 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/**
+ * @brief: what if set.total_meals == -1?
+ */
 void	dinner_manager(t_table *table)
 {
 	int	idx;
 
 	idx = -1;
-	// if (table->set.total_meals == -1)
-	// 	// TODO
 	if (table->set.total_meals == 0)
 		return ;
 	else if (table->set.total_philos == 1)
@@ -27,10 +28,8 @@ void	dinner_manager(t_table *table)
 	else
 	{
 		while (++idx < table->set.total_philos)
-		{
 			safe_thread_handler(&table->philos[idx].th_id,
 				dinner_runner, &table->philos[idx], CREATE);
-		}
 	}
 	safe_thread_handler(&table->monitor_thread, monitor_runner, table, CREATE);
 	table->start_time = ft_gettime(MILLISECOND);
