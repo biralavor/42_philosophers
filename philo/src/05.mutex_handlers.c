@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:16:44 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/28 18:00:46 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:26:24 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	error_mutex_handler(int status, int opcode)
 	else if (EINVAL == status && (INIT == opcode))
 		error_manager("The value specified at attribute is invalid.\n");
 	else if (EINVAL == status && (LOCK == opcode || UNLOCK == opcode
-		|| DESTROY == opcode))
+			|| DESTROY == opcode))
 		error_manager("Invalid settings in attribute.\n");
 	else if (EAGAIN == status)
 		error_manager("Insufficient resources to create another thread.\n");

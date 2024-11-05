@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 18:57:26 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/03 10:44:56 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:16:46 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 long	ft_gettime(t_time_code timecode)
 {
 	struct timeval	actual_time;
-	
+
 	if (gettimeofday(&actual_time, NULL))
 		error_manager("Unable to get actual time.\n");
 	if (SECOND == timecode)

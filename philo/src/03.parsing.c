@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:16:16 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/31 18:41:08 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:17:12 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	table_parsing(t_table *table, char **av)
 		table->set.total_meals = ft_atoi_long_int(av[5]);
 	else
 		table->set.total_meals = -1;
-	// table = table_holder(table, false);
 	if (table->set.time_to_die < 6e4
 		|| table->set.time_to_eat < 6e4
 		|| table->set.time_to_sleep < 6e4)

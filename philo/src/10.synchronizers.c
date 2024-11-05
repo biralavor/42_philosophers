@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:42:40 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 14:59:17 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:35:00 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	all_threads_are_running(pthread_mutex_t *mutex, long *threads,
 			long total_philos)
 {
 	bool	result;
-	
+
 	result = false;
 	safe_mutex_handler(mutex, LOCK);
 	if (*threads == total_philos)

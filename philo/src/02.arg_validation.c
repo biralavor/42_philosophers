@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 20:24:28 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 10:28:54 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:34:40 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 bool	arguments_amount(int ac)
 {
 	if (ac == 5 || ac == 6)
-		return (true);	
+		return (true);
 	printf(RED"Error.\n");
 	printf(RED"Wrong arguments amount.\n");
 	printf(YELLOW"Please, read the instructions.\n"RESET);
@@ -31,7 +31,7 @@ bool	av_is_a_positive_number(char **av)
 	while (av[idx])
 	{
 		c = 0;
-		while(av[idx][c])
+		while (av[idx][c])
 		{
 			while (ft_is_space(av[idx][c]))
 				c++;
@@ -55,8 +55,8 @@ bool	is_valid_length_number(char **av)
 
 	len = 0;
 	idx = 1;
-	while(av)
-	{	
+	while (av)
+	{
 		c = -1;
 		while (av[idx][++c])
 			len++;
@@ -80,7 +80,7 @@ bool	is_number_under_intmax(int ac, char **av)
 		nbr = ft_atoi_long_int(av[idx]);
 		if (nbr <= INT_MAX)
 		{
-			if(idx == ac)
+			if (idx == ac)
 				return (true);
 		}
 		else
