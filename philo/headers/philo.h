@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 18:54:34 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/05 11:17:35 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define RESET "\033[0m"
 
 # define DEBUG_MODE 0
+# define PHILOS_LIMIT 200
 
 typedef enum e_mtx_opcode
 {
