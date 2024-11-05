@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 18:57:56 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 18:58:26 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/05 10:59:03 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	*monitor_runner(void *data)
 		{
 			if (is_philo_dead_manager(table->philos + idx))
 			{
-				set_bool(&table->table_mtx, &table->this_is_the_end, true);
 				printer_manager(DEAD, table->philos + idx, DEBUG_MODE);
+				set_bool(&table->table_mtx, &table->this_is_the_end, true);
 			}
 		}
 	}
@@ -41,14 +41,15 @@ void	*monitor_runner(void *data)
 bool	is_philo_dead_manager(t_philo *philo)
 {
 	long	time_to_die;
-	long	elapsed;
+	long	current;
+	long	last_meal;
 
 	if (get_bool(&philo->philo_mtx, &philo->full))
 		return (false);
-	elapsed = ft_gettime(MILLISECOND) - get_long(&philo->philo_mtx,
-			&philo->time_of_last_meal);
+	current = ft_gettime(MILLISECOND);
+	last_meal = get_long(&philo->philo_mtx, &philo->time_of_last_meal);
 	time_to_die = philo->table->set.time_to_die / 1e3;
-	if (elapsed > time_to_die)
+	if (current - last_meal > time_to_die)
 		return (true);
 	return (false);
 }
