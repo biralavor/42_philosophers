@@ -6,13 +6,13 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:42:40 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 18:35:00 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 18:46:35 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	semaphore_like_for_threads(t_table *table)
+void	holdon_until_all_threads(t_table *table)
 {
 	while (!get_bool(&table->table_mtx, &table->all_threads_ready_togo))
 		;

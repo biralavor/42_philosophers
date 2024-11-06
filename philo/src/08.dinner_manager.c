@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/06 18:45:04 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 18:46:35 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	*dinner_runner(void *data)
 	t_philo	*philo;
 
 	philo = (t_philo *)data;
-	semaphore_like_for_threads(philo->table);
+	holdon_until_all_threads(philo->table);
 	set_long(&philo->philo_mtx, &philo->time_of_last_meal,
 		ft_gettime(MILLISECOND));
 	increase_long(&philo->table->table_mtx,
