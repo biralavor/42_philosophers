@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 20:24:28 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 18:34:40 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 16:42:46 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,24 @@ bool	av_is_a_positive_number(char **av)
 	int	idx;
 	int	c;
 
-	idx = 1;
-	while (av[idx])
+	idx = 0;
+	while (av[++idx])
 	{
-		c = 0;
-		while (av[idx][c])
+		c = -1;
+		while (av[idx][++c])
 		{
 			while (ft_is_space(av[idx][c]))
 				c++;
 			if (av[idx][c] == '+')
 				c++;
+			else if (av[idx][c] == '-')
+				return (false);
 			if (av[idx][c] >= '0' || av[idx][c] <= '9')
-				return (true);
-			else
-				break ;
+			{
+				if (av[idx][c] == '\0' && av[idx + 1] == NULL)
+					return (true);
+			}
 		}
-		idx++;
 	}
 	return (false);
 }
