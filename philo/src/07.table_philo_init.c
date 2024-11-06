@@ -6,12 +6,19 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 18:18:40 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 18:00:44 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/**
+ * @brief Get the chopsticks for the philosopher
+ * @param philo The philosopher
+ * @param chopsticks The chopsticks
+ * @param philo_pos The position of the philosopher
+ * @return void
+ */
 void	get_chopsticks(t_philo *philo, t_chops *chopsticks, int philo_pos)
 {
 	if (philo->id % 2 == 0)

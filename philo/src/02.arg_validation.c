@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 20:24:28 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/06 17:06:28 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 17:21:24 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
  * @brief Check if the amount of arguments is correct
  * @param ac Number of arguments
- * @return true if the amount is between 5 or 6 arguments.
+ * @return `true` if the amount is between 5 or 6 arguments.
  */
 bool	arguments_amount(int ac)
 {
@@ -30,8 +30,8 @@ bool	arguments_amount(int ac)
 /**
  * @brief Check if the arguments are positive numbers
  * @param av Arguments
- * @return true if all arguments are numbers and positive numbers,
- * otherwise false.
+ * @return `true` if all arguments are numbers and positive numbers,
+ * otherwise `false` .
  */
 bool	av_is_a_positive_number(char **av)
 {
@@ -63,7 +63,7 @@ bool	av_is_a_positive_number(char **av)
 /**
  * @brief Check if the length of the number is valid based on INT MAX length
  * @param av Arguments
- * @return true if the length of the number is less than 11 characters.
+ * @return `true` if the length of the number is less than 11 characters.
  */
 bool	is_valid_length_number(char **av)
 {
@@ -89,7 +89,8 @@ bool	is_valid_length_number(char **av)
  * @brief Check if the number is under or equal INT MAX
  * @param ac Number of arguments
  * @param av Arguments
- * @return true if the number is under or equal INT MAX, otherwise false.
+ * @return `true` if the number is under or equal INT MAX,
+ * otherwise `false`.
  */
 bool	is_number_under_intmax(int ac, char **av)
 {
@@ -115,6 +116,10 @@ bool	is_number_under_intmax(int ac, char **av)
 
 /**
  * @brief Check if the arguments are valid
+ * @param ac Number of arguments
+ * @param av Arguments
+ * @return `true` if the arguments passed in all verifications,
+ * otherwise `false`.
  */
 bool	arguments_validation_manager(int ac, char **av)
 {
@@ -124,7 +129,7 @@ bool	arguments_validation_manager(int ac, char **av)
 		{
 			if (is_valid_length_number(av) && is_number_under_intmax(ac, av))
 				return (true);
-			error_manager("Arguments must be under INT MAX.\n");
+			error_manager("Arguments must be under or equal INT MAX.\n");
 		}
 		error_manager("Arguments must be positive numbers.\n");
 	}

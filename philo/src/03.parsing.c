@@ -6,14 +6,17 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:16:16 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/05 11:18:18 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 17:35:00 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 /**
- * @todo: free table if error_manager is called
+ * @brief: Parse the arguments and set the table values from it
+ * @param table: The table structure
+ * @param av: Arguments
+ * @return void
  */
 void	table_parsing(t_table *table, char **av)
 {
