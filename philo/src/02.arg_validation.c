@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 20:24:28 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/06 16:50:54 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 17:06:28 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ bool	av_is_a_positive_number(char **av)
 				return (false);
 			if (av[idx][c] >= '0' || av[idx][c] <= '9')
 			{
-				if (av[idx][c] == '\0' && av[idx + 1] == NULL)
+				if (av[idx][c + 1] == '\0' && av[idx + 1] == NULL)
 					return (true);
 			}
 		}
@@ -118,10 +118,15 @@ bool	is_number_under_intmax(int ac, char **av)
  */
 bool	arguments_validation_manager(int ac, char **av)
 {
-	if (arguments_amount(ac)
-		&& av_is_a_positive_number(av)
-		&& is_valid_length_number(av)
-		&& is_number_under_intmax(ac, av))
-		return (true);
+	if (arguments_amount(ac))
+	{
+		if (av_is_a_positive_number(av))
+		{
+			if (is_valid_length_number(av) && is_number_under_intmax(ac, av))
+				return (true);
+			error_manager("Arguments must be under INT MAX.\n");
+		}
+		error_manager("Arguments must be positive numbers.\n");
+	}
 	return (false);
 }
