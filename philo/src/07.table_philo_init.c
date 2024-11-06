@@ -6,14 +6,18 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/06 18:05:18 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 18:33:00 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 /**
- * @brief Set the chopsticks for the philosopher
+ * @brief Set the chopsticks for the philosopher, based on philo's id.
+ * If the id is even, the first chopstick will be the one in the position of
+ * the philosopher, and the second chopstick will be the next one. If the id
+ * is odd, the first chopstick will be the next one, and the second chopstick
+ * will be the one in the position of the philosopher.
  * @param philo The philosopher
  * @param chopsticks The chopsticks
  * @param philo_pos The position of the philosopher
@@ -35,6 +39,13 @@ void	set_chopsticks(t_philo *philo, t_chops *chopsticks, int philo_pos)
 	}
 }
 
+/**
+ * @brief Initialize the philosophers. It sets the id, the meals, the full
+ * status, the table, the mutex and the chopsticks. Also, initializes the
+ * mutexes for `philo_mtx`, and sets the chopsticks for each philosopher.
+ * @param table The table structure
+ * @return void
+ */
 void	philo_init_runner(t_table *table)
 {
 	int		idx;
@@ -53,6 +64,11 @@ void	philo_init_runner(t_table *table)
 	}
 }
 
+/**
+ * @brief Allocate memory for the table structure
+ * @param table The table structure
+ * @return The table structure with the memory allocated
+ */
 t_table	*table_alloc(t_table *table)
 {
 	table->philos = ft_safe_malloc(sizeof(t_philo)
@@ -62,6 +78,13 @@ t_table	*table_alloc(t_table *table)
 	return (table);
 }
 
+/**
+ * @brief Initialize the table structure. It sets the mutexes and the
+ * chopsticks. Also, initilizes the mutexes for `chopsticks`, `table_mtx`
+ * and `printer_mtx`.
+ * @param table The table structure
+ * @return void
+ */
 void	table_init(t_table *table)
 {
 	int	idx;
