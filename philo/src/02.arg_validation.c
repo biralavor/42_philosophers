@@ -6,12 +6,17 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 20:24:28 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/06 16:42:46 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 16:50:54 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/**
+ * @brief Check if the amount of arguments is correct
+ * @param ac Number of arguments
+ * @return true if the amount is between 5 or 6 arguments.
+ */
 bool	arguments_amount(int ac)
 {
 	if (ac == 5 || ac == 6)
@@ -22,6 +27,12 @@ bool	arguments_amount(int ac)
 	return (false);
 }
 
+/**
+ * @brief Check if the arguments are positive numbers
+ * @param av Arguments
+ * @return true if all arguments are numbers and positive numbers,
+ * otherwise false.
+ */
 bool	av_is_a_positive_number(char **av)
 {
 	int	idx;
@@ -49,6 +60,11 @@ bool	av_is_a_positive_number(char **av)
 	return (false);
 }
 
+/**
+ * @brief Check if the length of the number is valid based on INT MAX length
+ * @param av Arguments
+ * @return true if the length of the number is less than 11 characters.
+ */
 bool	is_valid_length_number(char **av)
 {
 	int	len;
@@ -69,6 +85,12 @@ bool	is_valid_length_number(char **av)
 	return (false);
 }
 
+/**
+ * @brief Check if the number is under or equal INT MAX
+ * @param ac Number of arguments
+ * @param av Arguments
+ * @return true if the number is under or equal INT MAX, otherwise false.
+ */
 bool	is_number_under_intmax(int ac, char **av)
 {
 	int		idx;
@@ -91,6 +113,9 @@ bool	is_number_under_intmax(int ac, char **av)
 	return (false);
 }
 
+/**
+ * @brief Check if the arguments are valid
+ */
 bool	arguments_validation_manager(int ac, char **av)
 {
 	if (arguments_amount(ac)

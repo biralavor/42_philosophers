@@ -6,12 +6,18 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:03:55 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/05 11:14:01 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:48:26 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/**
+ * @brief Main function of the program
+ * @param ac Number of arguments
+ * @param av Arguments
+ * @return int EXIT_SUCCESS or EXIT_FAILURE
+ */
 int	main(int ac, char **av)
 {
 	t_table	table;
