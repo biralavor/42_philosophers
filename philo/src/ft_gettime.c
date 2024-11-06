@@ -6,12 +6,20 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 18:57:26 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 18:16:46 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 19:35:37 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/**
+ * @brief This function gets the actual time in seconds, milliseconds or
+ * microseconds.
+ * It uses the gettimeofday function to get the actual time, and then it
+ * calculates the time in the desired time code.
+ * @param timecode The time code to get the time
+ * @return long The actual time in the desired time code
+ */
 long	ft_gettime(t_time_code timecode)
 {
 	struct timeval	actual_time;

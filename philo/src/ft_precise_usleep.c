@@ -6,12 +6,21 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:34:23 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/03 10:14:52 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 19:36:41 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/**
+ * @brief This function sleeps for a precise amount of time in microseconds.
+ * It calculates the elapsed time, and the remaining time to sleep.
+ * If the remaining time is greater than 1e3, it sleeps for half of the
+ * remaining time. Otherwise, it sleeps until the time is reached.
+ * @param microsec The time to sleep in microseconds
+ * @param table The table structure
+ * @return void
+ */
 void	precise_usleep(long microsec, t_table *table)
 {
 	long	start;
