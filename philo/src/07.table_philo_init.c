@@ -6,20 +6,20 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/06 18:00:44 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 18:05:18 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 /**
- * @brief Get the chopsticks for the philosopher
+ * @brief Set the chopsticks for the philosopher
  * @param philo The philosopher
  * @param chopsticks The chopsticks
  * @param philo_pos The position of the philosopher
  * @return void
  */
-void	get_chopsticks(t_philo *philo, t_chops *chopsticks, int philo_pos)
+void	set_chopsticks(t_philo *philo, t_chops *chopsticks, int philo_pos)
 {
 	if (philo->id % 2 == 0)
 	{
@@ -49,7 +49,7 @@ void	philo_init_runner(t_table *table)
 		philo->full = false;
 		philo->table = table;
 		safe_mutex_handler(&philo->philo_mtx, INIT);
-		get_chopsticks(philo, table->chopsticks, idx);
+		set_chopsticks(philo, table->chopsticks, idx);
 	}
 }
 
