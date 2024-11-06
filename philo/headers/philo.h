@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/05 15:58:04 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 18:46:35 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void	error_pthread_handler(int status, int opcode);
 void	table_parsing(t_table *table, char **av);
 void	table_init(t_table *table);
 void	philo_init_runner(t_table *table);
-void	get_chopsticks(t_philo *philo, t_chops *chopstick, int philo_pos);
+void	set_chopsticks(t_philo *philo, t_chops *chopstick, int philo_pos);
 
 /* getters and setters functions */
 void	set_bool(pthread_mutex_t *mutex, bool *destination, bool value);
@@ -144,7 +144,7 @@ long	get_long(pthread_mutex_t *mutex, long *value);
 bool	this_is_the_end_of_dinner(t_table *table);
 
 /* dinner manager functions */
-void	semaphore_like_for_threads(t_table *table);
+void	holdon_until_all_threads(t_table *table);
 bool	all_threads_are_running(pthread_mutex_t *mutex, long *threads,
 			long total_philos);
 void	increase_long(pthread_mutex_t *mutex, long *value);

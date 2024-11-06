@@ -1,17 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_and_error_manager.c                          :+:      :+:    :+:   */
+/*   04.clear_and_error_manager.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 20:33:35 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 18:26:59 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 17:36:29 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/**
+ * @brief Print an error message and exit the program
+ * @param error_msg The error message to be printed
+ */
 void	error_manager(const char *error_msg)
 {
 	write(STDERR_FILENO, RED, ft_strlen(RED));
@@ -21,6 +25,11 @@ void	error_manager(const char *error_msg)
 	exit(EXIT_FAILURE);
 }
 
+/**
+ * @brief Free the table structure, destroy the mutexes and free the memory
+ * @param table The table structure 
+ * @return void
+ */
 void	table_free(t_table *table)
 {
 	int		idx;

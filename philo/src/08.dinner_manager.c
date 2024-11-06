@@ -6,14 +6,21 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/05 07:13:06 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 18:52:25 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 /**
- * @brief: what if set.total_meals == -1?
+ * @brief This function is the main function that manages the dinner. It
+ * creates the threads for the philosophers, calls the monitor, and waits for
+ * them to finish. It also sets the start time of the dinner. After creating
+ * threads and running `dinner runner`, it sets that all threads are ready
+ * to go. After an ending condition happend at `dinner runner`, threads and
+ * the monitor are joined.
+ * @param table The table structure
+ * @return void
  */
 void	dinner_manager(t_table *table)
 {
@@ -41,12 +48,19 @@ void	dinner_manager(t_table *table)
 	safe_thread_handler(&table->monitor_thread, NULL, NULL, JOIN);
 }
 
+/**
+ * @brief `dinner runner` sets a job for every created philosopher. It also
+ * sets the start time of the dinner, and the boolean that indicates
+ * that all threads are ready to go.
+ * @param table The table structure
+ * @return void
+ */
 void	*dinner_runner(void *data)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *)data;
-	semaphore_like_for_threads(philo->table);
+	holdon_until_all_threads(philo->table);
 	set_long(&philo->philo_mtx, &philo->time_of_last_meal,
 		ft_gettime(MILLISECOND));
 	increase_long(&philo->table->table_mtx,

@@ -6,12 +6,19 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 21:55:04 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/27 21:56:12 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 19:36:59 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/**
+ * @brief This function allocates memory safely.
+ * It uses the malloc function to allocate memory, and if the pointer is NULL,
+ * it calls the error manager.
+ * @param size The size of the memory to allocate
+ * @return void* The pointer to the allocated memory
+ */
 void	*ft_safe_malloc(size_t size)
 {
 	void	*ptr;

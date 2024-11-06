@@ -6,12 +6,18 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:16:28 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/04 18:31:28 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 17:46:06 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/**
+ * @brief Print an error message based on the `status` and the `opcode`
+ * @param status The status of the pthread operation, defined by `errno.h` codes
+ * @param opcode The operation code called
+ * @return void
+ */
 void	error_pthread_handler(int status, int opcode)
 {
 	if (0 == status)
@@ -33,6 +39,15 @@ void	error_pthread_handler(int status, int opcode)
 			" specifies the calling thread.\n");
 }
 
+/**
+ * @brief Handle the pthread operations,
+ * in a safe mode calling the `error pthread handler` simultaneously
+ * @param th_id The thread id to be handled
+ * @param func_ptr The function pointer to be called
+ * @param data The data to be passed to the function
+ * @param opcode The operation code called
+ * @return void
+ */
 void	safe_thread_handler(pthread_t *th_id, void *(*func_ptr)(void *),
 			void *data, t_mtx_opcode opcode)
 {
