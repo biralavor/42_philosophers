@@ -6,17 +6,19 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/06 18:46:35 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 18:52:25 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 /**
- * @brief: This function is the main function that manages the dinner. It
- * creates the threads for the philosophers and the monitor, and waits for
+ * @brief This function is the main function that manages the dinner. It
+ * creates the threads for the philosophers, calls the monitor, and waits for
  * them to finish. It also sets the start time of the dinner. After creating
- * threads and running `dinner runner`, it sets that all threads are ready to go.
+ * threads and running `dinner runner`, it sets that all threads are ready
+ * to go. After an ending condition happend at `dinner runner`, threads and
+ * the monitor are joined.
  * @param table The table structure
  * @return void
  */
@@ -47,9 +49,9 @@ void	dinner_manager(t_table *table)
 }
 
 /**
- * @brief: `dinner runner` sets a job for every created philosopher.
- * It also sets the start time of the dinner, and the boolean
- * that indicates that all threads are ready to go.
+ * @brief `dinner runner` sets a job for every created philosopher. It also
+ * sets the start time of the dinner, and the boolean that indicates
+ * that all threads are ready to go.
  * @param table The table structure
  * @return void
  */

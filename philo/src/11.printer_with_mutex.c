@@ -6,12 +6,21 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:12:00 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/05 11:00:04 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 19:07:29 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/**
+ * @brief This function manages the printer. It calls the printer with mutex
+ * functions, and locks the printer mutex to avoid any other philosopher
+ * access the printer.
+ * @param status The status of the philosopher
+ * @param philo The philosopher structure
+ * @param debug The debug mode
+ * @return void
+ */
 void	printer_manager(t_philo_status status, t_philo *philo, int debug)
 {
 	long	elapsed;
@@ -29,6 +38,13 @@ void	printer_manager(t_philo_status status, t_philo *philo, int debug)
 	safe_mutex_handler(&philo->table->printer_mtx, UNLOCK);
 }
 
+/**
+ * @brief This function prints the status of the philosopher in a classic way.
+ * @param status The status of the philosopher
+ * @param philo The philosopher structure
+ * @param elapsed The elapsed time since the start of the dinner
+ * @return void
+ */
 void	printer_with_mutex_classic(t_philo_status status,
 	t_philo *philo, long elapsed)
 {
@@ -49,6 +65,14 @@ void	printer_with_mutex_classic(t_philo_status status,
 			elapsed, philo->id);
 }
 
+/**
+ * @brief This function prints the status of the philosopher, replacing `forks`
+ * with `chopsticks`, which I think is more reasonable.
+ * @param status The status of the philosopher
+ * @param philo The philosopher structure
+ * @param elapsed The elapsed time since the start of the dinner
+ * @return void
+ */
 void	printer_with_mutex_chopsticks(t_philo_status status,
 	t_philo *philo, long elapsed)
 {
@@ -69,6 +93,14 @@ void	printer_with_mutex_chopsticks(t_philo_status status,
 			elapsed, philo->id);
 }
 
+/**
+ * @brief This function prints the status of the philosopher in a debug way.
+ * It shows the chopsticks id, and the actual number of meals.
+ * @param status The status of the philosopher
+ * @param philo The philosopher structure
+ * @param elapsed The elapsed time since the start of the dinner
+ * @return void
+ */
 void	printer_with_mutex_debug(t_philo_status status,
 	t_philo *philo, long elapsed)
 {

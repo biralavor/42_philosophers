@@ -6,12 +6,19 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:16:51 by umeneses          #+#    #+#             */
-/*   Updated: 2024/10/30 22:48:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/06 18:55:29 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/**
+ * @brief This function sets a boolean value in a thread-safe way.
+ * @param mutex The mutex to lock and unlock
+ * @param destination The destination boolean
+ * @param value The value to be setted in the destination
+ * @return void
+ */
 void	set_bool(pthread_mutex_t *mutex, bool *destination, bool value)
 {
 	safe_mutex_handler(mutex, LOCK);
@@ -19,6 +26,12 @@ void	set_bool(pthread_mutex_t *mutex, bool *destination, bool value)
 	safe_mutex_handler(mutex, UNLOCK);
 }
 
+/**
+ * @brief This function gets a boolean value in a thread-safe way.
+ * @param mutex The mutex to lock and unlock
+ * @param value The value to be returned
+ * @return `bool` The value of the boolean
+ */
 bool	get_bool(pthread_mutex_t *mutex, bool *value)
 {
 	bool	result;
@@ -30,6 +43,13 @@ bool	get_bool(pthread_mutex_t *mutex, bool *value)
 	return (result);
 }
 
+/**
+ * @brief This function sets a long value in a thread-safe way.
+ * @param mutex The mutex to lock and unlock
+ * @param destination The destination long
+ * @param value The value to be setted in the destination
+ * @return void
+ */
 void	set_long(pthread_mutex_t *mutex, long *destination, long value)
 {
 	safe_mutex_handler(mutex, LOCK);
@@ -37,6 +57,12 @@ void	set_long(pthread_mutex_t *mutex, long *destination, long value)
 	safe_mutex_handler(mutex, UNLOCK);
 }
 
+/**
+ * @brief This function gets a long value in a thread-safe way.
+ * @param mutex The mutex to lock and unlock
+ * @param value The value to be returned
+ * @return `long` The value of the long
+ */
 long	get_long(pthread_mutex_t *mutex, long *value)
 {
 	long	result;
@@ -48,6 +74,12 @@ long	get_long(pthread_mutex_t *mutex, long *value)
 	return (result);
 }
 
+/**
+ * @brief This function gets the boolean value that indicates
+ * the end of dinner.
+ * @param table The table structure
+ * @return `bool` The value of the boolean
+ */
 bool	this_is_the_end_of_dinner(t_table *table)
 {
 	bool	result;
