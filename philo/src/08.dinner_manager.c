@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/06 18:52:25 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/09 16:38:42 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	dinner_manager(t_table *table)
 				dinner_runner, &table->philos[idx], CREATE);
 	}
 	safe_thread_handler(&table->monitor_thread, monitor_runner, table, CREATE);
-	table->start_time = ft_gettime(MILLISECOND);
 	set_bool(&table->table_mtx, &table->all_threads_ready_togo, true);
 	idx = -1;
+	table->start_time = ft_gettime(MILLISECOND);
 	while (++idx < table->set.total_philos)
 		safe_thread_handler(&table->philos[idx].th_id, NULL, NULL, JOIN);
 	set_bool(&table->table_mtx, &table->this_is_the_end, true);
