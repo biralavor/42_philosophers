@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 18:57:56 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/09 20:40:27 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/10 11:53:32 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	*monitor_runner(void *data)
 				set_bool(&table->table_mtx, &table->this_is_the_end, true);
 			}
 		}
-		// precise_usleep(100, table);
+		precise_usleep(200, table);
 	}
 	return (NULL);
 }
@@ -64,7 +64,7 @@ bool	is_philo_dead_manager(t_philo *philo)
 		return (false);
 	time_to_die = philo->table->set.time_to_die / 1e3;
 	if (ft_gettime(MILLISECOND) - get_long(&philo->philo_mtx,
-		&philo->time_of_last_meal) > time_to_die)
+			&philo->time_of_last_meal) > time_to_die)
 		return (true);
 	return (false);
 }
