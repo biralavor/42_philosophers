@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:16:16 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/06 18:52:57 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/10 13:21:52 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	table_parsing(t_table *table, char **av)
 		table->set.total_philos = PHILOS_LIMIT;
 	if (table->set.time_to_die < 6e4
 		|| table->set.time_to_eat < 6e4
-		|| table->set.time_to_sleep < 6e4)
+		|| table->set.time_to_sleep < 6e4
+		|| (table->set.total_meals >= 0 && table->set.total_meals < 6e4))
 		error_manager("Time must be at least 60ms.\n");
 }

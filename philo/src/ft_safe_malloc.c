@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 21:55:04 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/06 19:36:59 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/10 13:11:39 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void	*ft_safe_malloc(size_t size)
 
 	ptr = malloc(size);
 	if (NULL == ptr)
-		error_manager("Error.\nMalloc failed.\n");
+		error_manager("Malloc failed.\n");
 	return (ptr);
 }
