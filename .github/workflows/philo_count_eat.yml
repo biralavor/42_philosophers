@@ -1,0 +1,65 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    philo_tester.yml                                   :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/11/10 16:00:54 by umeneses          #+#    #+#              #
+#    Updated: 2024/11/10 09:13:00 by umeneses         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+name: philo tester >> count_eat
+
+on:
+  push:
+    branches:
+    - main
+    - '**feature**'
+    - '**feat**'
+    - '**bugfix**'
+    - '**fix**'
+    - '**release**'
+  pull_request:
+    branches:
+    - main
+    - '**feature**'
+    - '**feat**'
+    - '**bugfix**'
+    - '**fix**'
+    - '**release**'
+
+jobs:
+  philo_count_eat:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: ./philo/
+    steps:
+      - name: Starting Github Actions
+        uses: actions/checkout@v4.1.4
+
+      - name: Building Program with Philosophers Makefile
+        run: make
+
+      - name: Submodule Init
+        run: git submodule init && git submodule update
+
+      - name: Running Philo Tester
+        run: |
+          mkdir ../tests
+          cd ../tests
+          cp ../42-philosophers/tests/count_eat .
+          cp ../42-philosophers/tests/test.sh .
+          bash test.sh count_eat
+
+      - name: Cleaning up
+        run: |
+          rm -rf ../tests
+          make fclean
+
+
+# :: source philo_tester repository ::
+# https://github.com/sgkhusal/42-philosophers/blob/main/tests/test.sh
