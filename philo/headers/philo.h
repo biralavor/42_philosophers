@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/10 13:41:34 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/10 18:52:51 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,7 @@ void	table_free(t_table *table);
 
 /* LIBFT utility functions */
 int		ft_strlen(const char *str);
-long	ft_atoi_long_int(const char *string);
+long	ft_ato_long(const char *string);
 long	ft_gettime(t_time_code timecode);
 void	precise_usleep(long microsec, t_table *table);
 

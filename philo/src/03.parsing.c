@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:16:16 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/10 16:08:15 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/10 18:52:51 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
  */
 void	table_parsing(t_table *table, char **av)
 {
-	table->set.total_philos = ft_atoi_long_int(av[1]);
-	table->set.time_to_die = ft_atoi_long_int(av[2]) * 1e3;
-	table->set.time_to_eat = ft_atoi_long_int(av[3]) * 1e3;
-	table->set.time_to_sleep = ft_atoi_long_int(av[4]) * 1e3;
+	table->set.total_philos = ft_ato_long(av[1]);
+	table->set.time_to_die = ft_ato_long(av[2]) * 1e3;
+	table->set.time_to_eat = ft_ato_long(av[3]) * 1e3;
+	table->set.time_to_sleep = ft_ato_long(av[4]) * 1e3;
 	if (av[5])
-		table->set.total_meals = ft_atoi_long_int(av[5]);
+		table->set.total_meals = ft_ato_long(av[5]);
 	else
 		table->set.total_meals = -1;
 	if (table->set.total_philos > PHILOS_LIMIT)
