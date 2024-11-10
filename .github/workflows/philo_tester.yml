@@ -48,7 +48,15 @@ jobs:
         run: git submodule init && git submodule update
 
       - name: Running Philo Tester
-        run: cd ../42-philosophers/tests && ./test.sh
+        run: |
+          mkdir ../tests
+          cd ../tests
+          cp ../42-philosophers/tests/errors .
+          cp ../42-philosophers/tests/should_die .
+          cp ../42-philosophers/tests/should_not_die .
+          cp ../42-philosophers/tests/count_eat .
+          cp ../42-philosophers/tests/test.sh .
+          bash test.sh
 
 
 # :: source philo_tester repository ::
