@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-name: philo tester
+name: philo tester >> should_die
 
 on:
   push:
@@ -31,9 +31,9 @@ on:
     - '**release**'
 
 jobs:
-  builtins:
+  philo_should_die:
     runs-on: ubuntu-latest
-    timeout-minutes: 7
+    timeout-minutes: 10
     defaults:
       run:
         working-directory: ./philo/
@@ -51,12 +51,13 @@ jobs:
         run: |
           mkdir ../tests
           cd ../tests
-          cp ../42-philosophers/tests/errors .
           cp ../42-philosophers/tests/should_die .
-          cp ../42-philosophers/tests/should_not_die .
-          cp ../42-philosophers/tests/count_eat .
-          cp ../42-philosophers/tests/test.sh .
-          bash test.sh
+          bash test.sh should_die
+
+      - name: Cleaning up
+        run: |
+          rm -rf ../tests
+          make fclean
 
 
 # :: source philo_tester repository ::
