@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 18:57:56 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/09 16:49:49 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/09 20:40:27 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /**
  * @brief This function is the main routine for the monitor. The goal here
- * is to really monitoring the philosophers, and check if they are dead.
+ * is to really monitoring the philosophers, and check if someone is dead.
  * If a philosopher is dead, it prints the status of the philosopher, and
  * sets the boolean that indicates the end of dinner.
  * @param data The table structure
