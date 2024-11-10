@@ -1,0 +1,3 @@
+[submodule "42-philosophers"]
+	path = 42-philosophers
+	url = https://github.com/sgkhusal/42-philosophers.git
