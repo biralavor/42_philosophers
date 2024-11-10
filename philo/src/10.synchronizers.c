@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:42:40 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/06 19:00:29 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/09 23:18:02 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,12 @@ void	increase_long(pthread_mutex_t *mutex, long *value)
 }
 
 /**
- * @brief This function checks if the dinner has ended.
+ * @brief async mode for the philosophers !!!!!!!! REWRITE NEEDED!!!!!!!!!
+ * If the total number of philosophers
+ * is even, the philosopher with an even id sleeps for 30ms. Otherwise, the
+ * philosopher with an odd id thinks.
  * @param table The table structure
- * @return `bool` True if the dinner has ended, false otherwise
- * @note This function is not thread-safe
+ * @return void
  */
 void	philos_in_async_mode(t_philo *philo)
 {
