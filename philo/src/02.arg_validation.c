@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 20:24:28 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/10 14:29:30 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/10 14:37:31 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,7 @@ bool	av_is_a_positive_number(char **av, int idx)
 		else if (av[idx][c] == '-')
 			return (false);
 		if (ft_is_digit(av[idx][c]))
-		{
-			if (av[idx][c + 1] == '\0' && av[idx + 1] == NULL)
-				return (true);
-		}
+			return (true);
 		else
 			break ;
 	}
