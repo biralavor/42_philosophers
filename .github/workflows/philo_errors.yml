@@ -53,7 +53,7 @@ jobs:
           cd ../tests
           cp ../42-philosophers/tests/errors .
           cp ../42-philosophers/tests/test.sh .
-          bash test.sh
+          bash test.sh errors
 
       - name: Cleaning up
         run: |
