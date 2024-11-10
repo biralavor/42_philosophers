@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/06 18:46:35 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/10 13:41:34 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define BWHITE "\033[1;37m"
 # define RESET "\033[0m"
 
-# define DEBUG_MODE 0
+# define DEBUG_MODE 2
 # define PHILOS_LIMIT 200
 
 typedef enum e_mtx_opcode
@@ -112,7 +112,9 @@ struct s_table
 /* validation functions */
 bool	arguments_validation_manager(int ac, char **av);
 bool	arguments_amount(int ac);
-bool	av_is_a_positive_number(char **av);
+bool	argument_number_validation(char **av);
+bool	av_is_a_positive_number(char **av, int idx);
+bool	ft_is_digit(char c);
 bool	ft_is_space(const char c);
 bool	is_valid_length_number(char **av);
 bool	is_number_under_intmax(int ac, char **av);
