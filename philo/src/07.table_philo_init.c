@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/06 18:33:00 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:35:53 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 /**
  * @brief Set the chopsticks for the philosopher, based on philo's id.
+ * The goal here is to avoid DEADLOCK issues.
  * If the id is even, the first chopstick will be the one in the position of
  * the philosopher, and the second chopstick will be the next one. If the id
  * is odd, the first chopstick will be the next one, and the second chopstick

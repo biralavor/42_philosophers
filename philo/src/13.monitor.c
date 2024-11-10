@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 18:57:56 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/06 19:30:21 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/10 11:53:32 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /**
  * @brief This function is the main routine for the monitor. The goal here
- * is to really monitoring the philosophers, and check if they are dead.
+ * is to really monitoring the philosophers, and check if someone is dead.
  * If a philosopher is dead, it prints the status of the philosopher, and
  * sets the boolean that indicates the end of dinner.
  * @param data The table structure
@@ -42,6 +42,7 @@ void	*monitor_runner(void *data)
 				set_bool(&table->table_mtx, &table->this_is_the_end, true);
 			}
 		}
+		precise_usleep(200, table);
 	}
 	return (NULL);
 }
@@ -58,15 +59,12 @@ void	*monitor_runner(void *data)
 bool	is_philo_dead_manager(t_philo *philo)
 {
 	long	time_to_die;
-	long	current;
-	long	last_meal;
 
 	if (get_bool(&philo->philo_mtx, &philo->full))
 		return (false);
-	current = ft_gettime(MILLISECOND);
-	last_meal = get_long(&philo->philo_mtx, &philo->time_of_last_meal);
 	time_to_die = philo->table->set.time_to_die / 1e3;
-	if (current - last_meal > time_to_die)
+	if (ft_gettime(MILLISECOND) - get_long(&philo->philo_mtx,
+			&philo->time_of_last_meal) > time_to_die)
 		return (true);
 	return (false);
 }

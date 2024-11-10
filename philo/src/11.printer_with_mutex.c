@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:12:00 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/06 19:07:29 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/09 16:48:37 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	printer_manager(t_philo_status status, t_philo *philo, int debug)
 {
 	long	elapsed;
 
-	elapsed = ft_gettime(MILLISECOND) - philo->table->start_time;
 	if (philo->full)
 		return ;
 	safe_mutex_handler(&philo->table->printer_mtx, LOCK);
+	elapsed = ft_gettime(MILLISECOND) - philo->table->start_time;
 	if (debug == 1 && !this_is_the_end_of_dinner(philo->table))
 		printer_with_mutex_chopsticks(status, philo, elapsed);
 	else if (debug == 2 && !this_is_the_end_of_dinner(philo->table))
