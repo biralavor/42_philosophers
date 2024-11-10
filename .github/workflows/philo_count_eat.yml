@@ -52,6 +52,7 @@ jobs:
           mkdir ../tests
           cd ../tests
           cp ../42-philosophers/tests/count_eat .
+          cp ../42-philosophers/tests/test.sh .
           bash test.sh count_eat
 
       - name: Cleaning up

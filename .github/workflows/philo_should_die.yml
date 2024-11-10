@@ -52,6 +52,7 @@ jobs:
           mkdir ../tests
           cd ../tests
           cp ../42-philosophers/tests/should_die .
+          cp ../42-philosophers/tests/test.sh .
           bash test.sh should_die
 
       - name: Cleaning up
