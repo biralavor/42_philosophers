@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 18:57:56 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/10 11:53:32 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/11 22:07:33 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	*monitor_runner(void *data)
 				set_bool(&table->table_mtx, &table->this_is_the_end, true);
 			}
 		}
-		precise_usleep(200, table);
+		// precise_usleep(10, table);
 	}
 	return (NULL);
 }
