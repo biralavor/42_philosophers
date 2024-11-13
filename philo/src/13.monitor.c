@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 18:57:56 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/12 21:25:51 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/13 10:50:19 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	*monitor_runner(void *data)
 				printer_manager(DEAD, table->philos + idx, DEBUG_MODE);
 			}
 		}
-		// precise_usleep(10, table);
 	}
 	return (NULL);
 }
