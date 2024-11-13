@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:19:23 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/12 21:24:34 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/12 21:36:58 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ void	let_philo_eat_routine(t_philo *philo)
 	safe_mutex_handler(&philo->second_chops->chops_mtx, LOCK);
 	printer_manager(GOT_1ST_CHOPSTICK, philo, DEBUG_MODE);
 	printer_manager(GOT_2ND_CHOPSTICK, philo, DEBUG_MODE);
+	philo->got_meals++;
+	printer_manager(EATING, philo, DEBUG_MODE);
 	set_long(&philo->philo_mtx, &philo->time_of_last_meal,
 		ft_gettime(MILLISECOND));
-	philo->got_meals++;
-	precise_usleep(philo->table->set.time_to_eat, philo->table);
-	printer_manager(EATING, philo, DEBUG_MODE);
 	safe_mutex_handler(&philo->first_chops->chops_mtx, UNLOCK);
 	safe_mutex_handler(&philo->second_chops->chops_mtx, UNLOCK);
+	precise_usleep(philo->table->set.time_to_eat, philo->table);
 	if (philo->got_meals == philo->table->set.total_meals)
 		set_bool(&philo->philo_mtx, &philo->full, true);
 }
