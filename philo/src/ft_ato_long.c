@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_long_int.c                                 :+:      :+:    :+:   */
+/*   ft_ato_long.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,7 +17,7 @@
  * @param string The string to convert
  * @return long The integer converted from the string
  */
-long	ft_atoi_long_int(const char *string)
+long	ft_ato_long(const char *string)
 {
 	long	nbr;
 	int		sign;

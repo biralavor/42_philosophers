@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/09 16:38:42 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/13 10:49:10 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ void	dinner_manager(t_table *table)
 	int	idx;
 
 	idx = -1;
-	if (table->set.total_meals == 0)
-		return ;
-	else if (table->set.total_philos == 1)
+	if (table->set.total_philos == 1)
 		safe_thread_handler(&table->philos[0].th_id,
 			lonely_philo_routine, &table->philos[0], CREATE);
 	else

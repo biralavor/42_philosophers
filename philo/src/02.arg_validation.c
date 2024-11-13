@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 20:24:28 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/10 14:37:31 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/10 18:52:51 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ bool	is_number_under_intmax(int ac, char **av)
 	ac -= 1;
 	while (av[++idx])
 	{
-		nbr = ft_atoi_long_int(av[idx]);
+		nbr = ft_ato_long(av[idx]);
 		if (nbr <= INT_MAX)
 		{
 			if (idx == ac)
