@@ -51,7 +51,7 @@ jobs:
         run: |
           mkdir ../tests
           cd ../tests
-          cp ./sheela_tests/sheela_welton_x15 .
+          cp ./sheela_tests/sheela_welton_x15.sh .
           bash sheela_welton_x15.sh
 
       - name: Cleaning up
