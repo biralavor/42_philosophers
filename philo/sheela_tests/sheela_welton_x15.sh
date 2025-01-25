@@ -1,8 +1,8 @@
 #!/bin/bash
 # make -C philo_bonus && clear
 # exe=./philo_bonus/philo_bonus
-make -C ../../philo/.
-exe=../../philo/philo
+make -C ../
+exe=../philo
 
 tests=10
 color1="\e[41;30m"
