@@ -19,7 +19,7 @@ while [ $x -le $tests ]
 do
 	printf $color2
     echo -e "Test: $x$reset"
-	$exe 2 100 200 200 | grep die
+	stdbuf -oL $exe 2 100 200 200 | grep die
 	sleep $time
 	x=$(( $x + 1 ))
 done
@@ -33,7 +33,7 @@ while [ $x -le $tests ]
 do
 	printf $color2
     echo -e "Test: $x$reset"
-	$exe 2 150 360 100 | grep die
+	stdbuf -oL $exe 2 150 360 100 | grep die
 	sleep $time
 	x=$(( $x + 1 ))
 done
@@ -47,7 +47,7 @@ while [ $x -le $tests ]
 do
 	printf $color2
     echo -e "Test: $x$reset"
-	$exe 2 150 200 100 | grep die
+	stdbuf -oL $exe 2 150 200 100 | grep die
 	sleep $time
 	x=$(( $x + 1 ))
 done
@@ -61,7 +61,7 @@ while [ $x -le $tests ]
 do
 	printf $color2
     echo -e "Test: $x$reset"
-	$exe 1 400 100 100 7 | grep die
+	stdbuf -oL $exe 1 400 100 100 7 | grep die
 	sleep $time
 	x=$(( $x + 1 ))
 done
@@ -75,7 +75,7 @@ while [ $x -le $tests ]
 do
 	printf $color4
     echo -e "Test: $x$reset"
-	$exe 4 210 100 100 7 | grep die
+	stdbuf -oL $exe 4 210 100 100 7 | grep die
 	sleep $time
 	x=$(( $x + 1 ))
 done
@@ -89,7 +89,7 @@ while [ $x -le $tests ]
 do
 	printf $color2
     echo -e "Test: $x$reset"
-	$exe 1 800 200 200 7 | grep die
+	stdbuf -oL $exe 1 800 200 200 7 | grep die
 	sleep $time
 	x=$(( $x + 1 ))
 done
@@ -103,7 +103,7 @@ while [ $x -le $tests ]
 do
 	printf $color4
     echo -e "Test: $x$reset"
-	$exe 5 800 200 200 7 | grep die
+	stdbuf -oL $exe 5 800 200 200 7 | grep die
 	sleep $time
 	x=$(( $x + 1 ))
 done
@@ -117,7 +117,7 @@ while [ $x -le $tests ]
 do
 	printf $color2
     echo -e "Test: $x$reset"
-	$exe 4 310 200 100 7 | grep die
+	stdbuf -oL $exe 4 310 200 100 7 | grep die
 	sleep $time
 	x=$(( $x + 1 ))
 done
@@ -131,7 +131,7 @@ while [ $x -le $tests ]
 do
 	printf $color4
     echo -e "Test: $x$reset"
-	$exe 5 400 100 100 7 | grep die
+	stdbuf -oL $exe 5 400 100 100 7 | grep die
 	sleep $time
 	x=$(( $x + 1 ))
 done
@@ -145,7 +145,7 @@ while [ $x -le $tests ]
 do
 	printf $color2
     echo -e "Test: $x$reset"
-	$exe 5 200 100 100 7 | grep die
+	stdbuf -oL $exe 5 200 100 100 7 | grep die
 	sleep $time
 	x=$(( $x + 1 ))
 done
@@ -159,7 +159,7 @@ while [ $x -le $tests ]
 do
 	printf $color4
     echo -e "Test: $x$reset"
-	$exe 3 400 100 100 7 | grep die
+	stdbuf -oL $exe 3 400 100 100 7 | grep die
 	sleep $time
 	x=$(( $x + 1 ))
 done
@@ -173,7 +173,7 @@ while [ $x -le $tests ]
 do
 	printf $color2
     echo -e "Test: $x$reset"
-	$exe 3 200 100 100 7 | grep die
+	stdbuf -oL $exe 3 200 100 100 7 | grep die
 	sleep $time
 	x=$(( $x + 1 ))
 done
@@ -187,7 +187,7 @@ while [ $x -le $tests ]
 do
 	printf $color4
     echo -e "Test: $x$reset"
-	$exe 4 410 200 200 7 | grep die
+	stdbuf -oL $exe 4 410 200 200 7 | grep die
 	sleep $time
 	x=$(( $x + 1 ))
 done
@@ -201,7 +201,7 @@ while [ $x -le $tests ]
 do
 	printf $color2
     echo -e "Test: $x$reset"
-	$exe 4 399 200 200 7 | grep die
+	stdbuf -oL $exe 4 399 200 200 7 | grep die
 	sleep $time
 	x=$(( $x + 1 ))
 done
