@@ -208,4 +208,4 @@ done
 echo
 
 make -C ../philo fclean
-make -C ../philo_bonus fclean
+#make -C ../philo_bonus fclean
