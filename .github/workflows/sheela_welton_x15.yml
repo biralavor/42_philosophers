@@ -52,9 +52,8 @@ jobs:
           mkdir action_tests
           cd action_tests
           cp ../sheela_tests/sheela_welton_x15.sh .
-          output=$(bash sheela_welton_x15.sh 2>&1)
-          echo "$output"
-          if echo "$output" | grep -q "No such file or directory"; then
+          bash sheela_welton_x15.sh 2>&1 | tee output.log
+          if grep -q "No such file or directory" output.log; then
             echo "No such file or directory" >&2
             exit 1
           fi

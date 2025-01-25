@@ -1,6 +1,7 @@
 #!/bin/bash
 # make -C philo_bonus && clear
 # exe=./philo_bonus/philo_bonus
+pwd
 make -C ../
 exe=../philo
 
