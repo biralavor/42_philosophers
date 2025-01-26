@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   07.table_philo_init.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/09 17:35:53 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 18:36:51 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,15 @@
  */
 void	set_chopsticks(t_philo *philo, t_chops *chopsticks, int philo_pos)
 {
+	int	total_philos;
+
+	total_philos = philo->table->set.total_philos;
+	philo->first_chops = &chopsticks[(philo_pos + 1) % total_philos];
+	philo->second_chops = &chopsticks[philo_pos];
 	if (philo->id % 2 == 0)
 	{
 		philo->first_chops = &chopsticks[philo_pos];
-		philo->second_chops = &chopsticks[(philo_pos + 1)
-			% philo->table->set.total_philos];
-	}
-	else
-	{
-		philo->first_chops = &chopsticks[(philo_pos + 1)
-			% philo->table->set.total_philos];
-		philo->second_chops = &chopsticks[philo_pos];
+		philo->second_chops = &chopsticks[(philo_pos + 1) % total_philos];
 	}
 }
 
