@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:19:23 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 14:24:49 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 18:38:00 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
  */
 void	let_philo_eat_routine(t_philo *philo)
 {
-	// if (get_bool(&philo->philo_mtx, &philo->full))
-	// 	return ;
 	safe_mutex_handler(&philo->first_chops->chops_mtx, LOCK);
 	printer_manager(GOT_1ST_CHOPSTICK, philo, DEBUG_MODE);
 	safe_mutex_handler(&philo->second_chops->chops_mtx, LOCK);
@@ -66,20 +64,20 @@ void	let_philo_sleep_routine(t_philo *philo)
 void	let_philo_think_routine(t_philo *philo, bool before_spinlock)
 {
 	long	think_time;
+	long	sleep_time;
+	long	eat_time;
 
 	think_time = 0;
 	if (!before_spinlock)
 		printer_manager(THINKING, philo, DEBUG_MODE);
 	if (philo->table->set.total_philos % 2 == 0)
 		return ;
-	else
-	{
-		think_time = (philo->table->set.time_to_eat * 2)
-			- philo->table->set.time_to_sleep;
-		if (think_time < 0)
-			think_time = 0;
-		precise_usleep(think_time * 0.1, philo->table);
-	}
+	eat_time = philo->table->set.time_to_eat;
+	sleep_time = philo->table->set.time_to_sleep;
+	think_time = (eat_time * 2) - sleep_time;
+	if (think_time < 0)
+		think_time = 0;
+	precise_usleep(think_time * 0.42, philo->table);
 }
 
 /**
