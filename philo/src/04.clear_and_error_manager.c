@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 20:33:35 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/25 23:36:25 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 12:48:22 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ void	table_free(t_table *table)
 	}
 	safe_mutex_handler(&table->table_mtx, DESTROY);
 	safe_mutex_handler(&table->printer_mtx, DESTROY);
-	free(table->philos);
 	free(table->chopsticks);
+	free(table->philos);
 }
