@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 14:17:36 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 18:37:19 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void	*dinner_runner(void *data)
 		if (get_bool(&philo->table->table_mtx, &philo->table->philos->full))
 			break ;
 		let_philo_eat_routine(philo);
-		let_philo_sleep_routine(philo);
+		printer_manager(SLEEPING, philo, DEBUG_MODE);
+		precise_usleep(philo->table->set.time_to_sleep, philo->table);
 		let_philo_think_routine(philo, false);
 	}
 	return (NULL);
