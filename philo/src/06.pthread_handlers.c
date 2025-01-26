@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   06.pthread_handlers.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:16:28 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/06 17:46:06 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 13:35:52 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * @param opcode The operation code called
  * @return void
  */
-void	error_pthread_handler(int status, int opcode)
+void	pthread_error_handler(int status, int opcode)
 {
 	if (0 == status)
 		return ;
@@ -52,12 +52,12 @@ void	safe_thread_handler(pthread_t *th_id, void *(*func_ptr)(void *),
 			void *data, t_mtx_opcode opcode)
 {
 	if (CREATE == opcode)
-		error_pthread_handler(pthread_create(th_id, NULL,
+		pthread_error_handler(pthread_create(th_id, NULL,
 				func_ptr, data), opcode);
 	else if (JOIN == opcode)
-		error_pthread_handler(pthread_join(*th_id, data), opcode);
+		pthread_error_handler(pthread_join(*th_id, data), opcode);
 	else if (DETACH == opcode)
-		error_pthread_handler(pthread_detach(*th_id), opcode);
+		pthread_error_handler(pthread_detach(*th_id), opcode);
 	else
 	{
 		write(STDERR_FILENO, RED, ft_strlen(RED));

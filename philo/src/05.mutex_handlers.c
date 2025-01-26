@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   05.mutex_handlers.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:16:44 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/06 17:45:47 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 13:35:22 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * @param opcode The operation code called
  * @return void
  */
-void	error_mutex_handler(int status, int opcode)
+void	mutex_error_handler(int status, int opcode)
 {
 	if (0 == status)
 		return ;
@@ -49,13 +49,13 @@ void	error_mutex_handler(int status, int opcode)
 void	safe_mutex_handler(pthread_mutex_t *mutex, t_mtx_opcode opcode)
 {
 	if (INIT == opcode)
-		error_mutex_handler(pthread_mutex_init(mutex, NULL), opcode);
+		mutex_error_handler(pthread_mutex_init(mutex, NULL), opcode);
 	else if (LOCK == opcode)
-		error_mutex_handler(pthread_mutex_lock(mutex), opcode);
+		mutex_error_handler(pthread_mutex_lock(mutex), opcode);
 	else if (UNLOCK == opcode)
-		error_mutex_handler(pthread_mutex_unlock(mutex), opcode);
+		mutex_error_handler(pthread_mutex_unlock(mutex), opcode);
 	else if (DESTROY == opcode)
-		error_mutex_handler(pthread_mutex_destroy(mutex), opcode);
+		mutex_error_handler(pthread_mutex_destroy(mutex), opcode);
 	else
 	{
 		write(STDERR_FILENO, RED, ft_strlen(RED));

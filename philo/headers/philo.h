@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/25 21:12:44 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 13:35:52 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,12 +125,12 @@ void	*ft_safe_malloc(size_t size);
 
 /* mutex handler functions */
 void	safe_mutex_handler(pthread_mutex_t *mutex, t_mtx_opcode opcode);
-void	error_mutex_handler(int status, int opcode);
+void	mutex_error_handler(int status, int opcode);
 
 /* thread handler functions*/
 void	safe_thread_handler(pthread_t *th_id, void *(*func_ptr)(void *), \
 			void *data, t_mtx_opcode opcode);
-void	error_pthread_handler(int status, int opcode);
+void	pthread_error_handler(int status, int opcode);
 
 /* table initialization */
 void	table_parsing(t_table *table, char **av);
