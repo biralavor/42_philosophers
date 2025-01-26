@@ -51,7 +51,7 @@ jobs:
         run: |
           mkdir action_tests
           cd action_tests
-          cp ../42-philosophers/tests/errors .
+          cp ../../42-philosophers/tests/errors .
           cp ../sheela_tests/test.sh .
           bash test.sh errors
 
