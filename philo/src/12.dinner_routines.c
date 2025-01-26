@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   12.dinner_routines.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:19:23 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/12 21:36:58 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 14:24:49 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,22 @@
  */
 void	let_philo_eat_routine(t_philo *philo)
 {
-	if (get_bool(&philo->philo_mtx, &philo->full))
-		return ;
+	// if (get_bool(&philo->philo_mtx, &philo->full))
+	// 	return ;
 	safe_mutex_handler(&philo->first_chops->chops_mtx, LOCK);
-	safe_mutex_handler(&philo->second_chops->chops_mtx, LOCK);
 	printer_manager(GOT_1ST_CHOPSTICK, philo, DEBUG_MODE);
+	safe_mutex_handler(&philo->second_chops->chops_mtx, LOCK);
 	printer_manager(GOT_2ND_CHOPSTICK, philo, DEBUG_MODE);
-	philo->got_meals++;
-	printer_manager(EATING, philo, DEBUG_MODE);
 	set_long(&philo->philo_mtx, &philo->time_of_last_meal,
 		ft_gettime(MILLISECOND));
+	philo->got_meals++;
+	printer_manager(EATING, philo, DEBUG_MODE);
+	precise_usleep(philo->table->set.time_to_eat, philo->table);
+	if (philo->table->set.total_meals > 0
+		&& philo->got_meals == philo->table->set.total_meals)
+		set_bool(&philo->philo_mtx, &philo->full, true);
 	safe_mutex_handler(&philo->first_chops->chops_mtx, UNLOCK);
 	safe_mutex_handler(&philo->second_chops->chops_mtx, UNLOCK);
-	precise_usleep(philo->table->set.time_to_eat, philo->table);
-	if (philo->got_meals == philo->table->set.total_meals)
-		set_bool(&philo->philo_mtx, &philo->full, true);
 }
 
 /**
