@@ -6,7 +6,7 @@
 #    By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2025/01/26 10:36:31 by umeneses         ###   ########.fr        #
+#    Updated: 2025/01/26 11:35:57 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -220,6 +220,9 @@ fclean:			clean
 				@$(RM) $(NAME)
 				@$(RM) $(NAME_BONUS)
 				@printf "$(RESET)"
+
+help:			all
+				$(call instructions)
 
 re:				fclean all
 
