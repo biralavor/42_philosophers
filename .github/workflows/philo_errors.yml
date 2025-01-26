@@ -49,10 +49,10 @@ jobs:
 
       - name: Running Philo Tester
         run: |
-          mkdir ../tests
-          cd ../tests
+          mkdir action_tests
+          cd action_tests
           cp ../42-philosophers/tests/errors .
-          cp ../42-philosophers/tests/test.sh .
+          cp ../sheela_tests/test.sh .
           bash test.sh errors
 
       - name: Cleaning up
