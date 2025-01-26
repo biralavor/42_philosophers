@@ -6,7 +6,7 @@
 #    By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2025/01/25 21:12:32 by umeneses         ###   ########.fr        #
+#    Updated: 2025/01/26 10:36:31 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -117,20 +117,21 @@ endef
 
 define				instructions
 					@echo "Welcome to my Philosophers version!"
-					@echo "Hit $(RESET)./$(NAME) $(YELLOW)and add:"
-					@echo "$(CYAN)number_of_philosophers $(RED)time_to_die $(PURPLE)time_to_eat $(BLUE)time_to_sleep $(GREEN)nbr_each_philo_must_eat"
-					@echo "$(YELLOW)Similar like this example:	$(RESET) ./$(NAME) $(CYAN)5 $(RED)800 $(PURPLE)200 $(BLUE)200"
-					@echo "$(YELLOW)Or just add $(GREEN)times_must_eat$(YELLOW):	$(RESET) ./$(NAME) $(CYAN)5 $(RED)800 $(PURPLE)200 $(BLUE)200 $(GREEN)7 "
-					@echo "\n$(RESET)Ready to go!\n"
+					@echo "Hit $(RESET)./$(NAME) $(YELLOW)adding a few arguments:"
+					@echo "\n$(RESET)./$(NAME) $(CYAN)total_PHILOS $(RED)timeto_DIE $(PURPLE)timeto_EAT $(BLUE)timeto_SLEEP $(GREEN)how_many_MEALS_perPhilo"
+					@echo "\n$(YELLOW)Here is a minimal example to run:		$(RESET) ./$(NAME) $(CYAN)5 $(RED)800 $(PURPLE)200 $(BLUE)200"
+					@echo "$(YELLOW)Or a complex version with $(GREEN)how_many_meals$(YELLOW):	$(RESET) ./$(NAME) $(CYAN)5 $(RED)800 $(PURPLE)200 $(BLUE)200 $(GREEN)7 "
+					@echo "\n$(RESET)Let's test the Threads!\n"
 
 endef
 
 define				instructions_bonus
-					@echo "Welcome to my Philosophers version!"
-					@echo "Hit $(RESET)./$(NAME_BONUS) $(YELLOW)and add:"
-					@echo "$(CYAN)number_of_philosophers $(RED)time_to_die $(PURPLE)time_to_eat $(BLUE)time_to_sleep $(GREEN)nbr_each_philo_must_eat"
-					@echo "$(YELLOW)Similar like this example:	$(RESET) ./$(NAME_BONUS) $(CYAN)5 $(RED)800 $(PURPLE)200 $(BLUE)200"
-					@echo "$(YELLOW)Or with $(GREEN)times_must_eat added:	$(RESET) ./$(NAME_BONUS) $(CYAN)5 $(RED)800 $(PURPLE)200 $(BLUE)200 $(GREEN)7 "				
+					@echo "Welcome to my Philosophers BONUS version!"
+					@echo "Hit $(RESET)./$(NAME_BONUS) $(YELLOW)adding a few arguments:"
+					@echo "\n$(RESET)./$(NAME_BONUS) $(CYAN)total_PHILOS $(RED)timeto_DIE $(PURPLE)timeto_EAT $(BLUE)timeto_SLEEP $(GREEN)how_many_MEALS_perPhilo"
+					@echo "\n$(YELLOW)Here is a minimal example to run:		$(RESET) ./$(NAME_BONUS) $(CYAN)5 $(RED)800 $(PURPLE)200 $(BLUE)200"
+					@echo "$(YELLOW)Or a complex version with $(GREEN)how_many_meals$(YELLOW):	$(RESET) ./$(NAME) $(CYAN)5 $(RED)800 $(PURPLE)200 $(BLUE)200 $(GREEN)7 "
+					@echo "\n$(RESET)Let's test the Threads!\n"
 endef
 
 ifdef				WITH_BONUS
