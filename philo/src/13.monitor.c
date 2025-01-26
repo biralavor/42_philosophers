@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 18:57:56 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 18:35:24 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 18:48:14 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	*monitor_runner(void *data)
 	idx = 0;
 	table = (t_table *)data;
 	while (!all_threads_are_running(&table->table_mtx,
-			&table->threads_running_counter, table->set.total_philos))
+			&table->threads_running_counter, table->total_philos))
 		;
 	while (!this_is_the_end_of_dinner(table))
 	{
 		idx = -1;
-		while (++idx < table->set.total_philos
+		while (++idx < table->total_philos
 			&& !this_is_the_end_of_dinner(table))
 		{
 			if (is_philo_dead_manager(table->philos + idx))
@@ -64,7 +64,7 @@ bool	is_philo_dead_manager(t_philo *philo)
 		return (false);
 	elapsed = ft_gettime(MILLISECOND) - get_long(&philo->philo_mtx,
 			&philo->time_of_last_meal);
-	time_to_die = philo->table->set.time_to_die / 1e3;
+	time_to_die = philo->table->time_to_die / 1e3;
 	if (elapsed > time_to_die)
 		return (true);
 	return (false);

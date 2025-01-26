@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:19:23 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 18:38:00 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 18:48:05 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	let_philo_eat_routine(t_philo *philo)
 		ft_gettime(MILLISECOND));
 	philo->got_meals++;
 	printer_manager(EATING, philo, DEBUG_MODE);
-	precise_usleep(philo->table->set.time_to_eat, philo->table);
-	if (philo->table->set.total_meals > 0
-		&& philo->got_meals == philo->table->set.total_meals)
+	precise_usleep(philo->table->time_to_eat, philo->table);
+	if (philo->table->total_meals > 0
+		&& philo->got_meals == philo->table->total_meals)
 		set_bool(&philo->philo_mtx, &philo->full, true);
 	safe_mutex_handler(&philo->first_chops->chops_mtx, UNLOCK);
 	safe_mutex_handler(&philo->second_chops->chops_mtx, UNLOCK);
@@ -48,7 +48,7 @@ void	let_philo_eat_routine(t_philo *philo)
 void	let_philo_sleep_routine(t_philo *philo)
 {
 	printer_manager(SLEEPING, philo, DEBUG_MODE);
-	precise_usleep(philo->table->set.time_to_sleep, philo->table);
+	precise_usleep(philo->table->time_to_sleep, philo->table);
 }
 
 /**
@@ -70,10 +70,10 @@ void	let_philo_think_routine(t_philo *philo, bool before_spinlock)
 	think_time = 0;
 	if (!before_spinlock)
 		printer_manager(THINKING, philo, DEBUG_MODE);
-	if (philo->table->set.total_philos % 2 == 0)
+	if (philo->table->total_philos % 2 == 0)
 		return ;
-	eat_time = philo->table->set.time_to_eat;
-	sleep_time = philo->table->set.time_to_sleep;
+	eat_time = philo->table->time_to_eat;
+	sleep_time = philo->table->time_to_sleep;
 	think_time = (eat_time * 2) - sleep_time;
 	if (think_time < 0)
 		think_time = 0;

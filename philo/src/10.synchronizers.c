@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   10.synchronizers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:42:40 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/12 21:22:40 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 18:47:50 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	increase_long(pthread_mutex_t *mutex, long *value)
  */
 void	philos_in_async_mode(t_philo *philo)
 {
-	if (philo->table->set.total_philos % 2 == 0)
+	if (philo->table->total_philos % 2 == 0)
 	{
 		if (philo->id % 2 == 0)
 			precise_usleep(3e4, philo->table);

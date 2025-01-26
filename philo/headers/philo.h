@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 13:35:52 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 18:46:21 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define BWHITE "\033[1;37m"
 # define RESET "\033[0m"
 
-# define DEBUG_MODE 2
+# define DEBUG_MODE 0
 # define PHILOS_LIMIT 200
 
 typedef enum e_mtx_opcode
@@ -65,15 +65,6 @@ typedef enum e_philo_status
 	DEAD,
 }	t_philo_status;
 
-typedef struct s_set
-{
-	long	total_philos;
-	long	time_to_die;
-	long	time_to_eat;
-	long	time_to_sleep;
-	long	total_meals;
-}			t_set;
-
 typedef struct s_chopstick
 {
 	int				chops_id;
@@ -101,7 +92,11 @@ struct s_table
 	long			threads_running_counter;
 	bool			this_is_the_end;
 	bool			all_threads_ready_togo;
-	t_set			set;
+	long			total_philos;
+	long			time_to_die;
+	long			time_to_eat;
+	long			time_to_sleep;
+	long			total_meals;
 	t_philo			*philos;
 	t_chops			*chopsticks;
 	pthread_mutex_t	table_mtx;
