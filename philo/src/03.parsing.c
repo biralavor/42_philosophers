@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:16:16 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/25 21:12:44 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/25 23:40:50 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ void	table_parsing(t_table *table, char **av)
 		table->set.total_meals = ft_atoi_long(av[5]);
 	else
 		table->set.total_meals = -1;
-	if (table->set.total_philos > PHILOS_LIMIT)
+	if (table->set.total_philos == 0)
+		error_manager("Total Philos must be greater then zero.\n");
+	else if (table->set.total_philos > PHILOS_LIMIT)
 		table->set.total_philos = PHILOS_LIMIT;
 	if (table->set.time_to_die < 6e4
 		|| table->set.time_to_eat < 6e4
