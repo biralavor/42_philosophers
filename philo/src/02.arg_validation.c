@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   02.arg_validation.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 20:24:28 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/10 18:52:51 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/25 21:12:44 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ bool	is_number_under_intmax(int ac, char **av)
 	ac -= 1;
 	while (av[++idx])
 	{
-		nbr = ft_ato_long(av[idx]);
+		nbr = ft_atoi_long(av[idx]);
 		if (nbr <= INT_MAX)
 		{
 			if (idx == ac)

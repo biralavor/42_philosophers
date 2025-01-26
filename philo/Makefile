@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
+#    By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2024/11/10 21:56:10 by umeneses         ###   ########.fr        #
+#    Updated: 2025/01/25 21:12:32 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ SRC_FILES				+= 10.synchronizers.c
 SRC_FILES				+= 11.printer_with_mutex.c
 SRC_FILES				+= 12.dinner_routines.c
 SRC_FILES				+= 13.monitor.c
-SRC_FILES				+= ft_ato_long.c
+SRC_FILES				+= ft_atoi_long.c
 SRC_FILES				+= ft_gettime.c
 SRC_FILES				+= ft_is_digit.c
 SRC_FILES				+= ft_is_space.c
