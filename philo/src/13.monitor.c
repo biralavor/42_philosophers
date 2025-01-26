@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   13.monitor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 18:57:56 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/13 11:00:16 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 18:35:24 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,14 @@ void	*monitor_runner(void *data)
 bool	is_philo_dead_manager(t_philo *philo)
 {
 	long	time_to_die;
+	long	elapsed;
 
 	if (get_bool(&philo->philo_mtx, &philo->full))
 		return (false);
+	elapsed = ft_gettime(MILLISECOND) - get_long(&philo->philo_mtx,
+			&philo->time_of_last_meal);
 	time_to_die = philo->table->set.time_to_die / 1e3;
-	if (ft_gettime(MILLISECOND) - get_long(&philo->philo_mtx,
-			&philo->time_of_last_meal) > time_to_die)
+	if (elapsed > time_to_die)
 		return (true);
 	return (false);
 }
