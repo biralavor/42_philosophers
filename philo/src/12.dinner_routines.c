@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:19:23 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/10 10:52:51 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/11/12 21:36:58 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,21 @@
  */
 void	let_philo_eat_routine(t_philo *philo)
 {
+	if (get_bool(&philo->philo_mtx, &philo->full))
+		return ;
 	safe_mutex_handler(&philo->first_chops->chops_mtx, LOCK);
-	printer_manager(GOT_1ST_CHOPSTICK, philo, DEBUG_MODE);
 	safe_mutex_handler(&philo->second_chops->chops_mtx, LOCK);
+	printer_manager(GOT_1ST_CHOPSTICK, philo, DEBUG_MODE);
 	printer_manager(GOT_2ND_CHOPSTICK, philo, DEBUG_MODE);
 	philo->got_meals++;
+	printer_manager(EATING, philo, DEBUG_MODE);
 	set_long(&philo->philo_mtx, &philo->time_of_last_meal,
 		ft_gettime(MILLISECOND));
-	printer_manager(EATING, philo, DEBUG_MODE);
-	precise_usleep(philo->table->set.time_to_eat, philo->table);
-	if (philo->table->set.total_meals > 0
-		&& philo->got_meals == philo->table->set.total_meals)
-		set_bool(&philo->philo_mtx, &philo->full, true);
 	safe_mutex_handler(&philo->first_chops->chops_mtx, UNLOCK);
 	safe_mutex_handler(&philo->second_chops->chops_mtx, UNLOCK);
+	precise_usleep(philo->table->set.time_to_eat, philo->table);
+	if (philo->got_meals == philo->table->set.total_meals)
+		set_bool(&philo->philo_mtx, &philo->full, true);
 }
 
 /**
@@ -76,7 +77,7 @@ void	let_philo_think_routine(t_philo *philo, bool before_spinlock)
 			- philo->table->set.time_to_sleep;
 		if (think_time < 0)
 			think_time = 0;
-		precise_usleep(think_time * 0.5, philo->table);
+		precise_usleep(think_time * 0.1, philo->table);
 	}
 }
 

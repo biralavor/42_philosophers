@@ -1,7 +1,7 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    philo_tester.yml                                   :+:      :+:    :+:    #
+#    welton_x15.yml                                     :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-name: philo tester >> errors
+name: sheela welton >> x15
 
 on:
   push:
@@ -31,9 +31,9 @@ on:
     - '**release**'
 
 jobs:
-  philo_errors:
+  sheela_welton_x15:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     defaults:
       run:
         working-directory: ./philo/
@@ -47,19 +47,22 @@ jobs:
       - name: Submodule Init
         run: git submodule init && git submodule update
 
-      - name: Running Philo Tester
+      - name: Running Sheela Welton x15 Tester
         run: |
           mkdir action_tests
           cd action_tests
-          cp ../../42-philosophers/tests/errors .
-          cp ../sheela_tests/test.sh .
-          bash test.sh errors
+          cp ../sheela_tests/sheela_welton_x15.sh .
+          stdbuf -oL bash sheela_welton_x15.sh 2>&1 | tee output.log
+          if grep -q "No such file or directory" output.log; then
+            echo "No such file or directory" >&2
+            exit 1
+          fi
 
       - name: Cleaning up
         run: |
-          rm -rf ../tests
+          rm -rf action_tests
           make fclean
 
 
 # :: source philo_tester repository ::
-# https://github.com/sgkhusal/42-philosophers/blob/main/tests/test.sh
+# https://github.com/sgkhusal/42-philosophers/blob/main/tests/welton-test.sh

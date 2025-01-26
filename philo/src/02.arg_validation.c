@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   02.arg_validation.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 20:24:28 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/10 14:37:31 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/25 23:42:23 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ bool	arguments_amount(int ac)
 {
 	if (ac == 5 || ac == 6)
 		return (true);
-	printf(RED"Error.\n");
-	printf(RED"Wrong arguments amount.\n");
-	printf(YELLOW"Please, read the instructions.\n"RESET);
+	error_manager("Wrong arguments amount.\n");
 	return (false);
 }
 
@@ -111,7 +109,7 @@ bool	is_number_under_intmax(int ac, char **av)
 	ac -= 1;
 	while (av[++idx])
 	{
-		nbr = ft_atoi_long_int(av[idx]);
+		nbr = ft_atoi_long(av[idx]);
 		if (nbr <= INT_MAX)
 		{
 			if (idx == ac)
