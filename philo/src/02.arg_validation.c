@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 20:24:28 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 10:46:37 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 11:37:38 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	arguments_amount(int ac)
 	if (ac == 5 || ac == 6)
 		return (true);
 	error_manager("Wrong arguments amount. " \
-		"Type 'make re' and read the instructions.\n");
+		"Type 'make help' and read the instructions.\n");
 	return (false);
 }
 
