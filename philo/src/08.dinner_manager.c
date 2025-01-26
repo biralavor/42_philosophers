@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 18:47:31 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 18:52:20 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	*dinner_runner(void *data)
 	set_long(&philo->philo_mtx, &philo->time_of_last_meal,
 		ft_gettime(MILLISECOND));
 	increase_long(&philo->table->table_mtx,
-		&philo->table->threads_running_counter);
+		&philo->table->running_threads_counter);
 	philos_in_async_mode(philo);
 	while (!this_is_the_end_of_dinner(philo->table))
 	{

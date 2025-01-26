@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 18:57:56 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 18:48:14 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 18:52:20 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	*monitor_runner(void *data)
 	idx = 0;
 	table = (t_table *)data;
 	while (!all_threads_are_running(&table->table_mtx,
-			&table->threads_running_counter, table->total_philos))
+			&table->running_threads_counter, table->total_philos))
 		;
 	while (!this_is_the_end_of_dinner(table))
 	{

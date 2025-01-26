@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:19:23 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 18:48:05 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 18:52:20 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	*lonely_philo_routine(void *data)
 	set_long(&philo->philo_mtx,
 		&philo->time_of_last_meal, ft_gettime(MILLISECOND));
 	increase_long(&philo->table->table_mtx,
-		&philo->table->threads_running_counter);
+		&philo->table->running_threads_counter);
 	printer_manager(GOT_1ST_CHOPSTICK, philo, DEBUG_MODE);
 	while (!this_is_the_end_of_dinner(philo->table))
 		precise_usleep(200, philo->table);

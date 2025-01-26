@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 18:46:21 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 18:52:20 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ typedef struct s_philo
 struct s_table
 {
 	long			start_time;
-	long			threads_running_counter;
+	long			running_threads_counter;
 	bool			this_is_the_end;
 	bool			all_threads_ready_togo;
 	long			total_philos;
