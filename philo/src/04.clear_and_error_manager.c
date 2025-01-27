@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 20:33:35 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 18:47:11 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 21:52:43 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	error_manager(const char *error_msg)
  * @param table The table structure 
  * @return void
  */
-void	table_free(t_table *table)
+void	free_table(t_table *table)
 {
 	int		idx;
 	t_philo	*philo;

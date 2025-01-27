@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   01.main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:03:55 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/10 14:29:36 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 21:52:43 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ int	main(int ac, char **av)
 	table_parsing(&table, av);
 	table_init(&table);
 	dinner_manager(&table);
-	table_free(&table);
+	free_table(&table);
 	return (EXIT_SUCCESS);
 }
