@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:16:16 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 22:00:41 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 22:12:48 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	table_parsing(t_table *table, char **av)
 	else
 		table->total_meals = -1;
 	if (table->total_philos == 0)
-		error_manager("Total Philos must be greater then zero.\n");
+		error_manager("Total Philos must be greater then zero.");
 	else if (table->total_philos > PHILOS_LIMIT)
 	{
 		table->total_philos = PHILOS_LIMIT;
@@ -39,7 +39,7 @@ void	table_parsing(t_table *table, char **av)
 	if (table->time_to_die < 6e4
 		|| table->time_to_eat < 6e4
 		|| table->time_to_sleep < 6e4)
-		error_manager("Time must be at least 60ms.\n");
+		error_manager("Time must be at least 60ms.");
 	if (table->total_meals == 0)
-		error_manager("Total meals must be greater then zero.\n");
+		error_manager("Total meals must be greater then zero.");
 }

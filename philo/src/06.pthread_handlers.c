@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:16:28 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 13:35:52 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 22:11:05 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@ void	pthread_error_handler(int status, int opcode)
 	if (0 == status)
 		return ;
 	else if (EAGAIN == status)
-		error_manager("Insufficient resources to create another thread.\n");
+		error_manager("Insufficient resources to create another thread.");
 	else if (EPERM == status)
 		error_manager("The caller does not have"
-			"the appropriate permission.\n");
+			"the appropriate permission.");
 	else if (EINVAL == status && (CREATE == opcode))
-		error_manager("The value specified at attribute is invalid.\n");
+		error_manager("The value specified at attribute is invalid.");
 	else if (EINVAL == status && (JOIN == opcode || DETACH == opcode))
-		error_manager("The value specified by thread is not joinable.\n");
+		error_manager("The value specified by thread is not joinable.");
 	else if (ESRCH == status)
 		error_manager("No thread could be found corresponding to that"
-			" specified by the given thread ID.\n");
+			" specified by the given thread ID.");
 	else if (EDEADLK == status)
-		error_manager("A deadlock was detected or thye value of thread"
-			" specifies the calling thread.\n");
+		error_manager("A deadlock was detected or the value of thread"
+			" specifies the calling thread.");
 }
 
 /**
@@ -62,6 +62,6 @@ void	safe_thread_handler(pthread_t *th_id, void *(*func_ptr)(void *),
 	{
 		write(STDERR_FILENO, RED, ft_strlen(RED));
 		write(STDERR_FILENO, "Invalid opcode at safe thread handler ", 39);
-		error_manager("Usage: CREATE, JOIN or DETACH\n");
+		error_manager("Usage: CREATE, JOIN or DETACH");
 	}
 }

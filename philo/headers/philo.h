@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 18:52:20 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 21:52:43 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 # define PHILO_H
 
 # include <pthread.h>
-# include <sys/wait.h>
 # include <sys/time.h>
 # include <stdio.h>
-# include <unistd.h>
 # include <stdlib.h>
+# include <unistd.h>
 # include <stdbool.h>
 # include <limits.h>
 # include <errno.h>
@@ -169,7 +168,7 @@ void	*lonely_philo_routine(void *data);
 
 /* clear and error manager functions */
 void	error_manager(const char *error_msg);
-void	table_free(t_table *table);
+void	free_table(t_table *table);
 
 /* LIBFT utility functions */
 int		ft_strlen(const char *str);

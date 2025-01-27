@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:16:44 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 13:35:22 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 22:13:13 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,21 @@ void	mutex_error_handler(int status, int opcode)
 	if (0 == status)
 		return ;
 	else if (EINVAL == status && (INIT == opcode))
-		error_manager("The value specified at attribute is invalid.\n");
+		error_manager("The value specified at attribute is invalid.");
 	else if (EINVAL == status && (LOCK == opcode || UNLOCK == opcode
 			|| DESTROY == opcode))
-		error_manager("Invalid settings in attribute.\n");
+		error_manager("Invalid settings in attribute.");
 	else if (EAGAIN == status)
-		error_manager("Insufficient resources to create another thread.\n");
+		error_manager("Insufficient resources to create another thread.");
 	else if (EDEADLK == status)
-		error_manager("A deadlock condition was detected.\n");
+		error_manager("A deadlock condition was detected.");
 	else if (EPERM == status)
-		error_manager("The current thread does not hold a lock on mutex.\n");
+		error_manager("The current thread does not hold a lock on mutex.");
 	else if (ENOMEM == status)
 		error_manager("The process cannot allocate enought memory \
-			to create another mutex.\n");
+			to create another mutex.");
 	else if (EBUSY == status)
-		error_manager("The mutex is already locked.\n");
+		error_manager("The mutex is already locked.");
 }
 
 /**
@@ -60,6 +60,6 @@ void	safe_mutex_handler(pthread_mutex_t *mutex, t_mtx_opcode opcode)
 	{
 		write(STDERR_FILENO, RED, ft_strlen(RED));
 		write(STDERR_FILENO, "Invalid opcode at safe mutex handler ", 38);
-		error_manager("Usage: INIT, LOCK, UNLOCK or DESTROY\n");
+		error_manager("Usage: INIT, LOCK, UNLOCK or DESTROY");
 	}
 }

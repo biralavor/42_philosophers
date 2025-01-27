@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 20:33:35 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 21:52:43 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 22:11:19 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	error_manager(const char *error_msg)
 	write(STDERR_FILENO, "<< Error >>\n", 13);
 	write(STDERR_FILENO, error_msg, ft_strlen(error_msg));
 	write(STDERR_FILENO, RESET, ft_strlen(RESET));
+	write(STDERR_FILENO, "\n", 2);
 	exit(EXIT_FAILURE);
 }
 
