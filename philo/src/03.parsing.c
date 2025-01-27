@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:16:16 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 18:46:43 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 22:00:41 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@ void	table_parsing(t_table *table, char **av)
 	if (table->total_philos == 0)
 		error_manager("Total Philos must be greater then zero.\n");
 	else if (table->total_philos > PHILOS_LIMIT)
+	{
 		table->total_philos = PHILOS_LIMIT;
+		printf(PURPLE"Your setup exceeded at Number Of Philosophers.\n");
+		printf("Philo will now run at the limit of: %d\n"RESET, PHILOS_LIMIT);
+	}
 	if (table->time_to_die < 6e4
 		|| table->time_to_eat < 6e4
 		|| table->time_to_sleep < 6e4)
