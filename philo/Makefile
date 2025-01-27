@@ -6,7 +6,7 @@
 #    By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2025/01/26 11:35:57 by umeneses         ###   ########.fr        #
+#    Updated: 2025/01/26 23:17:56 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -147,15 +147,15 @@ define				bonus
 endef
 
 define				args_to_test
-	2 310 100 200 100
+	2 310 100 200 10
 endef
 
 ifdef				WITH_SANITIZE_THREAD
-	CFLAGS			+= -fsanitize=thread -g
+CFLAGS				+= -fsanitize=thread -g
 endif
 
 ifdef				WITH_SANITIZE_ADDRESS
-	CFLAGS			+= -fsanitize=address -g
+CFLAGS				+= -fsanitize=address -g
 endif
 
 define				sanitize_thread
@@ -174,7 +174,6 @@ AUTHOR		= umeneses
 CC			= cc
 CFLAGS		+= -Wall -Wextra -Werror -g3
 CPPFLAGS	= $(addprefix -I, $(HEADERS)) -MMD -MP
-#LDFLAGS		= $(addprefix -L, $(dir $(LIBS)))
 LDLIBS		= -ldl
 PTHREAD		= -pthread
 COMP_OBJS	= $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
@@ -230,20 +229,32 @@ go:				re
 				./$(NAME) $(call args_to_test)
 
 gdb:			re
-				gdb --tui -ex 'b main' -ex 'set detach-on-fork off' -ex 'info inferiors' -ex 'set args $(call args_to_test)' -ex 'run' ./$(NAME)
-#				gdb --tui -ex 'b main' -ex 'set detach-on-fork off' -ex 'info inferiors' -ex 'set args $(call args_to_test)' -ex 'run > /dev/null 2>&1' ./$(NAME)
+				gdb --tui \
+				-ex 'b main' \
+				-ex 'set detach-on-fork off' \
+				-ex 'info inferiors' \
+				-ex 'set args $(call args_to_test)' \
+				-ex 'run' ./$(NAME)
+#				-ex 'run > /dev/null 2>&1' ./$(NAME)
 
 val:			re
-				valgrind --leak-check=full --track-origins=yes --trace-children=yes --track-fds=yes --show-reachable=yes ./$(NAME) $(call args_to_test)
+				valgrind \
+				--leak-check=full \
+				--track-origins=yes \
+				--trace-children=yes \
+				--track-fds=yes \
+				--show-reachable=yes ./$(NAME) $(call args_to_test)
 
 hel:			re
-				valgrind --tool=helgrind ./$(NAME) $(call args_to_test)
-#				valgrind --tool=helgrind --read-var-info=yes ./$(NAME) $(call args_to_test)
+				valgrind \
+				--tool=helgrind ./$(NAME) $(call args_to_test)
+#				--read-var-info=yes ./$(NAME) $(call args_to_test)
 # documentation: https://valgrind.org/docs/manual/hg-manual.html
 
 drd:			re
-				valgrind --tool=drd --read-var-info=yes ./$(NAME) $(call args_to_test)
-#				valgrind --tool=drd ./$(NAME) $(call args_to_test)
+				valgrind \
+				--tool=drd \
+				--read-var-info=yes ./$(NAME) $(call args_to_test)
 # documentation: https://valgrind.org/docs/manual/drd-manual.html
 
 sani_t:			fclean
@@ -256,4 +267,4 @@ sani_a:			fclean
 				./$(NAME) $(call args_to_test)
 				
 
-.PHONY:			all clean fclean re bonus go gdb val sani leaks
+.PHONY:			all clean fclean help re bonus go gdb val hel drd sani_t sani_a
