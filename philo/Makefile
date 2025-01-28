@@ -6,7 +6,7 @@
 #    By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2025/01/26 23:17:56 by umeneses         ###   ########.fr        #
+#    Updated: 2025/01/28 07:40:30 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -147,22 +147,33 @@ define				bonus
 endef
 
 define				args_to_test
-	2 310 100 200 10
+	7 3010 1000 100 5
 endef
 
+ifdef				IN_DEBUG_MODE
+CFLAGS				= $(DEBUGFLAGS)
+endif
+
 ifdef				WITH_SANITIZE_THREAD
-CFLAGS				+= -fsanitize=thread -g
+CFLAGS				= $(DEBUGFLAGS) -fsanitize=thread
 endif
 
 ifdef				WITH_SANITIZE_ADDRESS
-CFLAGS				+= -fsanitize=address -g
+CFLAGS				= $(DEBUGFLAGS) -fsanitize=address
 endif
 
+define				debug_mode_on
+					@echo "$(PURPLE)\nDebug mode is $(YELLOW)ON$(RESET)\n"
+					$(MAKE) IN_DEBUG_MODE=TRUE --no-print-directory
+endef
+
 define				sanitize_thread
+					@echo "$(PURPLE)\nDebug with $(YELLOW)SANITIZE=THREAD$(RESET)\n"
 					$(MAKE) WITH_SANITIZE_THREAD=TRUE --no-print-directory
 endef
 
 define				sanitize_address
+					@echo "$(PURPLE)\nDebug with $(YELLOW)SANITIZE=ADDRESS$(RESET)\n"
 					$(MAKE) WITH_SANITIZE_ADDRESS=TRUE --no-print-directory
 endef
 
@@ -172,12 +183,15 @@ endef
 
 AUTHOR		= umeneses
 CC			= cc
-CFLAGS		+= -Wall -Wextra -Werror -g3
-CPPFLAGS	= $(addprefix -I, $(HEADERS)) -MMD -MP
-LDLIBS		= -ldl
-PTHREAD		= -pthread
-COMP_OBJS	= $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
-COMP_EXE	= $(CC) $(CFLAGS) $(OBJS_ALL) $(LDLIBS) $(PTHREAD) -o $(NAME)
+DEBUGFLAGS	= -Wall -Wextra -Werror -g3						# Debug
+CFLAGS		= -Wall -Wextra -Werror -g -pedantic			# ISO C and C++ standards
+LFLAGS		= -march=native									# User's CPU Architecture Optimization
+OPTIMIZE	= -Ofast -flto									# Maximum Optimization
+CPPFLAGS	= $(addprefix -I, $(HEADERS)) -MMD -MP			# Track Changes in User Dependencies
+PTHREAD		= -pthread										# POSIX Threads
+NOWRITEFLAG	= -Wno-unused-result							# Ignore Unused Return Values of write()
+COMP_OBJS	= $(CC) $(CFLAGS) $(OPTIMIZE) $(CPPFLAGS) $(PTHREAD) $(NOWRITEFLAG) -c $< -o $@
+COMP_EXE	= $(CC) $(CFLAGS) $(OPTIMIZE) $(CPPFLAGS) $(PTHREAD) $(LFLAGS) $(OBJS_ALL) -o $(NAME)
 
 # **************************************************************************** #
 #								TARGETS										   #
@@ -265,6 +279,9 @@ sani_t:			fclean
 sani_a:			fclean
 				$(call sanitize_address)
 				./$(NAME) $(call args_to_test)
-				
 
-.PHONY:			all clean fclean help re bonus go gdb val hel drd sani_t sani_a
+debug:			fclean
+				$(call debug_mode_on)
+				./$(NAME) $(call args_to_test)
+
+.PHONY:			all clean fclean help re bonus go gdb val hel drd sani_t sani_a debug
