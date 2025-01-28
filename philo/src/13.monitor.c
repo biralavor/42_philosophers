@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 18:57:56 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 18:52:20 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/28 06:26:49 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void	*monitor_runner(void *data)
 	while (!all_threads_are_running(&table->table_mtx,
 			&table->running_threads_counter, table->total_philos))
 		;
-	while (!this_is_the_end_of_dinner(table))
+	while (!is_this_the_end(table))
 	{
 		idx = -1;
 		while (++idx < table->total_philos
-			&& !this_is_the_end_of_dinner(table))
+			&& !is_this_the_end(table))
 		{
 			if (is_philo_dead_manager(table->philos + idx))
 			{

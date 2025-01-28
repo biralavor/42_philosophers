@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 21:52:43 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/28 06:26:49 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ void	set_bool(pthread_mutex_t *mutex, bool *destination, bool value);
 bool	get_bool(pthread_mutex_t *mutex, bool *value);
 void	set_long(pthread_mutex_t *mutex, long *destination, long value);
 long	get_long(pthread_mutex_t *mutex, long *value);
-bool	this_is_the_end_of_dinner(t_table *table);
+bool	is_this_the_end(t_table *table);
 
 /* dinner manager functions */
 void	holdon_until_all_threads(t_table *table);

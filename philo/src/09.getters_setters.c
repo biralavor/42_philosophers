@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:16:51 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/27 15:05:34 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/28 06:26:49 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ long	get_long(pthread_mutex_t *mutex, long *value)
  * @param table The table structure
  * @return `bool` The value of the boolean
  */
-bool	this_is_the_end_of_dinner(t_table *table)
+bool	is_this_the_end(t_table *table)
 {
 	return (get_bool(&table->table_mtx, &table->this_is_the_end));
 }
