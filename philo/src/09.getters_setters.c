@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   09.getters_setters.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:16:51 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/10 16:59:43 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/27 15:05:34 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ bool	get_bool(pthread_mutex_t *mutex, bool *value)
 {
 	bool	result;
 
-	result = false;
 	safe_mutex_handler(mutex, LOCK);
 	result = *value;
 	safe_mutex_handler(mutex, UNLOCK);
@@ -67,7 +66,6 @@ long	get_long(pthread_mutex_t *mutex, long *value)
 {
 	long	result;
 
-	result = 0;
 	safe_mutex_handler(mutex, LOCK);
 	result = *value;
 	safe_mutex_handler(mutex, UNLOCK);
