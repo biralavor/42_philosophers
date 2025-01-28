@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/25 21:12:44 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/28 06:26:49 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 # define PHILO_H
 
 # include <pthread.h>
-# include <sys/wait.h>
 # include <sys/time.h>
 # include <stdio.h>
-# include <unistd.h>
 # include <stdlib.h>
+# include <unistd.h>
 # include <stdbool.h>
 # include <limits.h>
 # include <errno.h>
@@ -34,7 +33,7 @@
 # define BWHITE "\033[1;37m"
 # define RESET "\033[0m"
 
-# define DEBUG_MODE 2
+# define DEBUG_MODE 0
 # define PHILOS_LIMIT 200
 
 typedef enum e_mtx_opcode
@@ -65,15 +64,6 @@ typedef enum e_philo_status
 	DEAD,
 }	t_philo_status;
 
-typedef struct s_set
-{
-	long	total_philos;
-	long	time_to_die;
-	long	time_to_eat;
-	long	time_to_sleep;
-	long	total_meals;
-}			t_set;
-
 typedef struct s_chopstick
 {
 	int				chops_id;
@@ -98,10 +88,14 @@ typedef struct s_philo
 struct s_table
 {
 	long			start_time;
-	long			threads_running_counter;
+	long			running_threads_counter;
 	bool			this_is_the_end;
 	bool			all_threads_ready_togo;
-	t_set			set;
+	long			total_philos;
+	long			time_to_die;
+	long			time_to_eat;
+	long			time_to_sleep;
+	long			total_meals;
 	t_philo			*philos;
 	t_chops			*chopsticks;
 	pthread_mutex_t	table_mtx;
@@ -125,12 +119,12 @@ void	*ft_safe_malloc(size_t size);
 
 /* mutex handler functions */
 void	safe_mutex_handler(pthread_mutex_t *mutex, t_mtx_opcode opcode);
-void	error_mutex_handler(int status, int opcode);
+void	mutex_error_handler(int status, int opcode);
 
 /* thread handler functions*/
 void	safe_thread_handler(pthread_t *th_id, void *(*func_ptr)(void *), \
 			void *data, t_mtx_opcode opcode);
-void	error_pthread_handler(int status, int opcode);
+void	pthread_error_handler(int status, int opcode);
 
 /* table initialization */
 void	table_parsing(t_table *table, char **av);
@@ -143,7 +137,7 @@ void	set_bool(pthread_mutex_t *mutex, bool *destination, bool value);
 bool	get_bool(pthread_mutex_t *mutex, bool *value);
 void	set_long(pthread_mutex_t *mutex, long *destination, long value);
 long	get_long(pthread_mutex_t *mutex, long *value);
-bool	this_is_the_end_of_dinner(t_table *table);
+bool	is_this_the_end(t_table *table);
 
 /* dinner manager functions */
 void	holdon_until_all_threads(t_table *table);
@@ -174,7 +168,7 @@ void	*lonely_philo_routine(void *data);
 
 /* clear and error manager functions */
 void	error_manager(const char *error_msg);
-void	table_free(t_table *table);
+void	free_table(t_table *table);
 
 /* LIBFT utility functions */
 int		ft_strlen(const char *str);

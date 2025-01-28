@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_gettime.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 18:57:26 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/06 19:35:37 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 22:13:37 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ long	ft_gettime(t_time_code timecode)
 	struct timeval	actual_time;
 
 	if (gettimeofday(&actual_time, NULL))
-		error_manager("Unable to get actual time.\n");
+		error_manager("Unable to get actual time.");
 	if (SECOND == timecode)
 		return (actual_time.tv_sec + (actual_time.tv_usec / 1e6));
 	else if (MILLISECOND == timecode)
@@ -34,6 +34,6 @@ long	ft_gettime(t_time_code timecode)
 		return ((actual_time.tv_sec * 1e6) + (actual_time.tv_usec));
 	else
 		error_manager("Invalid time code.\n \
-			Usage: SECOND, MILLISECOND or MICROSECOND\n");
+			Usage: SECOND, MILLISECOND or MICROSECOND");
 	return (1985);
 }

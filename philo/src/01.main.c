@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   01.main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:03:55 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/10 14:29:36 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 22:11:45 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ bool	arguments_validation_manager(int ac, char **av)
 		{
 			if (is_valid_length_number(av) && is_number_under_intmax(ac, av))
 				return (true);
-			error_manager("Arguments must be under or equal INT MAX.\n");
+			error_manager("Arguments must be under or equal INT MAX.");
 		}
-		error_manager("Arguments must be a number and a positive number.\n");
+		error_manager("Arguments must be a number and a positive number.");
 	}
 	return (false);
 }
@@ -50,6 +50,6 @@ int	main(int ac, char **av)
 	table_parsing(&table, av);
 	table_init(&table);
 	dinner_manager(&table);
-	table_free(&table);
+	free_table(&table);
 	return (EXIT_SUCCESS);
 }
