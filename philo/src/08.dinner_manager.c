@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/29 11:20:35 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:01:40 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ void	*dinner_runner(void *data)
 	unsync_this_philo(philo);
 	while (!is_this_the_end(philo->table))
 	{
+		let_philo_eat_routine(philo);
 		if (get_bool(&philo->table->table_mtx, &philo->table->philos->full))
 			break ;
-		let_philo_eat_routine(philo);
 		printer_manager(SLEEPING, philo, DEBUG_MODE);
 		precise_usleep(philo->table->timeto_sleep, philo->table);
 		let_philo_think_routine(philo, false);
