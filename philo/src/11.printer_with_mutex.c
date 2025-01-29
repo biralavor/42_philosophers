@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:12:00 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/28 11:47:04 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:35:55 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,17 +132,17 @@ void	printer_with_mutex_debug(t_philo_status status,
 	if (GOT_1ST_CHOPSTICK == status
 		&& !is_this_the_end(philo->table))
 		printf(YELLOW"%10ld"RESET" philo %d"YELLOW" has taken"
-			" the 1st chopstick 1️⃣ 🥢\tchopstick id: %d\n",
+			"  1️⃣  chopstick 🥢\tchopstick id: %d\n",
 			elapsed, philo->id, philo->first_chops->chops_id);
 	else if (GOT_2ND_CHOPSTICK == status
 		&& !is_this_the_end(philo->table))
 		printf(YELLOW"%10ld"RESET" philo %d"YELLOW" has taken"
-			" the 2nd chopstick 2️⃣ 🥢\tchopstick id: %d\n",
+			"  2️⃣  chopstick 🥢\tchopstick id: %d\n",
 			elapsed, philo->id, philo->second_chops->chops_id);
 	else if (EATING == status
 		&& !is_this_the_end(philo->table))
 		printf(GREEN"%10ld"RESET" philo %d"GREEN" is eating 🍕"
-			" \t\tmeals number: %ld\n", elapsed, philo->id, philo->got_meals);
+			"\t\t\tmeals number: %ld\n", elapsed, philo->id, philo->got_meals);
 	else if (SLEEPING == status
 		&& !is_this_the_end(philo->table))
 		printf(BLUE"%10ld"RESET" philo %d"BLUE" is sleeping 😴\n",
