@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:12:00 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/28 06:26:49 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:47:04 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	printer_manager(t_philo_status status, t_philo *philo, int debug)
 	elapsed = ft_gettime(MILLISECOND) - philo->table->start_time;
 	if (philo->full)
 		return ;
-	safe_mutex_handler(&philo->table->printer_mtx, LOCK);
+	pthread_mutex_lock(&philo->table->printer_mtx);
+	// safe_mutex_handler(&philo->table->printer_mtx, LOCK);
 	if (debug == 1)
 		printer_with_mutex_chopsticks(status, philo, elapsed);
 	else if (debug == 2)
@@ -52,7 +53,8 @@ void	printer_manager(t_philo_status status, t_philo *philo, int debug)
 			printf(RED"%-10ld %d died\n"RESET,
 				elapsed, philo->id);
 	}
-	safe_mutex_handler(&philo->table->printer_mtx, UNLOCK);
+	pthread_mutex_unlock(&philo->table->printer_mtx);
+	// safe_mutex_handler(&philo->table->printer_mtx, UNLOCK);
 }
 
 /**

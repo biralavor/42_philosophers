@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:42:40 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 18:47:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/29 10:06:20 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,12 @@ bool	all_threads_are_running(pthread_mutex_t *mutex, long *threads,
 	bool	result;
 
 	result = false;
-	safe_mutex_handler(mutex, LOCK);
+	// safe_mutex_handler(mutex, LOCK);
+	pthread_mutex_lock(mutex);
 	if (*threads == total_philos)
 		result = true;
-	safe_mutex_handler(mutex, UNLOCK);
+	// safe_mutex_handler(mutex, UNLOCK);
+	pthread_mutex_unlock(mutex);
 	return (result);
 }
 
@@ -53,9 +55,11 @@ bool	all_threads_are_running(pthread_mutex_t *mutex, long *threads,
  */
 void	increase_long(pthread_mutex_t *mutex, long *value)
 {
-	safe_mutex_handler(mutex, LOCK);
+	pthread_mutex_lock(mutex);
+	// safe_mutex_handler(mutex, LOCK);
 	(*value)++;
-	safe_mutex_handler(mutex, UNLOCK);
+	pthread_mutex_unlock(mutex);
+	// safe_mutex_handler(mutex, UNLOCK);
 }
 
 /**
@@ -71,11 +75,11 @@ void	philos_in_async_mode(t_philo *philo)
 	if (philo->table->total_philos % 2 == 0)
 	{
 		if (philo->id % 2 == 0)
-			precise_usleep(3e4, philo->table);
+			precise_usleep(5e4, philo->table);
 	}
 	else
 	{
-		if (philo->id % 2)
+		if (philo->id % 2 != 0)
 			let_philo_think_routine(philo, true);
 	}
 }

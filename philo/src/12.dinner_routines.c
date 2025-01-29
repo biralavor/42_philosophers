@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:19:23 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/28 06:26:49 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/29 10:52:06 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,24 @@
  */
 void	let_philo_eat_routine(t_philo *philo)
 {
-	safe_mutex_handler(&philo->first_chops->chops_mtx, LOCK);
+	// safe_mutex_handler(&philo->first_chops->chops_mtx, LOCK);
+	// safe_mutex_handler(&philo->second_chops->chops_mtx, LOCK);
+	pthread_mutex_lock(&philo->first_chops->chops_mtx);
+	pthread_mutex_lock(&philo->second_chops->chops_mtx);
 	printer_manager(GOT_1ST_CHOPSTICK, philo, DEBUG_MODE);
-	safe_mutex_handler(&philo->second_chops->chops_mtx, LOCK);
 	printer_manager(GOT_2ND_CHOPSTICK, philo, DEBUG_MODE);
 	set_long(&philo->philo_mtx, &philo->time_of_last_meal,
 		ft_gettime(MILLISECOND));
 	philo->got_meals++;
 	printer_manager(EATING, philo, DEBUG_MODE);
 	precise_usleep(philo->table->time_to_eat, philo->table);
+	pthread_mutex_unlock(&philo->first_chops->chops_mtx);
+	pthread_mutex_unlock(&philo->second_chops->chops_mtx);
 	if (philo->table->total_meals > 0
 		&& philo->got_meals == philo->table->total_meals)
 		set_bool(&philo->philo_mtx, &philo->full, true);
-	safe_mutex_handler(&philo->first_chops->chops_mtx, UNLOCK);
-	safe_mutex_handler(&philo->second_chops->chops_mtx, UNLOCK);
+	// safe_mutex_handler(&philo->first_chops->chops_mtx, UNLOCK);
+	// safe_mutex_handler(&philo->second_chops->chops_mtx, UNLOCK);
 }
 
 /**
@@ -76,7 +80,7 @@ void	let_philo_think_routine(t_philo *philo, bool before_spinlock)
 	think_time = (eat_time * 2) - sleep_time;
 	if (think_time < 0)
 		think_time = 0;
-	precise_usleep(think_time * 0.42, philo->table);
+	precise_usleep(think_time * 0.9, philo->table);
 }
 
 /**
