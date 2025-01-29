@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:42:40 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/29 10:06:20 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/29 11:20:35 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  */
 void	holdon_until_all_threads(t_table *table)
 {
-	while (!get_bool(&table->table_mtx, &table->all_threads_ready_togo))
+	while (!get_bool(&table->table_mtx, &table->all_threads_up))
 		;
 }
 
@@ -70,7 +70,7 @@ void	increase_long(pthread_mutex_t *mutex, long *value)
  * @param table The table structure
  * @return void
  */
-void	philos_in_async_mode(t_philo *philo)
+void	unsync_this_philo(t_philo *philo)
 {
 	if (philo->table->total_philos % 2 == 0)
 	{
