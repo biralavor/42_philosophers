@@ -55,7 +55,7 @@ jobs:
           cp ../42-philosophers/tests/count_eat .
           cp ../42-philosophers/tests/should_die .
           cp ../42-philosophers/tests/should_not_die .
-          cp ../42-philosophers/tests/test.sh .
+          cp ../sheela_tests/test.sh .
           bash test.sh
 
       - name: Cleaning up
