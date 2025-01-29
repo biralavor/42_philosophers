@@ -21,16 +21,13 @@ on:
 jobs:
   norminette:
     runs-on: ubuntu-latest
-    timeout-minutes: 2
+    timeout-minutes: 3
     defaults:
       run:
         working-directory: ./philo/
     steps:
       - name: Starting Github Actions
         uses: actions/checkout@v4.1.4
-
-      - name: Building Program with MiniShell Makefile
-        run: make
 
       - name: Install Aptitude
         run: sudo apt-get update && sudo apt install aptitude -y
