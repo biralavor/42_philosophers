@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/29 11:18:05 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:24:00 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,22 +45,17 @@ void	set_chopsticks(t_philo *philo, t_chops *chopsticks, int philo_pos)
  * @param table The table structure
  * @return void
  */
-void	philo_init_runner(t_table *table)
+void	philo_init_runner(t_table *table, int idx)
 {
-	int		idx;
 	t_philo	*philo;
 
-	idx = -1;
-	while (++idx < table->total_philos)
-	{
-		philo = table->philos + idx;
-		philo->id = idx + 1;
-		philo->got_meals = 0;
-		philo->full = false;
-		philo->table = table;
-		safe_mutex_handler(&philo->philo_mtx, INIT);
-		set_chopsticks(philo, table->chopsticks, idx);
-	}
+	philo = &table->philos[idx];
+	philo->id = idx + 1;
+	philo->got_meals = 0;
+	philo->full = false;
+	philo->table = table;
+	safe_mutex_handler(&philo->philo_mtx, INIT);
+	set_chopsticks(philo, table->chopsticks, idx);
 }
 
 /**
@@ -102,6 +97,6 @@ void	table_init(t_table *table)
 	{
 		safe_mutex_handler(&table->chopsticks[idx].chops_mtx, INIT);
 		table->chopsticks[idx].chops_id = idx;
+		philo_init_runner(table, idx);
 	}
-	philo_init_runner(table);
 }
