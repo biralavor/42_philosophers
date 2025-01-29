@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:04:11 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/29 11:20:35 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:49:27 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 
 # define DEBUG_MODE 0
 # define PHILOS_LIMIT 200
+# define CACHE_LINE_SIZE 64
 
 typedef enum e_mtx_opcode
 {
@@ -83,6 +84,7 @@ typedef struct s_philo
 	t_chops			*first_chops;
 	t_chops			*second_chops;
 	t_table			*table;
+	char			padding[CACHE_LINE_SIZE];
 }					t_philo;
 
 struct s_table
@@ -135,7 +137,7 @@ void	pthread_error_handler(int status, int opcode);
 /* table initialization */
 void	table_parsing(t_table *table, char **av);
 void	table_init(t_table *table);
-void	philo_init_runner(t_table *table);
+void	philo_init_runner(t_table *table, int idx);
 void	set_chopsticks(t_philo *philo, t_chops *chopstick, int philo_pos);
 
 /* getters and setters functions */
