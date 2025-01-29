@@ -49,12 +49,12 @@ jobs:
 
       - name: Running Philo Tester - All Tests in a row
         run: |
-          mkdir ../tests
-          cd ../tests
-          cp ../42-philosophers/tests/errors .
-          cp ../42-philosophers/tests/count_eat .
-          cp ../42-philosophers/tests/should_die .
-          cp ../42-philosophers/tests/should_not_die .
+          mkdir action_tests
+          cd action_tests
+          cp ../../42-philosophers/tests/errors .
+          cp ../../42-philosophers/tests/count_eat .
+          cp ../../42-philosophers/tests/should_die .
+          cp ../../42-philosophers/tests/should_not_die .
           cp ../sheela_tests/test.sh .
           bash test.sh
 
