@@ -47,7 +47,7 @@ jobs:
       - name: Submodule Init
         run: git submodule init && git submodule update
 
-      - name: Running Philo Tester
+      - name: Running Philo Tester - Should Die
         run: |
           mkdir ../tests
           cd ../tests
