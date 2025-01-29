@@ -6,7 +6,7 @@
 #    By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 15:36:56 by umeneses          #+#    #+#              #
-#    Updated: 2025/01/28 07:40:30 by umeneses         ###   ########.fr        #
+#    Updated: 2025/01/29 19:32:48 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,7 +98,7 @@ define	project_title
 		@echo "              	 |_)| |||(_)_\(_)|_)| |(/_| _\					   "
 		@echo "              	 |               |            					   "
 		@echo "                                                                    "
-		@echo "###########  in a spagetti dinner with chop-stickers  ##############"
+		@echo "##############  in a spagetti dinner with chopsticks  ##############"
 		@echo "                                                                    "
 		@printf "$(RESET)"
 endef
