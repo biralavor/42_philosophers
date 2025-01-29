@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:42:40 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/29 11:20:35 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:39:42 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	unsync_this_philo(t_philo *philo)
 	if (philo->table->total_philos % 2 == 0)
 	{
 		if (philo->id % 2 == 0)
-			precise_usleep(5e4, philo->table);
+			precise_usleep(6e4, philo->table);
 	}
 	else
 	{
