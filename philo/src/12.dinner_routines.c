@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:19:23 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/29 16:07:04 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:34:17 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
  */
 void	let_philo_eat_routine(t_philo *philo)
 {
-	// safe_mutex_handler(&philo->first_chops->chops_mtx, LOCK);
-	// safe_mutex_handler(&philo->second_chops->chops_mtx, LOCK);
 	pthread_mutex_lock(&philo->first_chops->chops_mtx);
 	pthread_mutex_lock(&philo->second_chops->chops_mtx);
 	printer_manager(GOT_1ST_CHOPSTICK, philo, DEBUG_MODE);
@@ -39,8 +37,6 @@ void	let_philo_eat_routine(t_philo *philo)
 	if (philo->table->total_meals > 0
 		&& philo->got_meals == philo->table->total_meals)
 		set_bool(&philo->philo_mtx, &philo->full, true);
-	// safe_mutex_handler(&philo->first_chops->chops_mtx, UNLOCK);
-	// safe_mutex_handler(&philo->second_chops->chops_mtx, UNLOCK);
 }
 
 /**

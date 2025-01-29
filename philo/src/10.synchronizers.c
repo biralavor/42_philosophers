@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:42:40 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/29 15:39:42 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:34:02 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ bool	all_threads_are_running(pthread_mutex_t *mutex, long *threads,
 	bool	result;
 
 	result = false;
-	// safe_mutex_handler(mutex, LOCK);
 	pthread_mutex_lock(mutex);
 	if (*threads == total_philos)
 		result = true;
-	// safe_mutex_handler(mutex, UNLOCK);
 	pthread_mutex_unlock(mutex);
 	return (result);
 }
@@ -56,10 +54,8 @@ bool	all_threads_are_running(pthread_mutex_t *mutex, long *threads,
 void	increase_long(pthread_mutex_t *mutex, long *value)
 {
 	pthread_mutex_lock(mutex);
-	// safe_mutex_handler(mutex, LOCK);
 	(*value)++;
 	pthread_mutex_unlock(mutex);
-	// safe_mutex_handler(mutex, UNLOCK);
 }
 
 /**
