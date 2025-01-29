@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:16:51 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/28 06:26:49 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:45:49 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@
  */
 void	set_bool(pthread_mutex_t *mutex, bool *destination, bool value)
 {
-	safe_mutex_handler(mutex, LOCK);
+	// safe_mutex_handler(mutex, LOCK);
+	pthread_mutex_lock(mutex);
 	*destination = value;
-	safe_mutex_handler(mutex, UNLOCK);
+	pthread_mutex_unlock(mutex);
+	// safe_mutex_handler(mutex, UNLOCK);
 }
 
 /**
@@ -36,9 +38,11 @@ bool	get_bool(pthread_mutex_t *mutex, bool *value)
 {
 	bool	result;
 
-	safe_mutex_handler(mutex, LOCK);
+	// safe_mutex_handler(mutex, LOCK);
+	pthread_mutex_lock(mutex);
 	result = *value;
-	safe_mutex_handler(mutex, UNLOCK);
+	pthread_mutex_unlock(mutex);
+	// safe_mutex_handler(mutex, UNLOCK);
 	return (result);
 }
 
@@ -51,9 +55,11 @@ bool	get_bool(pthread_mutex_t *mutex, bool *value)
  */
 void	set_long(pthread_mutex_t *mutex, long *destination, long value)
 {
-	safe_mutex_handler(mutex, LOCK);
+	// safe_mutex_handler(mutex, LOCK);
+	pthread_mutex_lock(mutex);
 	*destination = value;
-	safe_mutex_handler(mutex, UNLOCK);
+	pthread_mutex_unlock(mutex);
+	// safe_mutex_handler(mutex, UNLOCK);
 }
 
 /**
@@ -66,9 +72,11 @@ long	get_long(pthread_mutex_t *mutex, long *value)
 {
 	long	result;
 
-	safe_mutex_handler(mutex, LOCK);
+	// safe_mutex_handler(mutex, LOCK);
+	pthread_mutex_lock(mutex);
 	result = *value;
-	safe_mutex_handler(mutex, UNLOCK);
+	pthread_mutex_unlock(mutex);
+	// safe_mutex_handler(mutex, UNLOCK);
 	return (result);
 }
 
