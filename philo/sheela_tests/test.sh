@@ -6,7 +6,7 @@
 #    By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/21 20:10:24 by sguilher          #+#    #+#              #
-#    Updated: 2025/01/25 23:32:01 by umeneses         ###   ########.fr        #
+#    Updated: 2025/01/29 18:32:07 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ for testfile in ${test_lists[*]}; do
 		$PHILO_PATH $test > ./outfiles/test$i.stdout 2> ./outfiles/test$i.stderr
 
 		if [[ $testfile == "errors" ]]; then
-			ERROR=$(cat ./outfiles/test$i.stderr)
+			ERROR=$(cat ./outfiles/test$i.stderr | tr -d '\0')
 		else
 			DIED_PRINTS=$(cat ./outfiles/test$i.stdout | grep died)
 		fi

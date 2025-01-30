@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   07.table_philo_init.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:17:52 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/09 17:35:53 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:35:05 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,15 @@
  */
 void	set_chopsticks(t_philo *philo, t_chops *chopsticks, int philo_pos)
 {
+	int	total_philos;
+
+	total_philos = philo->table->total_philos;
+	philo->first_chops = &chopsticks[(philo_pos + 1) % total_philos];
+	philo->second_chops = &chopsticks[philo_pos];
 	if (philo->id % 2 == 0)
 	{
 		philo->first_chops = &chopsticks[philo_pos];
-		philo->second_chops = &chopsticks[(philo_pos + 1)
-			% philo->table->set.total_philos];
-	}
-	else
-	{
-		philo->first_chops = &chopsticks[(philo_pos + 1)
-			% philo->table->set.total_philos];
-		philo->second_chops = &chopsticks[philo_pos];
+		philo->second_chops = &chopsticks[(philo_pos + 1) % total_philos];
 	}
 }
 
@@ -47,22 +45,17 @@ void	set_chopsticks(t_philo *philo, t_chops *chopsticks, int philo_pos)
  * @param table The table structure
  * @return void
  */
-void	philo_init_runner(t_table *table)
+void	philo_init_runner(t_table *table, int idx)
 {
-	int		idx;
 	t_philo	*philo;
 
-	idx = -1;
-	while (++idx < table->set.total_philos)
-	{
-		philo = table->philos + idx;
-		philo->id = idx + 1;
-		philo->got_meals = 0;
-		philo->full = false;
-		philo->table = table;
-		safe_mutex_handler(&philo->philo_mtx, INIT);
-		set_chopsticks(philo, table->chopsticks, idx);
-	}
+	philo = &table->philos[idx];
+	philo->id = idx + 1;
+	philo->got_meals = 0;
+	philo->full = false;
+	philo->table = table;
+	safe_mutex_handler(&philo->philo_mtx, INIT);
+	set_chopsticks(philo, table->chopsticks, idx);
 }
 
 /**
@@ -73,9 +66,9 @@ void	philo_init_runner(t_table *table)
 t_table	*table_alloc(t_table *table)
 {
 	table->philos = ft_safe_malloc(sizeof(t_philo)
-			* table->set.total_philos);
+			* table->total_philos);
 	table->chopsticks = ft_safe_malloc(sizeof(t_chops)
-			* table->set.total_philos);
+			* table->total_philos);
 	return (table);
 }
 
@@ -91,17 +84,18 @@ void	table_init(t_table *table)
 	int	idx;
 
 	idx = -1;
-	table->all_threads_ready_togo = false;
+	table->all_threads_up = false;
 	table->this_is_the_end = false;
 	table->start_time = 0;
-	table->threads_running_counter = 0;
-	table_alloc(table);
+	table->running_threads_idx = 0;
+	table->philos = ft_safe_malloc(sizeof(t_philo) * table->total_philos);
+	table->chopsticks = ft_safe_malloc(sizeof(t_chops) * table->total_philos);
 	safe_mutex_handler(&table->table_mtx, INIT);
 	safe_mutex_handler(&table->printer_mtx, INIT);
-	while (++idx < table->set.total_philos)
+	while (++idx < table->total_philos)
 	{
 		safe_mutex_handler(&table->chopsticks[idx].chops_mtx, INIT);
 		table->chopsticks[idx].chops_id = idx;
+		philo_init_runner(table, idx);
 	}
-	philo_init_runner(table);
 }

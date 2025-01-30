@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_safe_malloc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 21:55:04 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/10 13:11:39 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/26 22:13:46 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void	*ft_safe_malloc(size_t size)
 
 	ptr = malloc(size);
 	if (NULL == ptr)
-		error_manager("Malloc failed.\n");
+		error_manager("Malloc failed.");
 	return (ptr);
 }

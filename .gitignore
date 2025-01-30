@@ -1,2 +1,4 @@
-./philo/build
-./philo/philo
+.vscode
+philo/build
+philo/philo
+philo/sheela_tests/outfiles

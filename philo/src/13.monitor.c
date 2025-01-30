@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   13.monitor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 18:57:56 by umeneses          #+#    #+#             */
-/*   Updated: 2024/11/13 11:00:16 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/29 11:18:47 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,15 @@ void	*monitor_runner(void *data)
 	int		idx;
 	t_table	*table;
 
-	idx = 0;
 	table = (t_table *)data;
 	while (!all_threads_are_running(&table->table_mtx,
-			&table->threads_running_counter, table->set.total_philos))
+			&table->running_threads_idx, table->total_philos))
 		;
-	while (!this_is_the_end_of_dinner(table))
+	while (!is_this_the_end(table))
 	{
 		idx = -1;
-		while (++idx < table->set.total_philos
-			&& !this_is_the_end_of_dinner(table))
+		while (++idx < table->total_philos
+			&& !is_this_the_end(table))
 		{
 			if (is_philo_dead_manager(table->philos + idx))
 			{
@@ -57,13 +56,15 @@ void	*monitor_runner(void *data)
  */
 bool	is_philo_dead_manager(t_philo *philo)
 {
-	long	time_to_die;
+	long	timeto_die;
+	long	elapsed;
 
 	if (get_bool(&philo->philo_mtx, &philo->full))
 		return (false);
-	time_to_die = philo->table->set.time_to_die / 1e3;
-	if (ft_gettime(MILLISECOND) - get_long(&philo->philo_mtx,
-			&philo->time_of_last_meal) > time_to_die)
+	elapsed = ft_gettime(MILLISECOND) - get_long(&philo->philo_mtx,
+			&philo->timeof_lastmeal);
+	timeto_die = philo->table->timeto_die / 1e3;
+	if (elapsed > timeto_die)
 		return (true);
 	return (false);
 }
