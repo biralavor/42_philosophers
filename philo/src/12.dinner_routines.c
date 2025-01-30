@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:19:23 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/30 12:16:49 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/30 13:31:17 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	let_philo_think_routine(t_philo *philo, bool before_spinlock)
 	think_time = (eat_time * 2) - sleep_time;
 	if (think_time < 0)
 		think_time = 0;
-	precise_usleep(think_time * 0.5, philo->table);
+	precise_usleep(think_time * 0.45, philo->table);
 }
 
 /**
