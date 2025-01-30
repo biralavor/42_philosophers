@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:42:40 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/26 18:47:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/29 21:58:22 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  */
 void	holdon_until_all_threads(t_table *table)
 {
-	while (!get_bool(&table->table_mtx, &table->all_threads_ready_togo))
+	while (!get_bool(&table->table_mtx, &table->all_threads_up))
 		;
 }
 
@@ -38,10 +38,10 @@ bool	all_threads_are_running(pthread_mutex_t *mutex, long *threads,
 	bool	result;
 
 	result = false;
-	safe_mutex_handler(mutex, LOCK);
+	pthread_mutex_lock(mutex);
 	if (*threads == total_philos)
 		result = true;
-	safe_mutex_handler(mutex, UNLOCK);
+	pthread_mutex_unlock(mutex);
 	return (result);
 }
 
@@ -53,9 +53,9 @@ bool	all_threads_are_running(pthread_mutex_t *mutex, long *threads,
  */
 void	increase_long(pthread_mutex_t *mutex, long *value)
 {
-	safe_mutex_handler(mutex, LOCK);
+	pthread_mutex_lock(mutex);
 	(*value)++;
-	safe_mutex_handler(mutex, UNLOCK);
+	pthread_mutex_unlock(mutex);
 }
 
 /**
@@ -66,7 +66,7 @@ void	increase_long(pthread_mutex_t *mutex, long *value)
  * @param table The table structure
  * @return void
  */
-void	philos_in_async_mode(t_philo *philo)
+void	unsync_this_philo(t_philo *philo)
 {
 	if (philo->table->total_philos % 2 == 0)
 	{
@@ -75,7 +75,7 @@ void	philos_in_async_mode(t_philo *philo)
 	}
 	else
 	{
-		if (philo->id % 2)
+		if (philo->id % 2 != 0)
 			let_philo_think_routine(philo, true);
 	}
 }

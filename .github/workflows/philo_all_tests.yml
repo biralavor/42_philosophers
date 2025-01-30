@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-name: philo tester >> count_eat
+name: philo tester >> all tests
 
 on:
   push:
@@ -31,7 +31,7 @@ on:
     - '**release**'
 
 jobs:
-  philo_count_eat:
+  philo_all_tests:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     defaults:
@@ -47,13 +47,16 @@ jobs:
       - name: Submodule Init
         run: git submodule init && git submodule update
 
-      - name: Running Philo Tester - Count Eat
+      - name: Running Philo Tester - All Tests in a row
         run: |
-          mkdir ../tests
-          cd ../tests
-          cp ../42-philosophers/tests/count_eat .
-          cp ../42-philosophers/tests/test.sh .
-          bash test.sh count_eat
+          mkdir action_tests
+          cd action_tests
+          cp ../../42-philosophers/tests/errors .
+          cp ../../42-philosophers/tests/count_eat .
+          cp ../../42-philosophers/tests/should_die .
+          cp ../../42-philosophers/tests/should_not_die .
+          cp ../sheela_tests/test.sh .
+          bash test.sh
 
       - name: Cleaning up
         run: |

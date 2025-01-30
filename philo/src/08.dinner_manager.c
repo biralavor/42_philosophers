@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:01:45 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/28 06:26:49 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:01:40 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	dinner_manager(t_table *table)
 	}
 	safe_thread_handler(&table->monitor_thread, monitor_runner, table, CREATE);
 	table->start_time = ft_gettime(MILLISECOND);
-	set_bool(&table->table_mtx, &table->all_threads_ready_togo, true);
+	set_bool(&table->table_mtx, &table->all_threads_up, true);
 	idx = -1;
 	while (++idx < table->total_philos)
 		safe_thread_handler(&table->philos[idx].th_id, NULL, NULL, JOIN);
@@ -61,18 +61,18 @@ void	*dinner_runner(void *data)
 
 	philo = (t_philo *)data;
 	holdon_until_all_threads(philo->table);
-	set_long(&philo->philo_mtx, &philo->time_of_last_meal,
+	set_long(&philo->philo_mtx, &philo->timeof_lastmeal,
 		ft_gettime(MILLISECOND));
 	increase_long(&philo->table->table_mtx,
-		&philo->table->running_threads_counter);
-	philos_in_async_mode(philo);
+		&philo->table->running_threads_idx);
+	unsync_this_philo(philo);
 	while (!is_this_the_end(philo->table))
 	{
+		let_philo_eat_routine(philo);
 		if (get_bool(&philo->table->table_mtx, &philo->table->philos->full))
 			break ;
-		let_philo_eat_routine(philo);
 		printer_manager(SLEEPING, philo, DEBUG_MODE);
-		precise_usleep(philo->table->time_to_sleep, philo->table);
+		precise_usleep(philo->table->timeto_sleep, philo->table);
 		let_philo_think_routine(philo, false);
 	}
 	return (NULL);

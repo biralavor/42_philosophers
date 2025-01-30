@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:19:23 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/28 06:26:49 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/29 21:58:28 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@
  */
 void	let_philo_eat_routine(t_philo *philo)
 {
-	safe_mutex_handler(&philo->first_chops->chops_mtx, LOCK);
+	pthread_mutex_lock(&philo->first_chops->chops_mtx);
+	pthread_mutex_lock(&philo->second_chops->chops_mtx);
 	printer_manager(GOT_1ST_CHOPSTICK, philo, DEBUG_MODE);
-	safe_mutex_handler(&philo->second_chops->chops_mtx, LOCK);
 	printer_manager(GOT_2ND_CHOPSTICK, philo, DEBUG_MODE);
-	set_long(&philo->philo_mtx, &philo->time_of_last_meal,
+	set_long(&philo->philo_mtx, &philo->timeof_lastmeal,
 		ft_gettime(MILLISECOND));
 	philo->got_meals++;
 	printer_manager(EATING, philo, DEBUG_MODE);
-	precise_usleep(philo->table->time_to_eat, philo->table);
+	precise_usleep(philo->table->timeto_eat, philo->table);
+	pthread_mutex_unlock(&philo->first_chops->chops_mtx);
+	pthread_mutex_unlock(&philo->second_chops->chops_mtx);
 	if (philo->table->total_meals > 0
 		&& philo->got_meals == philo->table->total_meals)
 		set_bool(&philo->philo_mtx, &philo->full, true);
-	safe_mutex_handler(&philo->first_chops->chops_mtx, UNLOCK);
-	safe_mutex_handler(&philo->second_chops->chops_mtx, UNLOCK);
 }
 
 /**
@@ -48,7 +48,7 @@ void	let_philo_eat_routine(t_philo *philo)
 void	let_philo_sleep_routine(t_philo *philo)
 {
 	printer_manager(SLEEPING, philo, DEBUG_MODE);
-	precise_usleep(philo->table->time_to_sleep, philo->table);
+	precise_usleep(philo->table->timeto_sleep, philo->table);
 }
 
 /**
@@ -71,12 +71,12 @@ void	let_philo_think_routine(t_philo *philo, bool before_spinlock)
 		printer_manager(THINKING, philo, DEBUG_MODE);
 	if (philo->table->total_philos % 2 == 0)
 		return ;
-	eat_time = philo->table->time_to_eat;
-	sleep_time = philo->table->time_to_sleep;
+	eat_time = philo->table->timeto_eat;
+	sleep_time = philo->table->timeto_sleep;
 	think_time = (eat_time * 2) - sleep_time;
 	if (think_time < 0)
 		think_time = 0;
-	precise_usleep(think_time * 0.42, philo->table);
+	precise_usleep(think_time * 0.5, philo->table);
 }
 
 /**
@@ -94,9 +94,9 @@ void	*lonely_philo_routine(void *data)
 	philo = (t_philo *)data;
 	holdon_until_all_threads(philo->table);
 	set_long(&philo->philo_mtx,
-		&philo->time_of_last_meal, ft_gettime(MILLISECOND));
+		&philo->timeof_lastmeal, ft_gettime(MILLISECOND));
 	increase_long(&philo->table->table_mtx,
-		&philo->table->running_threads_counter);
+		&philo->table->running_threads_idx);
 	printer_manager(GOT_1ST_CHOPSTICK, philo, DEBUG_MODE);
 	while (!is_this_the_end(philo->table))
 		precise_usleep(200, philo->table);
