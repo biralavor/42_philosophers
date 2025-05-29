@@ -1,7 +1,8 @@
 # 42_philosophers
-A classic multithread program to learn how to avoid `data racing` and `dead lock` issues
 
-![philosopherse](https://github.com/user-attachments/assets/3a5e657f-80cf-4da6-accd-279d1fdc21da)
+| ![philosopherse](https://github.com/user-attachments/assets/3a5e657f-80cf-4da6-accd-279d1fdc21da) | A classic multithread program to learn how to avoid <br> `data racing` and `dead lock` issues | ![100sucess](https://github.com/biralavor/42_libft/assets/80487147/814c0fe9-cf93-4f9d-bd18-5d588a896ea4) |
+| :-: | :-: | :-: |
+
 
 
 ## My take-aways about Philosophers project are:
